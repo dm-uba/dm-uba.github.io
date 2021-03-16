@@ -72,7 +72,7 @@ getwd()
 ```
 
 ```
-[1] "C:/Users/unlu/Documents/GitHub/dm-uba/2021/Practicos/LAB01/presentacion"
+[1] "C:/Users/unlu/Documents/GitHub/dm-uba/2021/laboratorios/LAB01/presentacion"
 ```
 
 ```r
