@@ -1,7 +1,7 @@
 ---
 title: 'Laboratorio 01: Análisis Exploratorio de Datos'
-author: "Santiago Banchero, Juan Fernandez, Leo Lucianna"
-date: "25/4/2020"
+author: "Santiago Banchero, Juan Fernandez, Eloisa Piccoli"
+date: "16/03/2021"
 output:
   html_document: default
   pdf_document: default
