@@ -88,7 +88,7 @@ Podemos cargar el dataset de, al menos, dos maneras:
 library(readr)
 getwd()
 # Para modificar el path: setwd("")
-#iris <- read_csv("C:/Users/unlu/Documents/GitHub/ dm-uba/2021/Practicos/LAB01/presentacion")
+#iris <- read_csv("iris.csv")
 ```
 </small>
 ***
