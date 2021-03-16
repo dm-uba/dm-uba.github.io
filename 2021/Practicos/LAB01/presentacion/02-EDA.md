@@ -311,6 +311,7 @@ Percentiles
 El percentil k es un valor tal que el p% de las observaciones se encuentran debajo de este y el (100-k))% por encima del mismo.
 
 Cuantil
+<br />
 Caso particular del concepto anterior donde:
 - Q1: k=25,
 - Q2: k=50,
