@@ -76,7 +76,12 @@ getwd()
 ```
 
 ```r
-#iris <- read_csv("C:/data/iris.csv")
+# con setwd() seteo el directorio
+```
+
+
+```r
+iris <- read_csv("/home/juan/data/iris.csv")
 ```
 </small>
 ***
@@ -167,7 +172,7 @@ Entre las medidas de posición mas conocidas se encuentran:
 - Mediana: Valor que divide al medio a las observaciones.
 
 <center>
-![plot of chunk unnamed-chunk-9](./images/posicion.png)
+![plot of chunk unnamed-chunk-10](./images/posicion.png)
 </center>
 
 Medidas de Posición -Medidas Cuantitativas-
@@ -241,7 +246,7 @@ Para variables discretas:
 pie(table(iris$Species),  main="Cantidad de flores por especie")
 ```
 
-![plot of chunk unnamed-chunk-14](02-EDA-figure/unnamed-chunk-14-1.png)
+![plot of chunk unnamed-chunk-15](02-EDA-figure/unnamed-chunk-15-1.png)
 ***
 - Gráfico de Barras
 
@@ -249,7 +254,7 @@ pie(table(iris$Species),  main="Cantidad de flores por especie")
 barplot(table(iris$Species), xlab = "Especie", ylab = "Frecuencia", ylim = c(0, 60), main="Cantidad por especie") 
 ```
 
-![plot of chunk unnamed-chunk-15](02-EDA-figure/unnamed-chunk-15-1.png)
+![plot of chunk unnamed-chunk-16](02-EDA-figure/unnamed-chunk-16-1.png)
 
 Medidas de Posición -Analisis Gráfico-
 ========================================================
@@ -261,7 +266,7 @@ Para variables continuas: Histogramas
 hist(iris$Sepal.Length, main = "Histograma del largo del sepalo", xlab = "Largo del sépalo", ylab = "Frecuencia")
 ```
 
-![plot of chunk unnamed-chunk-16](02-EDA-figure/unnamed-chunk-16-1.png)
+![plot of chunk unnamed-chunk-17](02-EDA-figure/unnamed-chunk-17-1.png)
 </center>
 
 Medidas de Dispersión -Medidas Cuantitativas-
@@ -345,7 +350,7 @@ Diagramas de Cajas: Brindan informacion sobre
 - Valores atípicos.
 <center>
 <br />
-![plot of chunk unnamed-chunk-21](./images/boxplot.png)
+![plot of chunk unnamed-chunk-22](./images/boxplot.png)
 </center>
 
 ***
@@ -355,7 +360,7 @@ Diagramas de Cajas: Brindan informacion sobre
 boxplot(iris$Sepal.Length ~ iris$Species, main = "Largo del sépalo por especie", xlab="Variedad de flor", ylab="Largo del sepalo")
 ```
 
-![plot of chunk unnamed-chunk-22](02-EDA-figure/unnamed-chunk-22-1.png)
+![plot of chunk unnamed-chunk-23](02-EDA-figure/unnamed-chunk-23-1.png)
 </center>
 </small>
 
@@ -371,7 +376,7 @@ a dos variables.
 plot(iris$Petal.Length, iris$Petal.Width,col=iris$Species, main="Largo del pétalo vs Ancho del pétalo", xlab = "Largo del pétalo", ylab = "Ancho de pétalo")
 ```
 
-![plot of chunk unnamed-chunk-23](02-EDA-figure/unnamed-chunk-23-1.png)
+![plot of chunk unnamed-chunk-24](02-EDA-figure/unnamed-chunk-24-1.png)
 </center>
 ***
 <center>
@@ -380,7 +385,7 @@ plot(iris$Petal.Length, iris$Petal.Width,col=iris$Species, main="Largo del péta
 pairs(iris[,1:4],col=iris$Species, labels = names(iris)[1:4])
 ```
 
-![plot of chunk unnamed-chunk-24](02-EDA-figure/unnamed-chunk-24-1.png)
+![plot of chunk unnamed-chunk-25](02-EDA-figure/unnamed-chunk-25-1.png)
 </center>
 
 Medidas de Asociación -Medidas Cuantitativas-
@@ -419,7 +424,7 @@ library(scatterplot3d)
 scatterplot3d(iris$Sepal.Length, iris$Sepal.Width, iris$Petal.Length, main="Gráfico de 3D", xlab = "Sepal Length (cm)", ylab = "Sepal Width (cm)", zlab = "Petal Length (cm)")
 ```
 ***
-![plot of chunk unnamed-chunk-28](02-EDA-figure/unnamed-chunk-28-1.png)
+![plot of chunk unnamed-chunk-29](02-EDA-figure/unnamed-chunk-29-1.png)
 
 Medidas de Asociación -Análisis Gráfico- (++)
 ========================================================
@@ -431,7 +436,7 @@ library(MASS)
 parcoord(iris[1:4], col=iris$Species,var.label=T)
 ```
 
-![plot of chunk unnamed-chunk-29](02-EDA-figure/unnamed-chunk-29-1.png)
+![plot of chunk unnamed-chunk-30](02-EDA-figure/unnamed-chunk-30-1.png)
 ***
 
 ```r
@@ -439,5 +444,5 @@ isSetosa <- ifelse(iris$Species=="setosa","red","grey")
 parcoord(iris[1:4], col=isSetosa)
 ```
 
-![plot of chunk unnamed-chunk-30](02-EDA-figure/unnamed-chunk-30-1.png)
+![plot of chunk unnamed-chunk-31](02-EDA-figure/unnamed-chunk-31-1.png)
 </center>

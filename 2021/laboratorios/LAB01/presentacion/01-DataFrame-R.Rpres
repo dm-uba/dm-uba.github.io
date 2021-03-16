@@ -69,6 +69,7 @@ pie(table(iris$Species), main="Cantidad por especie")
 </center>
 ***
 
+
 Empezamos: Cargando el dataset
 ========================================================
 autosize: true
@@ -87,8 +88,11 @@ Podemos cargar el dataset de, al menos, dos maneras:
 ```{r}
 library(readr)
 getwd()
-# Para modificar el path: setwd("")
-#iris <- read_csv("iris.csv")
+# con setwd() seteo el directorio
+```
+
+```{r eval=FALSE}
+iris <- read_csv("/home/juan/data/iris.csv")
 ```
 </small>
 ***

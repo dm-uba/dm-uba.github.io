@@ -75,6 +75,7 @@ pie(table(iris$Species), main="Cantidad por especie")
 </center>
 ***
 
+
 Empezamos: Cargando el dataset
 ========================================================
 autosize: true
@@ -95,12 +96,16 @@ getwd()
 ```
 
 ```
-[1] "C:/Users/unlu/Documents/GitHub/dm-uba/2021/Practicos/LAB01/presentacion"
+[1] "C:/Users/unlu/Documents/GitHub/dm-uba/2021/laboratorios/LAB01/presentacion"
 ```
 
 ```r
-# Para modificar el path: setwd("")
-#iris <- read_csv("C:/Users/unlu/Documents/GitHub/ dm-uba/2021/Practicos/LAB01/presentacion")
+# con setwd() seteo el directorio
+```
+
+
+```r
+iris <- read_csv("/home/juan/data/iris.csv")
 ```
 </small>
 ***

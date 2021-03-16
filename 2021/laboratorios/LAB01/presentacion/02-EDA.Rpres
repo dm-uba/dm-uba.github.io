@@ -62,7 +62,11 @@ Podemos cargar el dataset de, al menos, dos maneras:
 ```{r}
 library(readr)
 getwd()
-#iris <- read_csv("C:/data/iris.csv")
+# con setwd() seteo el directorio
+```
+
+```{r eval=FALSE}
+iris <- read_csv("/home/juan/data/iris.csv")
 ```
 </small>
 ***
