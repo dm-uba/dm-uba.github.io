@@ -1,0 +1,363 @@
+Preprocesamiento
+========================================================
+autosize: true
+width: 1200
+height: 800
+
+
+
+Detección de valores atípicos
+<br />
+<br />
+Santiago Banchero
+<br />
+Juan Manuel Fernández
+<br />
+Eloísa Piccoli
+
+<br />
+Minería de Datos - UBA
+
+
+Contenidos
+========================================================
+
+- Análisis gráfico de outliers: Boxplot
+- Técnicas univariadas para detección de outliers:
+  + Rango intercuartil
+  + Desvíos de la media
+  + Z-Score y Z-Score Modificado
+- Técnicas Multivariadas
+  + Local Outlier Factor (LOF)
+  + Distancia de Mahalanobis
+  + Isolation Forest
+
+Utilizaremos el dataset [StudentsPerformance.csv](https://www.kaggle.com/spscientist/students-performance-in-exams?select=StudentsPerformance.csv")  de Kaggle para analizar outliers
+
+
+```{r }
+dataset_original = read.csv('StudentsPerformance.csv')
+data = dataset_original$writing.score
+```
+<br />
+Nota: Se necesita estar loggueado a Kaggle para poder acceder al link.
+Analizando la distribución
+========================================================
+
+
+```{r }
+summary(data)
+```
+
+```{r fig2, fig.height = 5, fig.width = 6, fig.align = "center"}
+hist(data, main ="Histograma de Calificaciones")
+```
+
+
+Detectando outliers graficamente
+========================================================
+Los puntos por encima o por debajo de los bigotes del Boxplot son considerados atípicos.
+
+<center>
+``` {r  echo=FALSE, fig.cap="Diagrama de Caja", out.width = '50%'}
+knitr::include_graphics("outliers_image.png")
+
+```
+Detectando outliers graficamente
+========================================================
+En este ejemplo identificamos 5 valores atípicos
+
+<center>
+```{r,  out.width="50%"}
+boxplot(data,ylab="Calificaciones")
+title("Boxplot Exámen Escrito")
+
+```
+
+
+Identificando Outliers mediante Rango Intercuartil
+========================================================
+
+```{r}
+Q1 = as.numeric(quantile(data)["25%"])
+```
+
+```{r echo=FALSE}
+cat("Q1 llamado 25% en el vector de cuartiles:",Q1 )
+```
+
+
+```{r}
+Q3 = as.numeric(quantile(data)[4])
+```
+
+```{r echo=FALSE}
+cat("Q3 por posicion en el vector:",Q3 )
+```
+
+```{r}
+IQR_Manual = Q3 - Q1
+```
+
+```{r echo=FALSE}
+cat("Rango intercuartil calculado manualmente:",IQR_Manual )
+```
+
+```{r}
+IQR = IQR(data)
+```
+
+```{r echo=FALSE}
+cat("Rango intercuartil:",IQR )
+```
+
+Identificando Outliers mediante Rango Intercuartil
+========================================================
+
+```{r}
+# Importancia de conocer el dominio: ¿Calificación mayor a 100 puntos?
+lim_sup = Q3 + 1.5*IQR
+```
+
+```{r echo=FALSE}
+cat("lim_sup:",lim_sup )
+```
+
+
+```{r}
+lim_inf = Q1 - 1.5*IQR
+
+```
+
+```{r echo=FALSE}
+cat("lim_inf:",lim_inf )
+```
+
+```{r}
+# Los valores atípicos identificados son:
+sort(data[data < lim_inf]) 
+```
+Comparando resultados con el Boxplot
+========================================================
+
+```{r, fig.show='hide'}
+boxplot_info = boxplot(data)
+boxplot_info_Q1 = boxplot_info$stats[1]
+```
+
+
+```{r echo=FALSE}
+cat("Bigote Inferior Boxplot:", boxplot_info_Q1 )
+cat("Límite inferior IQR: ", lim_inf )
+```
+
+
+El objeto Boxplot usa como corte un dato observado en la distribución, mientras que IQR toma un valor teórico. Sin embargo, para este ejemplo, ambos resultados coinciden
+
+```{r}
+unique(sort(data[data < boxplot_info_Q1 ] )) # Outliers Boxplot
+```
+
+
+
+Observando la distribución sin outliers
+========================================================
+
+<center>
+```{r, echo=FALSE,figures-side, fig.show="hold", out.width="40%"}
+boxplot(data[data >= boxplot_info_Q1],ylab="Calificaciones")
+title("Boxplot Sin Outliers")
+hist(data[data >= boxplot_info_Q1], main="Histograma sin outliers")
+
+```
+
+Utilizando Desvíos de la Media
+========================================================
+
+Otra alternativa para detección de outliers es utilizar N desvíos de alguna medida de tendencia central:
+
+```{r}
+N =3 # Para este ejemplo utilizamos 3 desvíos
+desvio <- sd(data)
+print(desvio)
+
+```
+```{r}
+outliers_max<-mean(data)+N*desvio
+print(outliers_max)
+```
+
+```{r}
+outliers_min<-mean(data)-N*desvio
+print(outliers_min)
+```
+
+Utilizando Desvios de la Media
+========================================================
+```{r}
+unique(sort(data[data < outliers_min])) # 4 valores
+```
+
+
+<center>
+```{r out.width="30%"}
+plot(data, main="Diagrama de Dispersión")
+abline(h=c(outliers_max,outliers_min), col="red",lty=5)
+legend(1,35 , legend=c("0utliers_min"),col="red", lty=5)
+```
+
+Utilizando Z-Score
+========================================================
+```{r}
+# Creo un nuevo vector con los valores de Z-Score
+data_zscore = (data-mean(data))/sd(data)
+
+```
+Si definimos el umbral inferior como -3 el resultado será igual al ejemplo anterior donde N=3 desvíos de la media
+
+```{r}
+umbral =-3
+unique(sort(data_zscore[data_zscore < umbral])) 
+```
+
+```{r}
+unique(sort(data[data_zscore < umbral])) # Filtrando variable original
+```
+
+Utilizando Z-Score Modificado
+========================================================
+
+```{r}
+mediana = median(data)
+MAD = median(abs(data-mediana))
+Zm = ((0.6745*(data - median(data))) / MAD)
+
+```
+
+Con un umbral de -3.5 solo identificamos 1 Outlier
+```{r}
+umbral_Zm = -3.5 
+unique(sort(Zm[Zm < umbral_Zm])) 
+```
+
+```{r}
+unique(sort(data[Zm < umbral_Zm])) # Filtrando variable original
+```
+
+Analizando variables en conjunto
+========================================================
+
+```{r}
+data <- dataset_original[,c(6:8)] # Agregamos exámenes
+```
+¿Y si obtenemos baja calificación en dos materias pero alta en Matemáticas? 
+
+```{r}
+data<- within(data, math.score[math.score == 18 & writing.score == 28]  <- 80)
+data<- within(data, math.score[math.score == 26 & reading.score == 31] <- 82)
+
+# Guardamos los nombres de los registros modificados
+modificados = which(data$math.score == 80 & data$writing.score == 28 | data$math.score == 82 & data$reading.score == 31)
+```
+
+
+
+```{r,fig.show='hide'}
+library(scatterplot3d) # Observamos los 3 exámenes
+
+scatterplot3d(data$math.score, data$reading.score, data$writing.score,
+color=ifelse(data$math.score==80 & data$writing.score == 28 |data$math.score==82 & data$reading.score == 31, 
+"red", "black"))
+
+```
+
+
+Analizando variables en conjunto
+========================================================
+Los boxplots no detectan outliers en el bigote superior.
+ Sin embargo, en conjunto, los nuevos puntos se alejan de la nube. 
+
+<center>
+```{r, echo=FALSE, figures-side2, fig.show="hold", out.width="40%"}
+boxplot(data,ylab="Calificaciones")
+title("Boxplot 3 Tipos de Exámenes")
+scatterplot3d(data$math.score, data$reading.score, data$writing.score, color=ifelse(data$math.score==80 & data$writing.score == 28 |data$math.score==82 & data$reading.score == 31, "red", "black"))
+title("Scatterplot 3 Tipos de Exámenes")
+```
+
+Utilizando Distancia de Mahalanobis
+========================================================
+
+```{r}
+vector_medias = colMeans(data) 
+matriz_var_cov = cov(data)
+
+# Creamos una variable con la distancia
+data$maha = sqrt(mahalanobis(data,vector_medias,matriz_var_cov))
+
+# Los 3 registros mas distantes
+top_maha <- head(data[order(data$maha,decreasing = TRUE),],3)
+```
+
+```{r echo=FALSE}
+print(top_maha)
+
+```
+
+```{r}
+modificados # Los registros modificados resultaron los más distantes
+
+```
+
+Observando el vecindario (LOF)
+========================================================
+
+```{r}
+library(Rlof)
+
+data$LOF_score<-lof(data, k=3) # Score para K vecinos
+
+top_LOF <- head(data[order(data$LOF_score,decreasing = TRUE),],3) # Los 3 registros más distantes
+
+```
+
+```{r echo=FALSE}
+print(top_LOF[,c(1:3,5)])
+
+```
+Comparando los resultados de Mahalanobis
+
+
+```{r echo=FALSE}
+print(top_maha[,c(1:3,4)])
+
+```
+
+
+Utilizando Isolation Forest
+========================================================
+
+```{r}
+library(isotree)
+set.seed(1)
+
+# Ajustamos un modelo regular (utilizando una dimensión por corte)
+iso <- isolation.forest(dataset_original, ntrees = 100)
+
+# Calculamos el score para cada instacia
+data$iso <- predict(iso, dataset_original)
+
+
+```{r}
+print(mean(data$iso))
+```
+
+
+```{r echo=FALSE}
+print(head(data[,c(1:3,6)][order(data$iso,decreasing = TRUE),],4) )
+
+```
+
+Nota: Este algoritmo soporta variables categóricas, sin embargo, se mantuvo el análisis sobre las variables de calificaciones para obtener resultados comparables.
+
+ 

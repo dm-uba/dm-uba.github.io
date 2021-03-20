@@ -1,19 +1,19 @@
-Preprocesamiento (Volumen IV)
+Preprocesamiento
 ========================================================
 autosize: true
 width: 1200
 height: 800
 
-Reducción de Dimensionalidad (Dimensionality Reduction)
+Reducción de Dimensionalidad
 <br />
 <br />
 <br />
 <br />
 Santiago Banchero
 <br />
-Leo Lucianna
+Juan Manuel Fernández
 <br />
-Juan Manuel Fernandez
+Eloísa Píccoli
 <br />
 <br />
 
@@ -29,22 +29,35 @@ Vamos a ver algunos tips para implementar las siguientes técnicas en R:
   + Reducing Highly Correlated Columns
   + Variables Importantes (Random Forest)
 
+Usaremos el dataset de Iris
+```{r}
+# Excluimos la columna que contiene la clase
+# Nos aseguramos de que no haya faltantes
+
+data = na.omit(iris[,-c(5)])
+
+```
+
+
 Reducción de dimensionalidad: Low Variance Factor
 ========================================================
 
-Se eliminan los datos con escasa varianza, para ello se realiza el análisis LVF:
-```{r}
-# Tomamos los atributos numéricos del dataframe
-lvf<-na.omit(iris[,-c(5)])
 
-# Primero normalizamos los datos (Min-Max) a un rango 0-1
+```{r}
+# Copiamos el dataframe para no pisarlo
+lvf = data
+
+# Normalizamos los datos (Min-Max) a un rango 0-1
 for(i in 1:ncol(lvf)) {
   lvf[,i] <- (lvf[,i]-min(lvf[,i]))/(max(lvf[,i])-min(lvf[,i]))
-}
+  }
 
-# Calculamos la varianza para cada atributo y redondeamos a 4 decimales
-varianzas<-round(apply(lvf, 2, var),4)
+# Calculamos la varianza para cada atributo, redondeamos a 4 decimales, y ordenamos de menor a mayor
+varianzas<-sort(round(apply(lvf, 2, var),4))
 
+```
+
+```{r echo=FALSE}
 print(varianzas)
 ```
 
@@ -54,19 +67,23 @@ Primero debemos analizar si hay candidatos, podemos hacerlo gráficamente con un
 ```{r eval=FALSE}
 library(gplots)
 library(RColorBrewer)
-# Reducing Highly Correlated Columns
-dev.off()
-ds.cor=cor(iris[,-c(5)], use="complete.obs")
+
+# Matriz de Correlacion
+ds.cor=cor(data) 
+
+# Excluyo el triangulo superior de la matriz
+ds.cor[upper.tri(ds.cor)] <- NA
+
 heatmap.2(ds.cor,
           cellnote = round(ds.cor,1), 
+          notecol="black", 
           main = "Correlación",
-          notecol="black",     
-          density.info="none", 
           trace="none",        
-          margins =c(12,12),    
+          margins =c(5,5),    
           col=brewer.pal('RdYlBu', n=5),  
-          dendrogram="none",     
-          Colv="NA")            
+          dendrogram="none",
+          symm= T,
+          Rowv=F)            
 ```
 
 Reducción dimensionalidad: Atrib. Correlacionados
@@ -77,18 +94,25 @@ El gráfico de heatmap presenta información sobre la correlación entre las var
 ```{r echo=FALSE}
 library(gplots)
 library(RColorBrewer)
-# Reducing Highly Correlated Columns
-ds.cor=cor(iris[,-c(5)], use="complete.obs")
+
+
+# Matriz de Correlacion
+ds.cor=cor(data) 
+
+# Excluyo el triangulo superior de la matriz
+ds.cor[upper.tri(ds.cor)] <- NA
+
 heatmap.2(ds.cor,
           cellnote = round(ds.cor,1), 
+          notecol="black", 
           main = "Correlación",
-          notecol="black",     
-          density.info="none", 
           trace="none",        
-          margins =c(12,12),    
+          margins =c(5,5),    
           col=brewer.pal('RdYlBu', n=5),  
-          dendrogram="none",     
-          Colv="NA")            
+          dendrogram="none",
+          symm= T,
+          Rowv=F)            
+          
 ```
 </small>
 </center>
@@ -97,12 +121,13 @@ Atributos Correlacionados (++)
 ========================================================
 Vamos a hacer el análisis "a mano" y con la librería "caret":
 ```{r}
-data.numeric<-na.omit(iris[,-c(5)])
-
 # Calculo matriz de correlacion
-matriz.correlacion<-cor(data.numeric)
+matriz.correlacion<-round(cor(data),2)
 
-# Verifico la Correlación con la matríz
+# Excluyo triangulo superior para mayor claridad
+matriz.correlacion[upper.tri(matriz.correlacion)] <- NA
+
+
 print(matriz.correlacion)
 ```
 
@@ -135,7 +160,7 @@ importance(model_rf)
 
 Reducción de dimensionalidad: Random Forests (++)
 ========================================================
-También podemos realizar una gráfica con la importacia de cada variable:
+También podemos realizar una gráfica con la importancia de cada variable:
 <center>
 ```{r}
 varImpPlot(model_rf)
