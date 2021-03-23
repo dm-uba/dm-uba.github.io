@@ -328,7 +328,7 @@ Caso particular del concepto anterior donde:
 <small>
 
 ```r
-quantile(iris$Sepal.Length,seq(0,1,0.01))
+quantile(iris$Sepal.Length,seq(0,1,0.1))
 ```
 
 ```r
