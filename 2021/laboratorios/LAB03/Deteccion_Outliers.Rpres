@@ -315,7 +315,7 @@ Observando el vecindario (LOF)
 ```{r}
 library(Rlof)
 
-data$LOF_score<-lof(data, k=3) # Score para K vecinos
+data$LOF_score<-lof(data[,c(1:3)], k=3) # Score para K vecinos
 
 top_LOF <- head(data[order(data$LOF_score,decreasing = TRUE),],3) # Los 3 registros más distantes
 
@@ -341,18 +341,13 @@ Utilizando Isolation Forest
 library(isotree)
 set.seed(1)
 
-# Ajustamos un modelo regular (utilizando una dimensión por corte)
-iso <- isolation.forest(dataset_original, ntrees = 100)
+# Ajustamos un modelo 
+iso <- isolation.forest(data[,c(1:3)], ntrees = 100)
 
-# Calculamos el score para cada instacia
-data$iso <- predict(iso, dataset_original)
+# Calculamos el score para cada instancia
+data$iso <- predict(iso, data[,c(1:3)])
 
-
-```{r}
-print(mean(data$iso))
 ```
-
-
 ```{r echo=FALSE}
 print(head(data[,c(1:3,6)][order(data$iso,decreasing = TRUE),],4) )
 

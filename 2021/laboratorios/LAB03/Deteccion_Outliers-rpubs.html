@@ -1109,15 +1109,15 @@ top_maha &lt;- head(data[order(data$maha,decreasing = TRUE),],3)
 <div class="slideContent" >
 <pre><code class="r">library(Rlof)
 
-data$LOF_score&lt;-lof(data, k=3) # Score para K vecinos
+data$LOF_score&lt;-lof(data[,c(1:3)], k=3) # Score para K vecinos
 
 top_LOF &lt;- head(data[order(data$LOF_score,decreasing = TRUE),],3) # Los 3 registros más distantes
 </code></pre>
 
 <pre><code>    math.score reading.score writing.score LOF_score
-18          80            32            28  3.184225
-626        100            97            99  3.159642
-467         82            31            38  3.117604
+18          80            32            28  3.169605
+626        100            97            99  3.162278
+467         82            31            38  3.107443
 </code></pre>
 
 <p>Comparando los resultados de Mahalanobis</p>
@@ -1137,24 +1137,18 @@ top_LOF &lt;- head(data[order(data$LOF_score,decreasing = TRUE),],3) # Los 3 reg
 <pre><code class="r">library(isotree)
 set.seed(1)
 
-# Ajustamos un modelo regular (utilizando una dimensión por corte)
-iso &lt;- isolation.forest(dataset_original, ntrees = 100)
+# Ajustamos un modelo 
+iso &lt;- isolation.forest(data[,c(1:3)], ntrees = 100)
 
-# Calculamos el score para cada instacia
-data$iso &lt;- predict(iso, dataset_original)
-</code></pre>
-
-<pre><code class="r">print(mean(data$iso))
-</code></pre>
-
-<pre><code>[1] 0.4537673
+# Calculamos el score para cada instancia
+data$iso &lt;- predict(iso, data[,c(1:3)])
 </code></pre>
 
 <pre><code>    math.score reading.score writing.score       iso
-60           0            17            10 0.7130094
-77          30            26            22 0.6332473
-981          8            24            23 0.6240186
-328         28            23            19 0.6169968
+60           0            17            10 0.7864379
+18          80            32            28 0.7389153
+981          8            24            23 0.7233776
+467         82            31            38 0.7221827
 </code></pre>
 
 <p>Nota: Este algoritmo soporta variables categóricas, sin embargo, se mantuvo el análisis sobre las variables de calificaciones para obtener resultados comparables.</p>
