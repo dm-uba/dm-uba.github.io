@@ -1,63 +1,73 @@
 {
     "biblio" : [
-        {"id": 1,
+        {"id": 10,
          "ref": "Clase 1: Introducción: Nociones básicas de Data Mining",
          "link": "https://docs.google.com/presentation/d/1BWW2e-TbGBEqZkj4GjX7EWfSEu3j4i0NR_Pjp5cEMQY/edit?usp=sharing",
          "caption": "Abrir"
         },
-        {"id": 2,
+        {"id": 11,
+		 "ref": "	Video 1: Data Mining",
+         "link": "https://youtu.be/VG-JhtbPQ4g",
+         "caption": "Ver"	
+		},
+        {"id": 12,
+		 "ref": "	Video 2: Proceso de KDD",
+         "link": "https://youtu.be/sKvHgY_4tsc",
+         "caption": "Ver"	
+		},
+        {"id": 20,
          "ref": "Clase 2: Tipos de variables, medidas correspondientes a cada tipo. Limpieza, integración y preparación de los datos.",
          "link": "https://docs.google.com/presentation/d/1eIEBZ_QNThSFFS51xOrkEaYj_bKj4rcJiULbeJhPGoQ/edit?usp=sharing",
          "caption": "Abrir"
         },
-        {"id": 3,
+        {"id": 30,
          "ref": "Clase 3: Detección de Outliers",
          "link": "https://docs.google.com/presentation/d/1r5fpVZeBuAiiMVY2tji-XnPHP9Pv5u9sH6E306K1-F8/edit?usp=sharing",
          "caption": "Abrir"
         },
-        {"id": 4,
+        {"id": 40,
          "ref": "Clase 4: Tratamiento de datos faltantes",
          "link": "https://docs.google.com/presentation/d/1kkyTvBBSL33gtBAPqBiQj4nRWOgaMVPKvuFIJQCA1BU/edit?usp=sharing",
          "caption": "Abrir"
         },
-        {"id": 5,
+        {"id": 50,
          "ref": "Clase 5: Bases de datos NoSQL",
          "link": "https://docs.google.com/presentation/d/1vm8e2oTAjsvkR2WBCiyVLBxrWo3Rc2SqcAxPjtn3FKg/edit?usp=sharing",
          "caption": "Abrir"
         } ,
-        {"id": 6,
+        {"id": 60,
          "ref": "Clase 6: Reducción de dimensionalidad",
          "link": "https://docs.google.com/presentation/d/1TAI-xSn2md081pCs_Q2zRtEeiuckLX0M1R1-s6_MK9M/edit?usp=sharing",
          "caption": "Abrir"
         },
         
-        {"id": 7,
+        {"id": 70,
          "ref": "Clase 7: Feature Engineering",
          "link": "https://docs.google.com/presentation/d/1_RkkmdMl4MHrSz9XpW9LpWMCqPGMfkb8FJm9e0gzDqY/edit?usp=sharing",
          "caption": "Abrir"
         },
                
-        {"id": 8,
+        {"id": 80,
          "ref": "Clase 8: Datos No Estructurados. De bases de datos textuales a features",
          "link": "https://docs.google.com/presentation/d/1BCNNOGaiTb3mpqtRaA2yTmtJyGdXxzGy0am_BPJGUrE/edit?usp=sharing",
          "caption": "Abrir"
         } ,
-        {"id": 9,
+        {"id": 90,
          "ref": "Clase 9: Reglas de asociación",
          "link": "https://docs.google.com/presentation/d/15kN69OL3Qv2ed-zusG4u5q6qxCBeDG19CKtfe65I0hY/edit?usp=sharing",
          "caption": "Abrir"
         },
-        {"id": 10,
+        {"id": 100,
          "ref": "Clase 10: Frequent Pattern Growth (FP-Growth) Algorithm",
          "link": "https://docs.google.com/presentation/d/1YMMMzzHx3lw0K-rWQclWJ6fcuHUOiBOTMm_V51yCTT8/edit?usp=sharing",
          "caption": "Abrir"
         },
-        {"id": 11,
+        {"id": 110,
          "ref": "Clase 11: Sistemas de recomendación",
          "link": "https://docs.google.com/presentation/d/1MK1iZwe8Emne2ObmJmOAwEkHuWK14-x1tX8uJ7FXDkI/edit?usp=sharing",
          "caption": "Abrir"
         },
-        {"id": 12,
+        {"id": 120,
          "ref": "Clase 12: Local Sensitive Hashing - Similitud de Documentos",
          "link": "https://docs.google.com/presentation/d/19QtymTBsVm-lewDtMibzK8y04qvINm6octdjzqK1nEw/edit?usp=sharing",
          "caption": "Abrir"
