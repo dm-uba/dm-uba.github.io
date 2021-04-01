@@ -70,6 +70,10 @@ apply(MPI_subnational[,5:8], 2, range, na.rm=TRUE)
 # Boxplot
 boxplot(MPI_subnational[,5:6], main="Boxplot de MPI National y Regional")
 
+# Boxplot
+boxplot(MPI_subnational[,7:8], main="Boxplot de MPI National y Regional")
+
+
 # Dispersión / Scatterplot
 plot(MPI_subnational[,5:8], labels = names(MPI_subnational)[5:8], col=as.factor(MPI_subnational$World.region))
 
