@@ -26,7 +26,7 @@ Contenidos
 Vamos a ver algunos tips para implementar las siguientes técnicas en R:
 - Reducción de dimensionalidad
   + Low Variance Factor
-  + Reducing Highly Correlated Columns
+  + Atributos altamente correlacionados
   + Variables Importantes (Random Forest)
 
 Usaremos el dataset de Iris
@@ -39,7 +39,7 @@ data = na.omit(iris[,-c(5)])
 ```
 
 
-Reducción de dimensionalidad: Low Variance Factor
+Low Variance Factor
 ========================================================
 
 
@@ -48,6 +48,8 @@ Reducción de dimensionalidad: Low Variance Factor
 lvf = data
 
 # Normalizamos los datos (Min-Max) a un rango 0-1
+# Otra alternativa es usar scales::rescale sobre vectores
+
 for(i in 1:ncol(lvf)) {
   lvf[,i] <- (lvf[,i]-min(lvf[,i]))/(max(lvf[,i])-min(lvf[,i]))
   }
@@ -61,67 +63,66 @@ varianzas<-sort(round(apply(lvf, 2, var),4))
 print(varianzas)
 ```
 
-Reducción dimensionalidad: Atrib. Correlacionados
+Atributos Altamente Correlacionados (+)
 ========================================================
 Primero debemos analizar si hay candidatos, podemos hacerlo gráficamente con un heatmap:
 ```{r eval=FALSE}
 library(gplots)
-library(RColorBrewer)
-
 # Matriz de Correlacion
 ds.cor=cor(data) 
-
 # Excluyo el triangulo superior de la matriz
 ds.cor[upper.tri(ds.cor)] <- NA
-
-heatmap.2(ds.cor,
-          cellnote = round(ds.cor,1), 
+heatmap.2(abs(ds.cor), # tomo los valores absolutos
+          cellnote = round(ds.cor,2), 
           notecol="black", 
           main = "Correlación",
           trace="none",        
-          margins =c(5,5),    
-          col=brewer.pal('RdYlBu', n=5),  
+          margins =c(11,11),  
+          col=terrain.colors(10,rev = TRUE),  
           dendrogram="none",
-          symm= T,
-          Rowv=F)            
+          symm= T, 
+          Rowv=F,# Ordena la diagonal (en vez de dendograma)    
+          breaks=c(0.7, 0.8,0.85, 0.99, 1)) # Corte para colores
+                   
 ```
 
-Reducción dimensionalidad: Atrib. Correlacionados
+Atributos Altamente Correlacionados (++)
 ========================================================
 El gráfico de heatmap presenta información sobre la correlación entre las variables, con colores de referencia:
 <center>
 <small>
 ```{r echo=FALSE}
 library(gplots)
-library(RColorBrewer)
-
-
-# Matriz de Correlacion
+library(ggplot2)
+# Matriz de Correlación
 ds.cor=cor(data) 
-
 # Excluyo el triangulo superior de la matriz
 ds.cor[upper.tri(ds.cor)] <- NA
 
-heatmap.2(ds.cor,
-          cellnote = round(ds.cor,1), 
+#breaks <- c(0.7, 0.8,0.85, 0.99, 1)
+
+heatmap.2(abs(ds.cor),
+          cellnote = round(ds.cor,2), 
           notecol="black", 
           main = "Correlación",
           trace="none",        
-          margins =c(5,5),    
-          col=brewer.pal('RdYlBu', n=5),  
+          margins =c(11,11),  
+          col=terrain.colors(4,rev = FALSE),  
           dendrogram="none",
-          symm= T,
-          Rowv=F)            
+          symm= T, 
+          Rowv=F,
+          breaks=c(0.7, 0.8,0.85, 0.99, 1))
+
           
 ```
 </small>
 </center>
 
-Atributos Correlacionados (++)
+Atributos Altamente Correlacionados (+++)
 ========================================================
-Vamos a hacer el análisis "a mano" y con la librería "caret":
+Vamos a hacer el análisis "a mano":
 ```{r}
-# Calculo matriz de correlacion
+# Calculo matriz de correlación
 matriz.correlacion<-round(cor(data),2)
 
 # Excluyo triangulo superior para mayor claridad
@@ -131,38 +132,43 @@ matriz.correlacion[upper.tri(matriz.correlacion)] <- NA
 print(matriz.correlacion)
 ```
 
-Atributos Correlacionados (+++)
+Atributos Altamente Correlacionados (+++)
 ========================================================
 Ahora lo hacemos con la librería Caret:
 ```{r}
 library(caret)
 
 # Buscamos atributos con correlaciones superiores a 0.75
-highlyCorrelated <- findCorrelation(matriz.correlacion, cutoff=0.75)
+highlyCorrelated <- findCorrelation(cor(data), cutoff=0.75)
 
 # Imprimimos los nombres de los atributos que cumplen con la condición anterior
-print(names(data.numeric[,highlyCorrelated]))
+print(names(data[,highlyCorrelated]))
 
 ```
-Luego deberíamos analizar eliminar esos atributos.
+Luego deberíamos analizar si eliminamos estos atributos.
 
 
-Reducción de dimensionalidad: Random Forests
+Importancia de Atributos con Random Forest 
 ========================================================
-Utilizamos la técnica de Random Forest para ponderar los atributos en función de la importancia en la clasificación.
-Primero corremos el modelo:
+Pondera cuán importantes son los atributos en la clasificación de la clase.
+
+<center>
 ```{r}
 library(randomForest)
 
-model_rf<-randomForest(Species ~ ., data=iris, na.action = na.omit)
-importance(model_rf)
-```
+# Ajustamos un modelo en función a las especies
+model_rf<-randomForest(Species ~ ., data=iris, importance=TRUE)
 
-Reducción de dimensionalidad: Random Forests (++)
+# Observamos la importancia de los atributos
+knitr::kable(round(importance(model_rf),2),"pipe")
+```
+<center/>
+Importancia de Atributos con Random Forest (+)
 ========================================================
-También podemos realizar una gráfica con la importancia de cada variable:
+
+MeanDecreaseAccuracy muestra cuánta precisión pierde en promedio el modelo al eliminar la variable y el MeanDecreaseGini muestra cuánto contribuye la variable a la pureza del nodo:
 <center>
-```{r}
+```{r, out.width="30%"}
 varImpPlot(model_rf)
 ```
 </center>
