@@ -1,8 +1,10 @@
-# Guía LABORATORIO III: Introducción a Bases de Datos NOSQL
+# Guía de Laboratorio: Introducción a Bases de Datos NOSQL
+
+En esta guía vamos a presentar las acciones básicas con una Base de Datos MongoDB, iniciando con la creación de una base de datos, con sus respectivas colecciones y avanzando luego con las operaciones CRUD (create, read, update y delete).
 
 ## Creación de "esquemas" con MongoDB con Robo3T
 
-A continuación se presentan algunas operaciones básicas de gestión de Bases de Datos con MongoDB a través de la interfaz Robo3T.
+A continuación se presentan la forma de crear Bases de datos ycolecciones en una Bases de Datos con MongoDB a través de la interfaz Robo3T.
 
 ### Crear una db. 
 Con botón derecho sobre la conexión, __Create Database__
