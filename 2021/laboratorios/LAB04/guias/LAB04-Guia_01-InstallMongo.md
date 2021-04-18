@@ -15,7 +15,11 @@ A continuación podemos observar gráficamente estas últimas instrucciones:
 
 <img src="./imgs/instalar_mongo.png" alt="drawing" width="700px" align="middle"/>
 
-Ahora ya tenemos instalado el servidor mongoDB, cada vez que vayamos a trabajar con el debemos iniciarlo ejecutando el archivo __mongod__ que se encuentra en el directorio de instalación, generalmente en __C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin__. 
+__¡Ahora ya tenemos instalado el servidor MongoDB!__
+
+Si al momento de instalarlo, optaron por hacerlo como __Servicio__, vamos a tener corriendo el servicio de forma constante en nuestro Sistema Operativo, bajo el nombre MongoDB (por defecto). 
+
+__Sólo en el caso que hayan destildado esta opción__, cada vez que vayamos a trabajar con el debemos iniciarlo ejecutando el archivo __mongod__ que se encuentra en el directorio de instalación, generalmente en __C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin__. 
 En caso que no sepas como hacerlo, seguí las siguientes instrucciones:
 1. Abrimos una Consola de Windows escribiendo _cmd_ en la barra de búsqueda de la barra inferior de Windows.
 2. Escribimos __cd C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin__.
@@ -28,7 +32,7 @@ A continuación podemos observar gráficamente estas últimas instrucciones:
 
 
 ### Robo3T
-Si bien podríamos con MongoDB desde consola, ejecutando el archivo __mongo__, existen dos interfaces gráficas que harán mucho mas sencillas nuestras interacciones: Robo 3T y Meet Studio 3T (su hermano mayor según se anuncia en el sitio web oficial).
+Si bien podríamos trabajar con MongoDB desde consola, ejecutando el archivo __mongo__, existen dos interfaces gráficas que harán mucho mas sencillas nuestras interacciones: Robo 3T y Meet Studio 3T (su hermano mayor según se anuncia en el sitio web oficial).
 
 Nosotros vamos a trabajar con Robo 3T que es la opción mas sencilla y liviana para interactuar con nuestras Bases de Datos NOSQL. 
 
@@ -105,7 +109,7 @@ A continuación podemos observar gráficamente como conectarnos a MongoDB con Ro
 Para empezar a trabajar, creamos otra Guía de Laboratorio, la número III, que muestra una introducción a como gestionar nuestras bases de datos con estas herramientas. Podemos acceder presionando [aquí](https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo03.md).
 
 
-## Backups y Restauración de una base de datos (mongodump y mongorestore)
+## Backups y Restauración de una base de datos (mongodump, mongorestore y mongoimport)
 
 ### Exportar una Base de Datos desde un arhivo gzip
 
