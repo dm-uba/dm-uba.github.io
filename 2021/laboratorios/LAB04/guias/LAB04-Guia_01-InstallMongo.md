@@ -118,7 +118,7 @@ Para empezar a trabajar, creamos otra Guía de Laboratorio, la número III, que 
 
 Recuerden que si están utilizando el Sistema Operativo Windows, previo a ejecutar los comandos a continuación debemos posicionarnos en el directorio de instalación de las Tools de MongoDB, generalmente en __C:\Program Files\MongoDB\Tools\<VERSION_INSTALADA>\bin__.
 
-### Exportar una Base de Datos desde un arhivo gzip
+### Exportar una Base de Datos desde un archivo gzip
 
 Para exportar una base de datos cuyo nombre es _nombre_base_datos_ podemos utilizar __mongodump__ de la siguiente manera:
 
@@ -129,14 +129,14 @@ mongodump  -h localhost -d nombre_base_datos -o path_backup --gzip
 El último argumento "--gzip" es para que comprima las colecciones en un archivo gzipeado, de lo contrario realiza los backups en archivos json, uno por cada colección.
 
 
-### Restaurar una Base de Datos desde un arhivo gzip
+### Restaurar una Base de Datos desde un archivo gzip
 
 Para restaurar una Base de Datos que fue backupeada o "dumpeada" a partir de un mongodump como el anterior, utilizamos el siguiente comando:
 
 ```bash
 mongorestore -d nombre_nueva_base_datos -o path_donde_esta_backup --gzip
 ```
-### Restaurar una Base de Datos desde un arhivo json
+### Restaurar una Base de Datos desde un archivo json
 
 Para restaurar una Base de Datos a partir de un archivo __json__ podemos utilizar el siguiente comando:
 
