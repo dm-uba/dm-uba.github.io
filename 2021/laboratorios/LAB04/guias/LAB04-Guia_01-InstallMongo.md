@@ -109,7 +109,7 @@ A continuación podemos observar gráficamente como conectarnos a MongoDB con Ro
 Para empezar a trabajar, creamos otra Guía de Laboratorio, la número III, que muestra una introducción a como gestionar nuestras bases de datos con estas herramientas. Podemos acceder presionando [aquí](https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo03.md).
 
 
-## Backups y Restauración de una base de datos (mongodump y mongorestore)
+## Backups y Restauración de una base de datos (mongodump, mongorestore y mongoimport)
 
 ### Exportar una Base de Datos desde un arhivo gzip
 
