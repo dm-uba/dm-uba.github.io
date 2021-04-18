@@ -28,7 +28,7 @@ db.tweets_mongo_covid19.aggregate( [
 
 En este caso, con el -1 sobre el atributo _cantidad_, estamos indicando que el orden sea descendente.
 
-Por otro lado, es deseable, como planteamos antes crear colecciones, o subcolecciones, a partir de estas consultas a modo de _views_ en SQL. Eso lo logramos con el operador _$out_ de la instrucción aggregate:
+Por otro lado, es deseable crear colecciones, o subcolecciones, a partir de estas consultas a modo de _views_ en SQL. Eso lo logramos con el operador _$out_ de la instrucción aggregate:
 ```javascript
 db.tweets_mongo_covid19.aggregate( [
     {$group: { _id: "$source", cantidad: {$sum: 1} } },
@@ -178,7 +178,3 @@ En el pipeline de agregación se incorporan las instrucciones:
 
 - lookup: que permite hacer el join entre la agregación de _tweets_ y la colección de _users_.
 - arrayElemAt: para obtener el primer elemento de un array.
-
-
-
-
