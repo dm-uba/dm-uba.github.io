@@ -141,7 +141,7 @@ mongorestore -d nombre_nueva_base_datos -o path_donde_esta_backup --gzip
 Para restaurar una Base de Datos a partir de un archivo __json__ podemos utilizar el siguiente comando:
 
 ```bash
-mongoimport --db nombre_nueva_base_datos --collection nombre_coleccion --file path_donde_esta_json --jsonArray --legacy
+mongoimport -h localhost -d nombre_nueva_base_datos -c artist --file=.\artist-dm.json
 ```
 
 Hasta aquí una guía básica para la instalación y utilización de las Tools de MongoDB para Windows y Linux.
