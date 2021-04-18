@@ -1,0 +1,676 @@
+{"_id":{"$oid":"6054c222211df45f6548ed5e"},"Artist":"Camila Cabello"}
+{"_id":{"$oid":"6054c222211df45f6548ed5f"},"Artist":"Post Malone"}
+{"_id":{"$oid":"6054c222211df45f6548ed60"},"Artist":"Eminem"}
+{"_id":{"$oid":"6054c222211df45f6548ed61"},"Artist":"Bruno Mars"}
+{"_id":{"$oid":"6054c222211df45f6548ed62"},"Artist":"Selena Gomez"}
+{"_id":{"$oid":"6054c222211df45f6548ed63"},"Artist":"Dua Lipa"}
+{"_id":{"$oid":"6054c222211df45f6548ed64"},"Artist":"Luis Fonsi"}
+{"_id":{"$oid":"6054c222211df45f6548ed65"},"Artist":"G-Eazy"}
+{"_id":{"$oid":"6054c222211df45f6548ed66"},"Artist":"NF"}
+{"_id":{"$oid":"6054c222211df45f6548ed67"},"Artist":"Ed Sheeran"}
+{"_id":{"$oid":"6054c222211df45f6548ed68"},"Artist":"Maroon 5"}
+{"_id":{"$oid":"6054c222211df45f6548ed69"},"Artist":"Kendrick Lamar"}
+{"_id":{"$oid":"6054c222211df45f6548ed6a"},"Artist":"Hailee Steinfeld"}
+{"_id":{"$oid":"6054c222211df45f6548ed6b"},"Artist":"Marshmello"}
+{"_id":{"$oid":"6054c222211df45f6548ed6c"},"Artist":"Sam Smith"}
+{"_id":{"$oid":"6054c222211df45f6548ed6d"},"Artist":"Maluma"}
+{"_id":{"$oid":"6054c222211df45f6548ed6e"},"Artist":"Clean Bandit"}
+{"_id":{"$oid":"6054c222211df45f6548ed6f"},"Artist":"Anitta"}
+{"_id":{"$oid":"6054c222211df45f6548ed70"},"Artist":"Bebe Rexha"}
+{"_id":{"$oid":"6054c222211df45f6548ed71"},"Artist":"Cardi B"}
+{"_id":{"$oid":"6054c222211df45f6548ed72"},"Artist":"ZAYN"}
+{"_id":{"$oid":"6054c222211df45f6548ed73"},"Artist":"Lil Pump"}
+{"_id":{"$oid":"6054c222211df45f6548ed74"},"Artist":"Zac Efron"}
+{"_id":{"$oid":"6054c222211df45f6548ed75"},"Artist":"Bad Bunny"}
+{"_id":{"$oid":"6054c222211df45f6548ed76"},"Artist":"Troye Sivan"}
+{"_id":{"$oid":"6054c222211df45f6548ed77"},"Artist":"Natti Natasha"}
+{"_id":{"$oid":"6054c222211df45f6548ed78"},"Artist":"Piso 21"}
+{"_id":{"$oid":"6054c222211df45f6548ed79"},"Artist":"Imagine Dragons"}
+{"_id":{"$oid":"6054c222211df45f6548ed7a"},"Artist":"Keala Settle"}
+{"_id":{"$oid":"6054c222211df45f6548ed7b"},"Artist":"Charlie Puth"}
+{"_id":{"$oid":"6054c222211df45f6548ed7c"},"Artist":"Lil Uzi Vert"}
+{"_id":{"$oid":"6054c222211df45f6548ed7d"},"Artist":"Khalid"}
+{"_id":{"$oid":"6054c222211df45f6548ed7e"},"Artist":"Portugal. The Man"}
+{"_id":{"$oid":"6054c222211df45f6548ed7f"},"Artist":"Offset"}
+{"_id":{"$oid":"6054c222211df45f6548ed80"},"Artist":"Rita Ora"}
+{"_id":{"$oid":"6054c222211df45f6548ed81"},"Artist":"Martin Garrix"}
+{"_id":{"$oid":"6054c222211df45f6548ed82"},"Artist":"Taylor Swift"}
+{"_id":{"$oid":"6054c222211df45f6548ed83"},"Artist":"Justin Timberlake"}
+{"_id":{"$oid":"6054c222211df45f6548ed84"},"Artist":"J Balvin"}
+{"_id":{"$oid":"6054c222211df45f6548ed85"},"Artist":"Ozuna"}
+{"_id":{"$oid":"6054c222211df45f6548ed86"},"Artist":"Enrique Iglesias"}
+{"_id":{"$oid":"6054c222211df45f6548ed87"},"Artist":"French Montana"}
+{"_id":{"$oid":"6054c222211df45f6548ed88"},"Artist":"Jason Derulo"}
+{"_id":{"$oid":"6054c222211df45f6548ed89"},"Artist":"Kygo"}
+{"_id":{"$oid":"6054c222211df45f6548ed8a"},"Artist":"Logic"}
+{"_id":{"$oid":"6054c222211df45f6548ed8b"},"Artist":"Kodak Black"}
+{"_id":{"$oid":"6054c222211df45f6548ed8c"},"Artist":"21 Savage"}
+{"_id":{"$oid":"6054c222211df45f6548ed8d"},"Artist":"Wolfine"}
+{"_id":{"$oid":"6054c222211df45f6548ed8e"},"Artist":"Becky G"}
+{"_id":{"$oid":"6054c222211df45f6548ed8f"},"Artist":"Alan Walker"}
+{"_id":{"$oid":"6054c222211df45f6548ed90"},"Artist":"Danny Ocean"}
+{"_id":{"$oid":"6054c222211df45f6548ed91"},"Artist":"Migos"}
+{"_id":{"$oid":"6054c222211df45f6548ed92"},"Artist":"Avicii"}
+{"_id":{"$oid":"6054c222211df45f6548ed93"},"Artist":"Lauv"}
+{"_id":{"$oid":"6054c222211df45f6548ed94"},"Artist":"Demi Lovato"}
+{"_id":{"$oid":"6054c222211df45f6548ed95"},"Artist":"Liam Payne"}
+{"_id":{"$oid":"6054c222211df45f6548ed96"},"Artist":"Famous Dex"}
+{"_id":{"$oid":"6054c222211df45f6548ed97"},"Artist":"The Chainsmokers"}
+{"_id":{"$oid":"6054c222211df45f6548ed98"},"Artist":"Hugh Jackman"}
+{"_id":{"$oid":"6054c222211df45f6548ed99"},"Artist":"Shakira"}
+{"_id":{"$oid":"6054c222211df45f6548ed9a"},"Artist":"Machine Gun Kelly"}
+{"_id":{"$oid":"6054c222211df45f6548ed9b"},"Artist":"MC Fioti"}
+{"_id":{"$oid":"6054c222211df45f6548ed9c"},"Artist":"Axwell /\\ Ingrosso"}
+{"_id":{"$oid":"6054c222211df45f6548ed9d"},"Artist":"A$AP Ferg"}
+{"_id":{"$oid":"6054c222211df45f6548ed9e"},"Artist":"Lil Xan"}
+{"_id":{"$oid":"6054c222211df45f6548ed9f"},"Artist":"Alex Sensation"}
+{"_id":{"$oid":"6054c222211df45f6548eda0"},"Artist":"Miguel"}
+{"_id":{"$oid":"6054c222211df45f6548eda1"},"Artist":"Nacho"}
+{"_id":{"$oid":"6054c222211df45f6548eda2"},"Artist":"XXXTENTACION"}
+{"_id":{"$oid":"6054c222211df45f6548eda3"},"Artist":"James Arthur"}
+{"_id":{"$oid":"6054c222211df45f6548eda4"},"Artist":"Justin Bieber"}
+{"_id":{"$oid":"6054c222211df45f6548eda5"},"Artist":"Big Shaq"}
+{"_id":{"$oid":"6054c222211df45f6548eda6"},"Artist":"Joey Montana"}
+{"_id":{"$oid":"6054c222211df45f6548eda7"},"Artist":"Ziv Zaifman"}
+{"_id":{"$oid":"6054c222211df45f6548eda8"},"Artist":"Loren Allred"}
+{"_id":{"$oid":"6054c222211df45f6548eda9"},"Artist":"Shawn Mendes"}
+{"_id":{"$oid":"6054c222211df45f6548edaa"},"Artist":"Wisin"}
+{"_id":{"$oid":"6054c222211df45f6548edab"},"Artist":"Travis Scott"}
+{"_id":{"$oid":"6054c222211df45f6548edac"},"Artist":"Carlos Vives"}
+{"_id":{"$oid":"6054c222211df45f6548edad"},"Artist":"Sebastian Yatra"}
+{"_id":{"$oid":"6054c222211df45f6548edae"},"Artist":"Gucci Mane"}
+{"_id":{"$oid":"6054c222211df45f6548edaf"},"Artist":"Daddy Yankee"}
+{"_id":{"$oid":"6054c222211df45f6548edb0"},"Artist":"Romeo Santos"}
+{"_id":{"$oid":"6054c222211df45f6548edb1"},"Artist":"Lil Skies"}
+{"_id":{"$oid":"6054c222211df45f6548edb2"},"Artist":"Calvin Harris"}
+{"_id":{"$oid":"6054c222211df45f6548edb3"},"Artist":"DJ Khaled"}
+{"_id":{"$oid":"6054c222211df45f6548edb4"},"Artist":"Macklemore"}
+{"_id":{"$oid":"6054c222211df45f6548edb5"},"Artist":"Jonas Blue"}
+{"_id":{"$oid":"6054c222211df45f6548edb6"},"Artist":"Jay Rock"}
+{"_id":{"$oid":"6054c222211df45f6548edb7"},"Artist":"P!nk"}
+{"_id":{"$oid":"6054c222211df45f6548edb8"},"Artist":"The Cranberries"}
+{"_id":{"$oid":"6054c222211df45f6548edb9"},"Artist":"BTS"}
+{"_id":{"$oid":"6054c222211df45f6548edba"},"Artist":"Halsey"}
+{"_id":{"$oid":"6054c222211df45f6548edbb"},"Artist":"NAV"}
+{"_id":{"$oid":"6054c222211df45f6548edbc"},"Artist":"Future"}
+{"_id":{"$oid":"6054c222211df45f6548edbd"},"Artist":"Manuel Turizo"}
+{"_id":{"$oid":"6054c222211df45f6548edbe"},"Artist":"Louis Tomlinson"}
+{"_id":{"$oid":"6054c222211df45f6548edbf"},"Artist":"Juan Magán"}
+{"_id":{"$oid":"6054c222211df45f6548edc0"},"Artist":"Julia Michaels"}
+{"_id":{"$oid":"6054c222211df45f6548edc1"},"Artist":"Drake"}
+{"_id":{"$oid":"6054c222211df45f6548edc2"},"Artist":"Niall Horan"}
+{"_id":{"$oid":"6054c222211df45f6548edc3"},"Artist":"The Weeknd"}
+{"_id":{"$oid":"6054c222211df45f6548edc4"},"Artist":"Zedd"}
+{"_id":{"$oid":"6054c222211df45f6548edc5"},"Artist":"Chris Jedi"}
+{"_id":{"$oid":"6054c222211df45f6548edc6"},"Artist":"Lean Trap"}
+{"_id":{"$oid":"6054c222211df45f6548edc7"},"Artist":"David Guetta"}
+{"_id":{"$oid":"6054c222211df45f6548edc8"},"Artist":"Maggie Lindemann"}
+{"_id":{"$oid":"6054c222211df45f6548edc9"},"Artist":"Childish Gambino"}
+{"_id":{"$oid":"6054c222211df45f6548edca"},"Artist":"Jesse \u0026 Joy"}
+{"_id":{"$oid":"6054c222211df45f6548edcb"},"Artist":"6ix9ine"}
+{"_id":{"$oid":"6054c222211df45f6548edcc"},"Artist":"Yandel"}
+{"_id":{"$oid":"6054c222211df45f6548edcd"},"Artist":"DJ Snake"}
+{"_id":{"$oid":"6054c222211df45f6548edce"},"Artist":"Jax Jones"}
+{"_id":{"$oid":"6054c222211df45f6548edcf"},"Artist":"SZA"}
+{"_id":{"$oid":"6054c222211df45f6548edd0"},"Artist":"Cheat Codes"}
+{"_id":{"$oid":"6054c222211df45f6548edd1"},"Artist":"Huncho Jack"}
+{"_id":{"$oid":"6054c222211df45f6548edd2"},"Artist":"Michelle Williams"}
+{"_id":{"$oid":"6054c222211df45f6548edd3"},"Artist":"Harry Styles"}
+{"_id":{"$oid":"6054c222211df45f6548edd4"},"Artist":"CNCO"}
+{"_id":{"$oid":"6054c222211df45f6548edd5"},"Artist":"Matt Terry"}
+{"_id":{"$oid":"6054c222211df45f6548edd6"},"Artist":"Sfera Ebbasta"}
+{"_id":{"$oid":"6054c222211df45f6548edd7"},"Artist":"Rudimental"}
+{"_id":{"$oid":"6054c222211df45f6548edd8"},"Artist":"Bazzi"}
+{"_id":{"$oid":"6054c222211df45f6548edd9"},"Artist":"Carnage"}
+{"_id":{"$oid":"6054c222211df45f6548edda"},"Artist":"Ramz"}
+{"_id":{"$oid":"6054c222211df45f6548eddb"},"Artist":"Cashmere Cat"}
+{"_id":{"$oid":"6054c222211df45f6548eddc"},"Artist":"Dj Kass"}
+{"_id":{"$oid":"6054c222211df45f6548eddd"},"Artist":"Ghali"}
+{"_id":{"$oid":"6054c222211df45f6548edde"},"Artist":"Rich The Kid"}
+{"_id":{"$oid":"6054c222211df45f6548eddf"},"Artist":"YBN Nahmir"}
+{"_id":{"$oid":"6054c222211df45f6548ede0"},"Artist":"BlocBoy JB"}
+{"_id":{"$oid":"6054c222211df45f6548ede1"},"Artist":"ScHoolboy Q"}
+{"_id":{"$oid":"6054c222211df45f6548ede2"},"Artist":"SOB X RBE"}
+{"_id":{"$oid":"6054c222211df45f6548ede3"},"Artist":"Vince Staples"}
+{"_id":{"$oid":"6054c222211df45f6548ede4"},"Artist":"Jorja Smith"}
+{"_id":{"$oid":"6054c222211df45f6548ede5"},"Artist":"Ab-Soul"}
+{"_id":{"$oid":"6054c222211df45f6548ede6"},"Artist":"Zacari"}
+{"_id":{"$oid":"6054c222211df45f6548ede7"},"Artist":"Beyoncé"}
+{"_id":{"$oid":"6054c222211df45f6548ede8"},"Artist":"John Legend"}
+{"_id":{"$oid":"6054c222211df45f6548ede9"},"Artist":"Mozzy"}
+{"_id":{"$oid":"6054c222211df45f6548edea"},"Artist":"MC Loma e As Gêmeas Lacração"}
+{"_id":{"$oid":"6054c222211df45f6548edeb"},"Artist":"Oasis"}
+{"_id":{"$oid":"6054c222211df45f6548edec"},"Artist":"Reik"}
+{"_id":{"$oid":"6054c222211df45f6548eded"},"Artist":"Sofia Reyes"}
+{"_id":{"$oid":"6054c222211df45f6548edee"},"Artist":"Tom Walker"}
+{"_id":{"$oid":"6054c222211df45f6548edef"},"Artist":"The Killers"}
+{"_id":{"$oid":"6054c222211df45f6548edf0"},"Artist":"5 Seconds of Summer"}
+{"_id":{"$oid":"6054c222211df45f6548edf1"},"Artist":"A$AP Rocky"}
+{"_id":{"$oid":"6054c222211df45f6548edf2"},"Artist":"Nicky Jam"}
+{"_id":{"$oid":"6054c222211df45f6548edf3"},"Artist":"Rae Sremmurd"}
+{"_id":{"$oid":"6054c222211df45f6548edf4"},"Artist":"Sean Paul"}
+{"_id":{"$oid":"6054c222211df45f6548edf5"},"Artist":"Lil Yachty"}
+{"_id":{"$oid":"6054c222211df45f6548edf6"},"Artist":"DJ A1"}
+{"_id":{"$oid":"6054c222211df45f6548edf7"},"Artist":"TOTO"}
+{"_id":{"$oid":"6054c222211df45f6548edf8"},"Artist":"Years \u0026 Years"}
+{"_id":{"$oid":"6054c222211df45f6548edf9"},"Artist":"Lil Dicky"}
+{"_id":{"$oid":"6054c222211df45f6548edfa"},"Artist":"Dennis Lloyd"}
+{"_id":{"$oid":"6054c222211df45f6548edfb"},"Artist":"King Princess"}
+{"_id":{"$oid":"6054c222211df45f6548edfc"},"Artist":"KHEA"}
+{"_id":{"$oid":"6054c222211df45f6548edfd"},"Artist":"Zion \u0026 Lennox"}
+{"_id":{"$oid":"6054c222211df45f6548edfe"},"Artist":"N.E.R.D"}
+{"_id":{"$oid":"6054c222211df45f6548edff"},"Artist":"Panic! At The Disco"}
+{"_id":{"$oid":"6054c222211df45f6548ee00"},"Artist":"Prince Royce"}
+{"_id":{"$oid":"6054c222211df45f6548ee01"},"Artist":"George Ezra"}
+{"_id":{"$oid":"6054c222211df45f6548ee02"},"Artist":"Jason Mraz"}
+{"_id":{"$oid":"6054c222211df45f6548ee03"},"Artist":"Tyler, The Creator"}
+{"_id":{"$oid":"6054c222211df45f6548ee04"},"Artist":"Ty Dolla $ign"}
+{"_id":{"$oid":"6054c222211df45f6548ee05"},"Artist":"Calum Scott"}
+{"_id":{"$oid":"6054c222211df45f6548ee06"},"Artist":"Dan + Shay"}
+{"_id":{"$oid":"6054c222211df45f6548ee07"},"Artist":"Sabrina Carpenter"}
+{"_id":{"$oid":"6054c222211df45f6548ee08"},"Artist":"KYLE"}
+{"_id":{"$oid":"6054c222211df45f6548ee09"},"Artist":"NOTD"}
+{"_id":{"$oid":"6054c222211df45f6548ee0a"},"Artist":"Poo Bear"}
+{"_id":{"$oid":"6054c222211df45f6548ee0b"},"Artist":"Bomba Estéreo"}
+{"_id":{"$oid":"6054c222211df45f6548ee0c"},"Artist":"Capital Bra"}
+{"_id":{"$oid":"6054c222211df45f6548ee0d"},"Artist":"Nicki Minaj"}
+{"_id":{"$oid":"6054c222211df45f6548ee0e"},"Artist":"Nio Garcia"}
+{"_id":{"$oid":"6054c222211df45f6548ee0f"},"Artist":"Madison Beer"}
+{"_id":{"$oid":"6054c222211df45f6548ee10"},"Artist":"Cosculluela"}
+{"_id":{"$oid":"6054c222211df45f6548ee11"},"Artist":"KAROL G"}
+{"_id":{"$oid":"6054c222211df45f6548ee12"},"Artist":"Thomas Rhett"}
+{"_id":{"$oid":"6054c222211df45f6548ee13"},"Artist":"Sigala"}
+{"_id":{"$oid":"6054c222211df45f6548ee14"},"Artist":"Ariana Grande"}
+{"_id":{"$oid":"6054c222211df45f6548ee15"},"Artist":"J. Cole"}
+{"_id":{"$oid":"6054c222211df45f6548ee16"},"Artist":"Anne-Marie"}
+{"_id":{"$oid":"6054c222211df45f6548ee17"},"Artist":"Billie Eilish"}
+{"_id":{"$oid":"6054c222211df45f6548ee18"},"Artist":"Seeb"}
+{"_id":{"$oid":"6054c222211df45f6548ee19"},"Artist":"Banx \u0026 Ranx"}
+{"_id":{"$oid":"6054c222211df45f6548ee1a"},"Artist":"Capo Plaza"}
+{"_id":{"$oid":"6054c222211df45f6548ee1b"},"Artist":"Mason Ramsey"}
+{"_id":{"$oid":"6054c222211df45f6548ee1c"},"Artist":"Kanye West"}
+{"_id":{"$oid":"6054c222211df45f6548ee1d"},"Artist":"MC MM"}
+{"_id":{"$oid":"6054c222211df45f6548ee1e"},"Artist":"Paulo Londra"}
+{"_id":{"$oid":"6054c222211df45f6548ee1f"},"Artist":"Sia"}
+{"_id":{"$oid":"6054c222211df45f6548ee20"},"Artist":"Charlie Charles"}
+{"_id":{"$oid":"6054c222211df45f6548ee21"},"Artist":"Jess Glynne"}
+{"_id":{"$oid":"6054c222211df45f6548ee22"},"Artist":"Florence + The Machine"}
+{"_id":{"$oid":"6054c222211df45f6548ee23"},"Artist":"Arctic Monkeys"}
+{"_id":{"$oid":"6054c222211df45f6548ee24"},"Artist":"Playboi Carti"}
+{"_id":{"$oid":"6054c222211df45f6548ee25"},"Artist":"Lil Baby"}
+{"_id":{"$oid":"6054c222211df45f6548ee26"},"Artist":"Juice WRLD"}
+{"_id":{"$oid":"6054c222211df45f6548ee27"},"Artist":"Netta"}
+{"_id":{"$oid":"6054c222211df45f6548ee28"},"Artist":"John Mayer"}
+{"_id":{"$oid":"6054c222211df45f6548ee29"},"Artist":"Alvaro Soler"}
+{"_id":{"$oid":"6054c222211df45f6548ee2a"},"Artist":"Eleni Foureira"}
+{"_id":{"$oid":"6054c222211df45f6548ee2b"},"Artist":"Tee Grizzley"}
+{"_id":{"$oid":"6054c222211df45f6548ee2c"},"Artist":"Leslie Grace"}
+{"_id":{"$oid":"6054c222211df45f6548ee2d"},"Artist":"Pharrell Williams"}
+{"_id":{"$oid":"6054c222211df45f6548ee2e"},"Artist":"Tiësto"}
+{"_id":{"$oid":"6054c222211df45f6548ee2f"},"Artist":"Diplo"}
+{"_id":{"$oid":"6054c222211df45f6548ee30"},"Artist":"Tyga"}
+{"_id":{"$oid":"6054c222211df45f6548ee31"},"Artist":"OneRepublic"}
+{"_id":{"$oid":"6054c222211df45f6548ee32"},"Artist":"Lord Huron"}
+{"_id":{"$oid":"6054c222211df45f6548ee33"},"Artist":"Pusha T"}
+{"_id":{"$oid":"6054c222211df45f6548ee34"},"Artist":"The 1975"}
+{"_id":{"$oid":"6054c222211df45f6548ee35"},"Artist":"Loud Luxury"}
+{"_id":{"$oid":"6054c222211df45f6548ee36"},"Artist":"Matheus \u0026 Kauan"}
+{"_id":{"$oid":"6054c222211df45f6548ee37"},"Artist":"Gorillaz"}
+{"_id":{"$oid":"6054c222211df45f6548ee38"},"Artist":"KIDS SEE GHOSTS"}
+{"_id":{"$oid":"6054c222211df45f6548ee39"},"Artist":"Louis The Child"}
+{"_id":{"$oid":"6054c222211df45f6548ee3a"},"Artist":"BLACKPINK"}
+{"_id":{"$oid":"6054c222211df45f6548ee3b"},"Artist":"2 Chainz"}
+{"_id":{"$oid":"6054c222211df45f6548ee3c"},"Artist":"Alessia Cara"}
+{"_id":{"$oid":"6054c222211df45f6548ee3d"},"Artist":"Florida Georgia Line"}
+{"_id":{"$oid":"6054c222211df45f6548ee3e"},"Artist":"Nas"}
+{"_id":{"$oid":"6054c222211df45f6548ee3f"},"Artist":"Ella Mai"}
+{"_id":{"$oid":"6054c222211df45f6548ee40"},"Artist":"The Carters"}
+{"_id":{"$oid":"6054c222211df45f6548ee41"},"Artist":"Alec Benjamin"}
+{"_id":{"$oid":"6054c222211df45f6548ee42"},"Artist":"PNL"}
+{"_id":{"$oid":"6054c222211df45f6548ee43"},"Artist":"Brytiago"}
+{"_id":{"$oid":"6054c222211df45f6548ee44"},"Artist":"YG"}
+{"_id":{"$oid":"6054c222211df45f6548ee45"},"Artist":"Street Rappers"}
+{"_id":{"$oid":"6054c222211df45f6548ee46"},"Artist":"Bushido"}
+{"_id":{"$oid":"6054c222211df45f6548ee47"},"Artist":"Dynoro"}
+{"_id":{"$oid":"6054c222211df45f6548ee48"},"Artist":"Justin Quiles"}
+{"_id":{"$oid":"6054c222211df45f6548ee49"},"Artist":"benny blanco"}
+{"_id":{"$oid":"6054c222211df45f6548ee4a"},"Artist":"Twenty One Pilots"}
+{"_id":{"$oid":"6054c222211df45f6548ee4b"},"Artist":"Wiz Khalifa"}
+{"_id":{"$oid":"6054c222211df45f6548ee4c"},"Artist":"Hozier"}
+{"_id":{"$oid":"6054c222211df45f6548ee4d"},"Artist":"Passenger"}
+{"_id":{"$oid":"6054c222211df45f6548ee4e"},"Artist":"Chance the Rapper"}
+{"_id":{"$oid":"6054c222211df45f6548ee4f"},"Artist":"Rvssian"}
+{"_id":{"$oid":"6054c222211df45f6548ee50"},"Artist":"Dean Lewis"}
+{"_id":{"$oid":"6054c222211df45f6548ee51"},"Artist":"Thalia"}
+{"_id":{"$oid":"6054c222211df45f6548ee52"},"Artist":"LANY"}
+{"_id":{"$oid":"6054c222211df45f6548ee53"},"Artist":"Alex Rose"}
+{"_id":{"$oid":"6054c222211df45f6548ee54"},"Artist":"Queen"}
+{"_id":{"$oid":"6054c222211df45f6548ee55"},"Artist":"Don Khuma"}
+{"_id":{"$oid":"6054c222211df45f6548ee56"},"Artist":"Tropijazz"}
+{"_id":{"$oid":"6054c222211df45f6548ee57"},"Artist":"Aitana"}
+{"_id":{"$oid":"6054c222211df45f6548ee58"},"Artist":"Trío Los Josefinos"}
+{"_id":{"$oid":"6054c222211df45f6548ee59"},"Artist":"Anuel AA"}
+{"_id":{"$oid":"6054c222211df45f6548ee5a"},"Artist":"Journey"}
+{"_id":{"$oid":"6054c222211df45f6548ee5b"},"Artist":"Kris Kross Amsterdam"}
+{"_id":{"$oid":"6054c222211df45f6548ee5c"},"Artist":"Bonez MC"}
+{"_id":{"$oid":"6054c222211df45f6548ee5d"},"Artist":"Mac Miller"}
+{"_id":{"$oid":"6054c222211df45f6548ee5e"},"Artist":"Trippie Redd"}
+{"_id":{"$oid":"6054c222211df45f6548ee5f"},"Artist":"Quavo"}
+{"_id":{"$oid":"6054c222211df45f6548ee60"},"Artist":"Gryffin"}
+{"_id":{"$oid":"6054c222211df45f6548ee61"},"Artist":"Sheck Wes"}
+{"_id":{"$oid":"6054c222211df45f6548ee62"},"Artist":"Lele Pons"}
+{"_id":{"$oid":"6054c222211df45f6548ee63"},"Artist":"Young Thug"}
+{"_id":{"$oid":"6054c222211df45f6548ee64"},"Artist":"Armin van Buuren"}
+{"_id":{"$oid":"6054c222211df45f6548ee65"},"Artist":"Smokepurpp"}
+{"_id":{"$oid":"6054c222211df45f6548ee66"},"Artist":"Aretha Franklin"}
+{"_id":{"$oid":"6054c222211df45f6548ee67"},"Artist":"RIN"}
+{"_id":{"$oid":"6054c222211df45f6548ee68"},"Artist":"Bryce Vine"}
+{"_id":{"$oid":"6054c222211df45f6548ee69"},"Artist":"Nick Jonas"}
+{"_id":{"$oid":"6054c222211df45f6548ee6a"},"Artist":"Paul Rosenberg"}
+{"_id":{"$oid":"6054c222211df45f6548ee6b"},"Artist":"Why Don't We"}
+{"_id":{"$oid":"6054c222211df45f6548ee6c"},"Artist":"Alesso"}
+{"_id":{"$oid":"6054c222211df45f6548ee6d"},"Artist":"Lil Mosey"}
+{"_id":{"$oid":"6054c222211df45f6548ee6e"},"Artist":"Social House"}
+{"_id":{"$oid":"6054c222211df45f6548ee6f"},"Artist":"Silk City"}
+{"_id":{"$oid":"6054c222211df45f6548ee70"},"Artist":"Frenna"}
+{"_id":{"$oid":"6054c222211df45f6548ee71"},"Artist":"Flipp Dinero"}
+{"_id":{"$oid":"6054c222211df45f6548ee72"},"Artist":"Lukas Graham"}
+{"_id":{"$oid":"6054c222211df45f6548ee73"},"Artist":"Russ"}
+{"_id":{"$oid":"6054c222211df45f6548ee74"},"Artist":"Lil Peep"}
+{"_id":{"$oid":"6054c222211df45f6548ee75"},"Artist":"Joji"}
+{"_id":{"$oid":"6054c222211df45f6548ee76"},"Artist":"6LACK"}
+{"_id":{"$oid":"6054c222211df45f6548ee77"},"Artist":"Loredana"}
+{"_id":{"$oid":"6054c222211df45f6548ee78"},"Artist":"Lana Del Rey"}
+{"_id":{"$oid":"6054c222211df45f6548ee79"},"Artist":"Aminé"}
+{"_id":{"$oid":"6054c222211df45f6548ee7a"},"Artist":"Marília Mendonça"}
+{"_id":{"$oid":"6054c222211df45f6548ee7b"},"Artist":"Earth, Wind \u0026 Fire"}
+{"_id":{"$oid":"6054c222211df45f6548ee7c"},"Artist":"Salmo"}
+{"_id":{"$oid":"6054c222211df45f6548ee7d"},"Artist":"Farid Bang"}
+{"_id":{"$oid":"6054c222211df45f6548ee7e"},"Artist":"GASHI"}
+{"_id":{"$oid":"6054c222211df45f6548ee7f"},"Artist":"Avril Lavigne"}
+{"_id":{"$oid":"6054c222211df45f6548ee80"},"Artist":"Veysel"}
+{"_id":{"$oid":"6054c222211df45f6548ee81"},"Artist":"Mumford \u0026 Sons"}
+{"_id":{"$oid":"6054c222211df45f6548ee82"},"Artist":"Lil Wayne"}
+{"_id":{"$oid":"6054c222211df45f6548ee83"},"Artist":"Lady Gaga"}
+{"_id":{"$oid":"6054c222211df45f6548ee84"},"Artist":"Ava Max"}
+{"_id":{"$oid":"6054c222211df45f6548ee85"},"Artist":"Anderson .Paak"}
+{"_id":{"$oid":"6054c222211df45f6548ee86"},"Artist":"Charli XCX"}
+{"_id":{"$oid":"6054c222211df45f6548ee87"},"Artist":"Little Mix"}
+{"_id":{"$oid":"6054c222211df45f6548ee88"},"Artist":"Kevin Roldan"}
+{"_id":{"$oid":"6054c222211df45f6548ee89"},"Artist":"Bryant Myers"}
+{"_id":{"$oid":"6054c222211df45f6548ee8a"},"Artist":"Marc Anthony"}
+{"_id":{"$oid":"6054c222211df45f6548ee8b"},"Artist":"Zara Larsson"}
+{"_id":{"$oid":"6054c222211df45f6548ee8c"},"Artist":"KitschKrieg"}
+{"_id":{"$oid":"6054c222211df45f6548ee8d"},"Artist":"Steve Aoki"}
+{"_id":{"$oid":"6054c222211df45f6548ee8e"},"Artist":"Ellie Goulding"}
+{"_id":{"$oid":"6054c222211df45f6548ee8f"},"Artist":"Michael Jackson"}
+{"_id":{"$oid":"6054c222211df45f6548ee90"},"Artist":"Normani"}
+{"_id":{"$oid":"6054c222211df45f6548ee91"},"Artist":"Takeoff"}
+{"_id":{"$oid":"6054c222211df45f6548ee92"},"Artist":"AC/DC"}
+{"_id":{"$oid":"6054c222211df45f6548ee93"},"Artist":"Felipe Araújo"}
+{"_id":{"$oid":"6054c222211df45f6548ee94"},"Artist":"Tory Lanez"}
+{"_id":{"$oid":"6054c222211df45f6548ee95"},"Artist":"Luciano"}
+{"_id":{"$oid":"6054c222211df45f6548ee96"},"Artist":"Ray Parker Jr."}
+{"_id":{"$oid":"6054c222211df45f6548ee97"},"Artist":"Metro Boomin"}
+{"_id":{"$oid":"6054c222211df45f6548ee98"},"Artist":"K/DA"}
+{"_id":{"$oid":"6054c222211df45f6548ee99"},"Artist":"EXO"}
+{"_id":{"$oid":"6054c222211df45f6548ee9a"},"Artist":"Mariah Carey"}
+{"_id":{"$oid":"6054c222211df45f6548ee9b"},"Artist":"JENNIE"}
+{"_id":{"$oid":"6054c222211df45f6548ee9c"},"Artist":"Pedro Capó"}
+{"_id":{"$oid":"6054c222211df45f6548ee9d"},"Artist":"Mau y Ricky"}
+{"_id":{"$oid":"6054c222211df45f6548ee9e"},"Artist":"Wham!"}
+{"_id":{"$oid":"6054c222211df45f6548ee9f"},"Artist":"Brenda Lee"}
+{"_id":{"$oid":"6054c222211df45f6548eea0"},"Artist":"Michael Bublé"}
+{"_id":{"$oid":"6054c222211df45f6548eea1"},"Artist":"Bobby Helms"}
+{"_id":{"$oid":"6054c222211df45f6548eea2"},"Artist":"MERO"}
+{"_id":{"$oid":"6054c222211df45f6548eea3"},"Artist":"Andy Williams"}
+{"_id":{"$oid":"6054c222211df45f6548eea4"},"Artist":"Band Aid"}
+{"_id":{"$oid":"6054c222211df45f6548eea5"},"Artist":"Frank Sinatra"}
+{"_id":{"$oid":"6054c222211df45f6548eea6"},"Artist":"Paul McCartney"}
+{"_id":{"$oid":"6054c222211df45f6548eea7"},"Artist":"Bing Crosby"}
+{"_id":{"$oid":"6054c222211df45f6548eea8"},"Artist":"John Lennon"}
+{"_id":{"$oid":"6054c222211df45f6548eea9"},"Artist":"Meek Mill"}
+{"_id":{"$oid":"6054c222211df45f6548eeaa"},"Artist":"Mark Ronson"}
+{"_id":{"$oid":"6054c222211df45f6548eeab"},"Artist":"Ski Mask The Slump God"}
+{"_id":{"$oid":"6054c222211df45f6548eeac"},"Artist":"Kelly Clarkson"}
+{"_id":{"$oid":"6054c222211df45f6548eead"},"Artist":"Chris Rea"}
+{"_id":{"$oid":"6054c222211df45f6548eeae"},"Artist":"Burl Ives"}
+{"_id":{"$oid":"6054c222211df45f6548eeaf"},"Artist":"José Feliciano"}
+{"_id":{"$oid":"6054c222211df45f6548eeb0"},"Artist":"Nat King Cole"}
+{"_id":{"$oid":"6054c222211df45f6548eeb1"},"Artist":"Dean Martin"}
+{"_id":{"$oid":"6054c222211df45f6548eeb2"},"Artist":"The Pogues"}
+{"_id":{"$oid":"6054c222211df45f6548eeb3"},"Artist":"Brett Eldredge"}
+{"_id":{"$oid":"6054c222211df45f6548eeb4"},"Artist":"Britney Spears"}
+{"_id":{"$oid":"6054c222211df45f6548eeb5"},"Artist":"The Ronettes"}
+{"_id":{"$oid":"6054c222211df45f6548eeb6"},"Artist":"Stan Kenton"}
+{"_id":{"$oid":"6054c222211df45f6548eeb7"},"Artist":"Shakin' Stevens"}
+{"_id":{"$oid":"6054c222211df45f6548eeb8"},"Artist":"Elvis Presley"}
+{"_id":{"$oid":"6054c222211df45f6548eeb9"},"Artist":"Coldplay"}
+{"_id":{"$oid":"6054c222211df45f6548eeba"},"Artist":"MC L da Vinte"}
+{"_id":{"$oid":"6054c222211df45f6548eebb"},"Artist":"Wisin \u0026 Yandel"}
+{"_id":{"$oid":"6054c222211df45f6548eebc"},"Artist":"Daryl Hall \u0026 John Oates"}
+{"_id":{"$oid":"6054c222211df45f6548eebd"},"Artist":"Perry Como"}
+{"_id":{"$oid":"6054c222211df45f6548eebe"},"Artist":"Elton John"}
+{"_id":{"$oid":"6054c222211df45f6548eebf"},"Artist":"Kylie Minogue"}
+{"_id":{"$oid":"6054c222211df45f6548eec0"},"Artist":"Meghan Trainor"}
+{"_id":{"$oid":"6054c222211df45f6548eec1"},"Artist":"Chuck Berry"}
+{"_id":{"$oid":"6054c222211df45f6548eec2"},"Artist":"Tony Bennett"}
+{"_id":{"$oid":"6054c222211df45f6548eec3"},"Artist":"Pentatonix"}
+{"_id":{"$oid":"6054c222211df45f6548eec4"},"Artist":"Leona Lewis"}
+{"_id":{"$oid":"6054c222211df45f6548eec5"},"Artist":"The Jackson 5"}
+{"_id":{"$oid":"6054c222211df45f6548eec6"},"Artist":"Peter Manos"}
+{"_id":{"$oid":"6054c222211df45f6548eec7"},"Artist":"Bruce Springsteen"}
+{"_id":{"$oid":"6054c222211df45f6548eec8"},"Artist":"A Boogie Wit da Hoodie"}
+{"_id":{"$oid":"6054c222211df45f6548eec9"},"Artist":"Gwen Stefani"}
+{"_id":{"$oid":"6054c222211df45f6548eeca"},"Artist":"Eartha Kitt"}
+{"_id":{"$oid":"6054c222211df45f6548eecb"},"Artist":"Stevie Wonder"}
+{"_id":{"$oid":"6054c222211df45f6548eecc"},"Artist":"Mykola Dmytrovych Leontovych"}
+{"_id":{"$oid":"6054c222211df45f6548eecd"},"Artist":"Darlene Love"}
+{"_id":{"$oid":"6054c222211df45f6548eece"},"Artist":"*NSYNC"}
+{"_id":{"$oid":"6054c222211df45f6548eecf"},"Artist":"The Beach Boys"}
+{"_id":{"$oid":"6054c222211df45f6548eed0"},"Artist":"Judy Garland"}
+{"_id":{"$oid":"6054c222211df45f6548eed1"},"Artist":"Miley Cyrus"}
+{"_id":{"$oid":"6054c222211df45f6548eed2"},"Artist":"Gene Autry"}
+{"_id":{"$oid":"6054c222211df45f6548eed3"},"Artist":"H.E.R."}
+{"_id":{"$oid":"6054c222211df45f6548eed4"},"Artist":"LX"}
+{"_id":{"$oid":"6054c222211df45f6548eed5"},"Artist":"Zé Neto \u0026 Cristiano"}
+{"_id":{"$oid":"6054c222211df45f6548eed6"},"Artist":"DENNIS"}
+{"_id":{"$oid":"6054c222211df45f6548eed7"},"Artist":"Márcia Fellipe"}
+{"_id":{"$oid":"6054c222211df45f6548eed8"},"Artist":"Chris Brown"}
+{"_id":{"$oid":"6054c222211df45f6548eed9"},"Artist":"SHAED"}
+{"_id":{"$oid":"6054c222211df45f6548eeda"},"Artist":"Gabriel Diniz"}
+{"_id":{"$oid":"6054c222211df45f6548eedb"},"Artist":"Lewis Capaldi"}
+{"_id":{"$oid":"6054c222211df45f6548eedc"},"Artist":"Gesaffelstein"}
+{"_id":{"$oid":"6054c222211df45f6548eedd"},"Artist":"Shindy"}
+{"_id":{"$oid":"6054c222211df45f6548eede"},"Artist":"Kehlani"}
+{"_id":{"$oid":"6054c222211df45f6548eedf"},"Artist":"James Blake"}
+{"_id":{"$oid":"6054c222211df45f6548eee0"},"Artist":"Mustard"}
+{"_id":{"$oid":"6054c222211df45f6548eee1"},"Artist":"Luche"}
+{"_id":{"$oid":"6054c222211df45f6548eee2"},"Artist":"Blueface"}
+{"_id":{"$oid":"6054c222211df45f6548eee3"},"Artist":"Robin Schulz"}
+{"_id":{"$oid":"6054c222211df45f6548eee4"},"Artist":"Reynmen"}
+{"_id":{"$oid":"6054c222211df45f6548eee5"},"Artist":"Dominic Fike"}
+{"_id":{"$oid":"6054c222211df45f6548eee6"},"Artist":"Mabel"}
+{"_id":{"$oid":"6054c222211df45f6548eee7"},"Artist":"Gunna"}
+{"_id":{"$oid":"6054c222211df45f6548eee8"},"Artist":"Galantis"}
+{"_id":{"$oid":"6054c222211df45f6548eee9"},"Artist":"The Rudeboyz"}
+{"_id":{"$oid":"6054c222211df45f6548eeea"},"Artist":"Mahmood"}
+{"_id":{"$oid":"6054c222211df45f6548eeeb"},"Artist":"Eno"}
+{"_id":{"$oid":"6054c222211df45f6548eeec"},"Artist":"Ultimo"}
+{"_id":{"$oid":"6054c222211df45f6548eeed"},"Artist":"Azet"}
+{"_id":{"$oid":"6054c222211df45f6548eeee"},"Artist":"Irama"}
+{"_id":{"$oid":"6054c222211df45f6548eeef"},"Artist":"YNW Melly"}
+{"_id":{"$oid":"6054c222211df45f6548eef0"},"Artist":"YUNGBLUD"}
+{"_id":{"$oid":"6054c222211df45f6548eef1"},"Artist":"KC Rebell"}
+{"_id":{"$oid":"6054c222211df45f6548eef2"},"Artist":"ChocQuibTown"}
+{"_id":{"$oid":"6054c222211df45f6548eef3"},"Artist":"Tropkillaz"}
+{"_id":{"$oid":"6054c222211df45f6548eef4"},"Artist":"Ninho"}
+{"_id":{"$oid":"6054c222211df45f6548eef5"},"Artist":"Amenazzy"}
+{"_id":{"$oid":"6054c222211df45f6548eef6"},"Artist":"SHIRIN DAVID"}
+{"_id":{"$oid":"6054c222211df45f6548eef7"},"Artist":"Jonas Brothers"}
+{"_id":{"$oid":"6054c222211df45f6548eef8"},"Artist":"Summer Walker"}
+{"_id":{"$oid":"6054c222211df45f6548eef9"},"Artist":"Dalex"}
+{"_id":{"$oid":"6054c222211df45f6548eefa"},"Artist":"Aaron Smith"}
+{"_id":{"$oid":"6054c222211df45f6548eefb"},"Artist":"Solange"}
+{"_id":{"$oid":"6054c222211df45f6548eefc"},"Artist":"Calboy"}
+{"_id":{"$oid":"6054c222211df45f6548eefd"},"Artist":"Cauty"}
+{"_id":{"$oid":"6054c222211df45f6548eefe"},"Artist":"Lil Nas X"}
+{"_id":{"$oid":"6054c222211df45f6548eeff"},"Artist":"Lunay"}
+{"_id":{"$oid":"6054c222211df45f6548ef00"},"Artist":"TOMORROW X TOGETHER"}
+{"_id":{"$oid":"6054c222211df45f6548ef01"},"Artist":"Ufo361"}
+{"_id":{"$oid":"6054c222211df45f6548ef02"},"Artist":"Maren Morris"}
+{"_id":{"$oid":"6054c222211df45f6548ef03"},"Artist":"Myke Towers"}
+{"_id":{"$oid":"6054c222211df45f6548ef04"},"Artist":"FLETCHER"}
+{"_id":{"$oid":"6054c222211df45f6548ef05"},"Artist":"Paloma Mami"}
+{"_id":{"$oid":"6054c222211df45f6548ef06"},"Artist":"Fero47"}
+{"_id":{"$oid":"6054c222211df45f6548ef07"},"Artist":"Tame Impala"}
+{"_id":{"$oid":"6054c222211df45f6548ef08"},"Artist":"Gaullin"}
+{"_id":{"$oid":"6054c222211df45f6548ef09"},"Artist":"ROSALÍA"}
+{"_id":{"$oid":"6054c222211df45f6548ef0a"},"Artist":"DJ Luian"}
+{"_id":{"$oid":"6054c222211df45f6548ef0b"},"Artist":"Rammstein"}
+{"_id":{"$oid":"6054c222211df45f6548ef0c"},"Artist":"Nipsey Hussle"}
+{"_id":{"$oid":"6054c222211df45f6548ef0d"},"Artist":"Don Patricio"}
+{"_id":{"$oid":"6054c222211df45f6548ef0e"},"Artist":"Samra"}
+{"_id":{"$oid":"6054c222211df45f6548ef0f"},"Artist":"Daya"}
+{"_id":{"$oid":"6054c222211df45f6548ef10"},"Artist":"Dardan"}
+{"_id":{"$oid":"6054c222211df45f6548ef11"},"Artist":"MC Kevin o Chris"}
+{"_id":{"$oid":"6054c222211df45f6548ef12"},"Artist":"MEDUZA"}
+{"_id":{"$oid":"6054c222211df45f6548ef13"},"Artist":"Sech"}
+{"_id":{"$oid":"6054c222211df45f6548ef14"},"Artist":"Rauw Alejandro"}
+{"_id":{"$oid":"6054c222211df45f6548ef15"},"Artist":"Polo G"}
+{"_id":{"$oid":"6054c222211df45f6548ef16"},"Artist":"Guaynaa"}
+{"_id":{"$oid":"6054c222211df45f6548ef17"},"Artist":"Lizzo"}
+{"_id":{"$oid":"6054c222211df45f6548ef18"},"Artist":"Stormzy"}
+{"_id":{"$oid":"6054c222211df45f6548ef19"},"Artist":"TWICE"}
+{"_id":{"$oid":"6054c222211df45f6548ef1a"},"Artist":"DaBaby"}
+{"_id":{"$oid":"6054c222211df45f6548ef1b"},"Artist":"Kina"}
+{"_id":{"$oid":"6054c222211df45f6548ef1c"},"Artist":"Juju"}
+{"_id":{"$oid":"6054c222211df45f6548ef1d"},"Artist":"Duncan Laurence"}
+{"_id":{"$oid":"6054c222211df45f6548ef1e"},"Artist":"MAX"}
+{"_id":{"$oid":"6054c222211df45f6548ef1f"},"Artist":"Slipknot"}
+{"_id":{"$oid":"6054c222211df45f6548ef20"},"Artist":"Kontra K"}
+{"_id":{"$oid":"6054c222211df45f6548ef21"},"Artist":"Joyner Lucas"}
+{"_id":{"$oid":"6054c222211df45f6548ef22"},"Artist":"Jhay Cortez"}
+{"_id":{"$oid":"6054c222211df45f6548ef23"},"Artist":"Katy Perry"}
+{"_id":{"$oid":"6054c222211df45f6548ef24"},"Artist":"Lil Tecca"}
+{"_id":{"$oid":"6054c222211df45f6548ef25"},"Artist":"NLE Choppa"}
+{"_id":{"$oid":"6054c222211df45f6548ef26"},"Artist":"Gemitaiz"}
+{"_id":{"$oid":"6054c222211df45f6548ef27"},"Artist":"R3HAB"}
+{"_id":{"$oid":"6054c222211df45f6548ef28"},"Artist":"Nekfeu"}
+{"_id":{"$oid":"6054c222211df45f6548ef29"},"Artist":"Naomi Scott"}
+{"_id":{"$oid":"6054c222211df45f6548ef2a"},"Artist":"Ali Gatie"}
+{"_id":{"$oid":"6054c222211df45f6548ef2b"},"Artist":"Kalazh44"}
+{"_id":{"$oid":"6054c222211df45f6548ef2c"},"Artist":"Summer Cem"}
+{"_id":{"$oid":"6054c222211df45f6548ef2d"},"Artist":"Dreamville"}
+{"_id":{"$oid":"6054c222211df45f6548ef2e"},"Artist":"Blanco Brown"}
+{"_id":{"$oid":"6054c222211df45f6548ef2f"},"Artist":"Y2K"}
+{"_id":{"$oid":"6054c222211df45f6548ef30"},"Artist":"Ashley O"}
+{"_id":{"$oid":"6054c222211df45f6548ef31"},"Artist":"Sam Feldt"}
+{"_id":{"$oid":"6054c222211df45f6548ef32"},"Artist":"Mambo Kingz"}
+{"_id":{"$oid":"6054c222211df45f6548ef33"},"Artist":"MACHETE"}
+{"_id":{"$oid":"6054c222211df45f6548ef34"},"Artist":"Dimitri Vegas \u0026 Like Mike"}
+{"_id":{"$oid":"6054c222211df45f6548ef35"},"Artist":"Jeremy Zucker"}
+{"_id":{"$oid":"6054c222211df45f6548ef36"},"Artist":"The Police"}
+{"_id":{"$oid":"6054c222211df45f6548ef37"},"Artist":"Tones And I"}
+{"_id":{"$oid":"6054c222211df45f6548ef38"},"Artist":"Blue Ivy"}
+{"_id":{"$oid":"6054c222211df45f6548ef39"},"Artist":"Quality Control"}
+{"_id":{"$oid":"6054c222211df45f6548ef3a"},"Artist":"Norm Ender"}
+{"_id":{"$oid":"6054c222211df45f6548ef3b"},"Artist":"Rick Ross"}
+{"_id":{"$oid":"6054c222211df45f6548ef3c"},"Artist":"Residente"}
+{"_id":{"$oid":"6054c222211df45f6548ef3d"},"Artist":"Dayvi"}
+{"_id":{"$oid":"6054c222211df45f6548ef3e"},"Artist":"Cordae"}
+{"_id":{"$oid":"6054c222211df45f6548ef3f"},"Artist":"Megan Thee Stallion"}
+{"_id":{"$oid":"6054c222211df45f6548ef40"},"Artist":"Camilo"}
+{"_id":{"$oid":"6054c222211df45f6548ef41"},"Artist":"Labrinth"}
+{"_id":{"$oid":"6054c222211df45f6548ef42"},"Artist":"Duki"}
+{"_id":{"$oid":"6054c222211df45f6548ef43"},"Artist":"Saweetie"}
+{"_id":{"$oid":"6054c222211df45f6548ef44"},"Artist":"WOS"}
+{"_id":{"$oid":"6054c222211df45f6548ef45"},"Artist":"Swae Lee"}
+{"_id":{"$oid":"6054c222211df45f6548ef46"},"Artist":"Bizarrap"}
+{"_id":{"$oid":"6054c222211df45f6548ef47"},"Artist":"Tainy"}
+{"_id":{"$oid":"6054c222211df45f6548ef48"},"Artist":"Apache 207"}
+{"_id":{"$oid":"6054c222211df45f6548ef49"},"Artist":"BROCKHAMPTON"}
+{"_id":{"$oid":"6054c222211df45f6548ef4a"},"Artist":"blackbear"}
+{"_id":{"$oid":"6054c222211df45f6548ef4b"},"Artist":"Big Sean"}
+{"_id":{"$oid":"6054c222211df45f6548ef4c"},"Artist":"Dímelo Flow"}
+{"_id":{"$oid":"6054c222211df45f6548ef4d"},"Artist":"Lil Tjay"}
+{"_id":{"$oid":"6054c222211df45f6548ef4e"},"Artist":"Regard"}
+{"_id":{"$oid":"6054c222211df45f6548ef4f"},"Artist":"Major Lazer"}
+{"_id":{"$oid":"6054c222211df45f6548ef50"},"Artist":"Rich Music LTD"}
+{"_id":{"$oid":"6054c222211df45f6548ef51"},"Artist":"C. Tangana"}
+{"_id":{"$oid":"6054c222211df45f6548ef52"},"Artist":"RAF Camora"}
+{"_id":{"$oid":"6054c222211df45f6548ef53"},"Artist":"Noriel"}
+{"_id":{"$oid":"6054c222211df45f6548ef54"},"Artist":"The Cratez"}
+{"_id":{"$oid":"6054c222211df45f6548ef55"},"Artist":"Sido"}
+{"_id":{"$oid":"6054c222211df45f6548ef56"},"Artist":"j-hope"}
+{"_id":{"$oid":"6054c222211df45f6548ef57"},"Artist":"24kGoldn"}
+{"_id":{"$oid":"6054c222211df45f6548ef58"},"Artist":"Gambi"}
+{"_id":{"$oid":"6054c222211df45f6548ef59"},"Artist":"Dermot Kennedy"}
+{"_id":{"$oid":"6054c222211df45f6548ef5a"},"Artist":"SuperM"}
+{"_id":{"$oid":"6054c222211df45f6548ef5b"},"Artist":"Murda"}
+{"_id":{"$oid":"6054c222211df45f6548ef5c"},"Artist":"TINI"}
+{"_id":{"$oid":"6054c222211df45f6548ef5d"},"Artist":"YoungBoy Never Broke Again"}
+{"_id":{"$oid":"6054c222211df45f6548ef5e"},"Artist":"Black Eyed Peas"}
+{"_id":{"$oid":"6054c222211df45f6548ef5f"},"Artist":"Frank Ocean"}
+{"_id":{"$oid":"6054c222211df45f6548ef60"},"Artist":"Internet Money"}
+{"_id":{"$oid":"6054c222211df45f6548ef61"},"Artist":"Dadá Boladão"}
+{"_id":{"$oid":"6054c222211df45f6548ef62"},"Artist":"Omar Montes"}
+{"_id":{"$oid":"6054c222211df45f6548ef63"},"Artist":"Arizona Zervas"}
+{"_id":{"$oid":"6054c222211df45f6548ef64"},"Artist":"Noah Cyrus"}
+{"_id":{"$oid":"6054c222211df45f6548ef65"},"Artist":"Nimo"}
+{"_id":{"$oid":"6054c222211df45f6548ef66"},"Artist":"Marracash"}
+{"_id":{"$oid":"6054c222211df45f6548ef67"},"Artist":"Ant Saunders"}
+{"_id":{"$oid":"6054c222211df45f6548ef68"},"Artist":"tha Supreme"}
+{"_id":{"$oid":"6054c222211df45f6548ef69"},"Artist":"Doja Cat"}
+{"_id":{"$oid":"6054c222211df45f6548ef6a"},"Artist":"True Damage"}
+{"_id":{"$oid":"6054c222211df45f6548ef6b"},"Artist":"JP Saxe"}
+{"_id":{"$oid":"6054c222211df45f6548ef6c"},"Artist":"Riton"}
+{"_id":{"$oid":"6054c222211df45f6548ef6d"},"Artist":"Trevor Daniel"}
+{"_id":{"$oid":"6054c222211df45f6548ef6e"},"Artist":"PARTYNEXTDOOR"}
+{"_id":{"$oid":"6054c222211df45f6548ef6f"},"Artist":"Idina Menzel"}
+{"_id":{"$oid":"6054c222211df45f6548ef70"},"Artist":"KSI"}
+{"_id":{"$oid":"6054c222211df45f6548ef71"},"Artist":"Don Toliver"}
+{"_id":{"$oid":"6054c222211df45f6548ef72"},"Artist":"Gradur"}
+{"_id":{"$oid":"6054c222211df45f6548ef73"},"Artist":"Roddy Ricch"}
+{"_id":{"$oid":"6054c222211df45f6548ef74"},"Artist":"SAINt JHN"}
+{"_id":{"$oid":"6054c222211df45f6548ef75"},"Artist":"Henrique \u0026 Juliano"}
+{"_id":{"$oid":"6054c222211df45f6548ef76"},"Artist":"Donny Hathaway"}
+{"_id":{"$oid":"6054c222211df45f6548ef77"},"Artist":"Ella Fitzgerald"}
+{"_id":{"$oid":"6054c222211df45f6548ef78"},"Artist":"Train"}
+{"_id":{"$oid":"6054c222211df45f6548ef79"},"Artist":"Céline Dion"}
+{"_id":{"$oid":"6054c222211df45f6548ef7a"},"Artist":"Boney M."}
+{"_id":{"$oid":"6054c222211df45f6548ef7b"},"Artist":"Red Velvet"}
+{"_id":{"$oid":"6054c222211df45f6548ef7c"},"Artist":"JACKBOYS"}
+{"_id":{"$oid":"6054c222211df45f6548ef7d"},"Artist":"PEDRO SAMPAIO"}
+{"_id":{"$oid":"6054c222211df45f6548ef7e"},"Artist":"Macklemore \u0026 Ryan Lewis"}
+{"_id":{"$oid":"6054c222211df45f6548ef7f"},"Artist":"Conan Gray"}
+{"_id":{"$oid":"6054c222211df45f6548ef80"},"Artist":"Jorge \u0026 Mateus"}
+{"_id":{"$oid":"6054c222211df45f6548ef81"},"Artist":"Gusttavo Lima"}
+{"_id":{"$oid":"6054c222211df45f6548ef82"},"Artist":"TOKYO’S REVENGE"}
+{"_id":{"$oid":"6054c222211df45f6548ef83"},"Artist":"Olivia Rodrigo"}
+{"_id":{"$oid":"6054c222211df45f6548ef84"},"Artist":"Arcangel"}
+{"_id":{"$oid":"6054c222211df45f6548ef85"},"Artist":"Matthew Wilder"}
+{"_id":{"$oid":"6054c222211df45f6548ef86"},"Artist":"Surfaces"}
+{"_id":{"$oid":"6054c222211df45f6548ef87"},"Artist":"Maes"}
+{"_id":{"$oid":"6054c222211df45f6548ef88"},"Artist":"Thiaguinho MT"}
+{"_id":{"$oid":"6054c222211df45f6548ef89"},"Artist":"Gzuz"}
+{"_id":{"$oid":"6054c222211df45f6548ef8a"},"Artist":"Joker Bra"}
+{"_id":{"$oid":"6054c222211df45f6548ef8b"},"Artist":"Jack Harlow"}
+{"_id":{"$oid":"6054c222211df45f6548ef8c"},"Artist":"Powfu"}
+{"_id":{"$oid":"6054c222211df45f6548ef8d"},"Artist":"Ashe"}
+{"_id":{"$oid":"6054c222211df45f6548ef8e"},"Artist":"Pop Smoke"}
+{"_id":{"$oid":"6054c222211df45f6548ef8f"},"Artist":"K CAMP"}
+{"_id":{"$oid":"6054c222211df45f6548ef90"},"Artist":"G Herbo"}
+{"_id":{"$oid":"6054c222211df45f6548ef91"},"Artist":"BENEE"}
+{"_id":{"$oid":"6054c222211df45f6548ef92"},"Artist":"Christian Nodal"}
+{"_id":{"$oid":"6054c222211df45f6548ef93"},"Artist":"Jhené Aiko"}
+{"_id":{"$oid":"6054c222211df45f6548ef94"},"Artist":"ITZY"}
+{"_id":{"$oid":"6054c222211df45f6548ef95"},"Artist":"DripReport"}
+{"_id":{"$oid":"6054c222211df45f6548ef96"},"Artist":"PUBLIC"}
+{"_id":{"$oid":"6054c222211df45f6548ef97"},"Artist":"Topic"}
+{"_id":{"$oid":"6054c222211df45f6548ef98"},"Artist":"Surf Mesa"}
+{"_id":{"$oid":"6054c222211df45f6548ef99"},"Artist":"Shiva"}
+{"_id":{"$oid":"6054c222211df45f6548ef9a"},"Artist":"Zuna"}
+{"_id":{"$oid":"6054c222211df45f6548ef9b"},"Artist":"Sub Urban"}
+{"_id":{"$oid":"6054c222211df45f6548ef9c"},"Artist":"Luísa Sonza"}
+{"_id":{"$oid":"6054c222211df45f6548ef9d"},"Artist":"Feid"}
+{"_id":{"$oid":"6054c222211df45f6548ef9e"},"Artist":"Rod Wave"}
+{"_id":{"$oid":"6054c222211df45f6548ef9f"},"Artist":"Vicetone"}
+{"_id":{"$oid":"6054c222211df45f6548efa0"},"Artist":"Sam Fischer"}
+{"_id":{"$oid":"6054c222211df45f6548efa1"},"Artist":"THE SCOTTS"}
+{"_id":{"$oid":"6054c222211df45f6548efa2"},"Artist":"Melanie Martinez"}
+{"_id":{"$oid":"6054c222211df45f6548efa3"},"Artist":"Banda MS de Sergio Lizárraga"}
+{"_id":{"$oid":"6054c222211df45f6548efa4"},"Artist":"StaySolidRocky"}
+{"_id":{"$oid":"6054c222211df45f6548efa5"},"Artist":"IU"}
+{"_id":{"$oid":"6054c222211df45f6548efa6"},"Artist":"Natalie Taylor"}
+{"_id":{"$oid":"6054c222211df45f6548efa7"},"Artist":"Pashanim"}
+{"_id":{"$oid":"6054c222211df45f6548efa8"},"Artist":"Sleepy Hallow"}
+{"_id":{"$oid":"6054c222211df45f6548efa9"},"Artist":"S1mba"}
+{"_id":{"$oid":"6054c222211df45f6548efaa"},"Artist":"Agust D"}
+{"_id":{"$oid":"6054c222211df45f6548efab"},"Artist":"Alexander 23"}
+{"_id":{"$oid":"6054c222211df45f6548efac"},"Artist":"jxdn"}
+{"_id":{"$oid":"6054c222211df45f6548efad"},"Artist":"AK AUSSERKONTROLLE"}
+{"_id":{"$oid":"6054c222211df45f6548efae"},"Artist":"KALIM"}
+{"_id":{"$oid":"6054c222211df45f6548efaf"},"Artist":"Niack"}
+{"_id":{"$oid":"6054c222211df45f6548efb0"},"Artist":"Harry Nach"}
+{"_id":{"$oid":"6054c222211df45f6548efb1"},"Artist":"Jawsh 685"}
+{"_id":{"$oid":"6054c222211df45f6548efb2"},"Artist":"Tyla Yaweh"}
+{"_id":{"$oid":"6054c222211df45f6548efb3"},"Artist":"The Kid LAROI"}
+{"_id":{"$oid":"6054c222211df45f6548efb4"},"Artist":"Nea"}
+{"_id":{"$oid":"6054c222211df45f6548efb5"},"Artist":"Bosh"}
+{"_id":{"$oid":"6054c222211df45f6548efb6"},"Artist":"Shablo"}
+{"_id":{"$oid":"6054c222211df45f6548efb7"},"Artist":"Conkarah"}
+{"_id":{"$oid":"6054c222211df45f6548efb8"},"Artist":"Vance Joy"}
+{"_id":{"$oid":"6054c222211df45f6548efb9"},"Artist":"Curtis Waters"}
+{"_id":{"$oid":"6054c222211df45f6548efba"},"Artist":"Wallows"}
+{"_id":{"$oid":"6054c222211df45f6548efbb"},"Artist":"Peach Tree Rascals"}
+{"_id":{"$oid":"6054c222211df45f6548efbc"},"Artist":"Jay Wheeler"}
+{"_id":{"$oid":"6054c222211df45f6548efbd"},"Artist":"Aya Nakamura"}
+{"_id":{"$oid":"6054c222211df45f6548efbe"},"Artist":"Mc Zaac"}
+{"_id":{"$oid":"6054c222211df45f6548efbf"},"Artist":"Miksu / Macloud"}
+{"_id":{"$oid":"6054c222211df45f6548efc0"},"Artist":"Bring Me The Horizon"}
+{"_id":{"$oid":"6054c222211df45f6548efc1"},"Artist":"iann dior"}
+{"_id":{"$oid":"6054c222211df45f6548efc2"},"Artist":"Boomdabash"}
+{"_id":{"$oid":"6054c222211df45f6548efc3"},"Artist":"Juanfran"}
+{"_id":{"$oid":"6054c222211df45f6548efc4"},"Artist":"Kid Cudi"}
+{"_id":{"$oid":"6054c222211df45f6548efc5"},"Artist":"Tate McRae"}
+{"_id":{"$oid":"6054c222211df45f6548efc6"},"Artist":"Kane Brown"}
+{"_id":{"$oid":"6054c222211df45f6548efc7"},"Artist":"Red Velvet - IRENE \u0026 SEULGI"}
+{"_id":{"$oid":"6054c222211df45f6548efc8"},"Artist":"Joel Corry"}
+{"_id":{"$oid":"6054c222211df45f6548efc9"},"Artist":"VIZE"}
+{"_id":{"$oid":"6054c222211df45f6548efca"},"Artist":"Headie One"}
+{"_id":{"$oid":"6054c222211df45f6548efcb"},"Artist":"One Direction"}
+{"_id":{"$oid":"6054c222211df45f6548efcc"},"Artist":"El Alfa"}
+{"_id":{"$oid":"6054c222211df45f6548efcd"},"Artist":"Trueno"}
+{"_id":{"$oid":"6054c222211df45f6548efce"},"Artist":"BØRNS"}
+{"_id":{"$oid":"6054c222211df45f6548efcf"},"Artist":"Jowell \u0026 Randy"}
+{"_id":{"$oid":"6054c222211df45f6548efd0"},"Artist":"twocolors"}
+{"_id":{"$oid":"6054c222211df45f6548efd1"},"Artist":"Morgan Wallen"}
+{"_id":{"$oid":"6054c222211df45f6548efd2"},"Artist":"Super Yei"}
+{"_id":{"$oid":"6054c222211df45f6548efd3"},"Artist":"BANNERS"}
+{"_id":{"$oid":"6054c222211df45f6548efd4"},"Artist":"Jerry Di"}
+{"_id":{"$oid":"6054c222211df45f6548efd5"},"Artist":"Kofs"}
+{"_id":{"$oid":"6054c222211df45f6548efd6"},"Artist":"Bausa"}
+{"_id":{"$oid":"6054c222211df45f6548efd7"},"Artist":"Bea Miller"}
+{"_id":{"$oid":"6054c222211df45f6548efd8"},"Artist":"Jonas Esticado"}
+{"_id":{"$oid":"6054c222211df45f6548efd9"},"Artist":"The Neighbourhood"}
+{"_id":{"$oid":"6054c222211df45f6548efda"},"Artist":"salem ilese"}
+{"_id":{"$oid":"6054c222211df45f6548efdb"},"Artist":"WhoHeem"}
+{"_id":{"$oid":"6054c222211df45f6548efdc"},"Artist":"Farruko"}
+{"_id":{"$oid":"6054c222211df45f6548efdd"},"Artist":"Master KG"}
+{"_id":{"$oid":"6054c222211df45f6548efde"},"Artist":"Ritt Momney"}
+{"_id":{"$oid":"6054c222211df45f6548efdf"},"Artist":"Vedo"}
+{"_id":{"$oid":"6054c222211df45f6548efe0"},"Artist":"Matuê"}
+{"_id":{"$oid":"6054c222211df45f6548efe1"},"Artist":"Money Man"}
+{"_id":{"$oid":"6054c222211df45f6548efe2"},"Artist":"Ofenbach"}
+{"_id":{"$oid":"6054c222211df45f6548efe3"},"Artist":"Ashnikko"}
+{"_id":{"$oid":"6054c222211df45f6548efe4"},"Artist":"Damso"}
+{"_id":{"$oid":"6054c222211df45f6548efe5"},"Artist":"Fleetwood Mac"}
+{"_id":{"$oid":"6054c222211df45f6548efe6"},"Artist":"Bryson Tiller"}
+{"_id":{"$oid":"6054c222211df45f6548efe7"},"Artist":"Clairo"}
+{"_id":{"$oid":"6054c222211df45f6548efe8"},"Artist":"13 Organisé"}
+{"_id":{"$oid":"6054c222211df45f6548efe9"},"Artist":"Os Barões Da Pisadinha"}
+{"_id":{"$oid":"6054c222211df45f6548efea"},"Artist":"Linkin Park"}
+{"_id":{"$oid":"6054c222211df45f6548efeb"},"Artist":"Fousheé"}
+{"_id":{"$oid":"6054c222211df45f6548efec"},"Artist":"Luke Combs"}
+{"_id":{"$oid":"6054c222211df45f6548efed"},"Artist":"Cali Y El Dandee"}
+{"_id":{"$oid":"6054c222211df45f6548efee"},"Artist":"CJ"}
+{"_id":{"$oid":"6054c222211df45f6548efef"},"Artist":"Octavian"}
+{"_id":{"$oid":"6054c222211df45f6548eff0"},"Artist":"CORPSE"}
+{"_id":{"$oid":"6054c222211df45f6548eff1"},"Artist":"Nelly Furtado"}
+{"_id":{"$oid":"6054c222211df45f6548eff2"},"Artist":"DDG"}
+{"_id":{"$oid":"6054c222211df45f6548eff3"},"Artist":"Adele"}
+{"_id":{"$oid":"6054c222211df45f6548eff4"},"Artist":"Pink Sweat$"}
+{"_id":{"$oid":"6054c222211df45f6548eff5"},"Artist":"HVME"}
+{"_id":{"$oid":"6054c222211df45f6548eff6"},"Artist":"Boza"}
+{"_id":{"$oid":"6054c222211df45f6548eff7"},"Artist":"Trio Vegabajeño"}
+{"_id":{"$oid":"6054c222211df45f6548eff8"},"Artist":"Studio Killers"}
+{"_id":{"$oid":"6054c222211df45f6548eff9"},"Artist":"Migrantes"}
+{"_id":{"$oid":"6054c222211df45f6548effa"},"Artist":"Eagles"}
+{"_id":{"$oid":"6054c222211df45f6548effb"},"Artist":"Tarcísio do Acordeon"}
+{"_id":{"$oid":"6054c222211df45f6548effc"},"Artist":"Glass Animals"}
+{"_id":{"$oid":"6054c222211df45f6548effd"},"Artist":"Petter Ferraz"}
+{"_id":{"$oid":"6054c222211df45f6548effe"},"Artist":"Mother Mother"}
+{"_id":{"$oid":"6054c222211df45f6548efff"},"Artist":"Nirvana"}
+{"_id":{"$oid":"6054c222211df45f6548f000"},"Artist":"347aidan"}
+{"_id":{"$oid":"6054c222211df45f6548f001"},"Artist":"Milly"}
