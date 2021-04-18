@@ -39,7 +39,7 @@ Una forma práctica de ejecutar comandos sobre una Base de Datos MongoDB es a tr
 
 Una vez ahí, podemos ejecutar todas las operaciones CRUD:
 
-a) Incorporar un documento desde el shell
+a) Incorporar un documento a la colección __documentos__ desde el shell (Si la colección no existe, la crea):
 
 ```javascript
     db.documentos.insertOne({ 
@@ -50,12 +50,12 @@ a) Incorporar un documento desde el shell
     })
 ```    
 
-b) Buscar todos los documentos cargados en la colección.
+b) Buscar todos los documentos cargados en la colección __documentos__:
 ```javascript
     db.documentos.find({})
 ```
 
-c) Actualizar un atributo con __update__
+c) Actualizar un atributo con __update__:
 
 ```javascript
     db.documentos.update(
@@ -64,13 +64,13 @@ c) Actualizar un atributo con __update__
     )
 ```
 
-d) Eliminar un documento de la colección
+d) Eliminar un documento de la colección por su id:
 
 ```javascript
     db.documentos.deleteOne({"_id": 3})
 ```
     
-e) Incorporar varios documentos a través del shell
+e) Incorporar varios documentos a través del shell:
 
 Con la instrucción db.<mi colección>.insert([{doc1}, {doc2}, ...,])
 
