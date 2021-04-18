@@ -84,7 +84,10 @@ Ejemplo:
         "fecha-hora": "2018-05-18 16:00:00"
     }    
     ])
-    ```
+    
+```
+
+### Consultas básicas
 
 d) Utilizar operadores de comparación (Ejemplos sobre colecciones de Spotify)
 
