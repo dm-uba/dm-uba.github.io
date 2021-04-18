@@ -6,7 +6,7 @@ Para levantar el entorno
 
 La base de datos queda en el puerto 27017.
 
-Al phpMyAdmin se accede desde: http://localhost:8081
+Al Mongo Express se accede desde: http://localhost:8081
 
-- USUARIO: bdm
-- CLAVE: bdm
+- USUARIO: dmuba
+- CLAVE: dmuba
