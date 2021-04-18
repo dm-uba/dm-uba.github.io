@@ -141,23 +141,3 @@ q4 = tweets$aggregate(
 
 
 ```
-
-## Importación de Datos con MongoImport
-
-La herramienta _mongoimport_ es una herramienta de MongoDB que permite importar a una DB Mongo contenido de una exportación JSON, CSV o TSV creada por mongoexport, o potencialmente, otra herramienta de exportación de terceros.
-
-La forma de utilización es mediante el comando _mongoimport_ es la siguiente desde una consola:
-
-Sistemas Operativos UNIX:
-```javascript
-
-$ mongoimport --host localhost --port 27017 --username user --password "pass" --collection tweets --db dolar --file /home/juan/Escritorio/dolar.json
-
-```
-
-Sistemas Operativos Windows:
-```javascript
-
-> mongoimport --host localhost --port 27017 --collection tweets --db dolar --file C:\Users\unlu\dolar.json
-
-```
