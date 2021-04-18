@@ -17,7 +17,7 @@ A continuación podemos observar gráficamente estas últimas instrucciones:
 
 __¡Ahora ya tenemos instalado el servidor MongoDB!__
 
-Si al momento de instalarlo, optaron por hacerlo como __Servicio__, vamos a tener corriendo el servicio de forma constante en nuestro Sistema Operativo, bajo el nombre MongoDB (por defecto). 
+Si al momento de instalarlo, optaron por hacerlo tildando la opción __"Install MongoD as a Service"__, vamos a tener corriendo el servicio de forma constante en nuestro Sistema Operativo, bajo el nombre MongoDB (por defecto). 
 
 __Sólo en el caso que hayan destildado esta opción__, cada vez que vayamos a trabajar con el debemos iniciarlo ejecutando el archivo __mongod__ que se encuentra en el directorio de instalación, generalmente en __C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin__. 
 En caso que no sepas como hacerlo, seguí las siguientes instrucciones:
