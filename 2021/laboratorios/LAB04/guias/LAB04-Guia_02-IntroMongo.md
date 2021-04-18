@@ -33,6 +33,11 @@ Ejemplo: cómo armar un documento JSON para importar a la base.
         "fecha-hora": "2018-05-18 16:00:00"
     }
 ```
+Una forma práctica de ejecutar comandos sobre una Base de Datos MongoDB es a través del Shell de Robo3T. Para abrir el Shell apuntando a una DB determinada, tenemos que hacer click derecho sobre la misma y presionar en __"Open Shell"__:
+
+![open_shell](./imgs/shell_robo3t.png)
+
+Una vez ahí, podemos ejecutar todas las operaciones CRUD:
 
 a) Incorporar un documento desde el shell
 
