@@ -1,6 +1,6 @@
 # Guía de Instalación de MongoDB y Robo 3T
 
-En esta guía vamos a mostrar paso a paso como instalar MongoDB y Robo3T. Además, hacia el final de la guía, vamos a mostrar como restaurar y backupear Base de Datos Mongo a través de los comandos __mongorestore__ y __mongodump__.
+En esta guía vamos a mostrar paso a paso como instalar MongoDB y Robo3T. Además, hacia el final de la guía, vamos a mostrar como restaurar y backupear Base de Datos Mongo a través de los comandos __mongorestore__, __mongodump__ y __mongoimport__.
 
 ## Sistemas Operativos Windows
 
@@ -8,7 +8,7 @@ En esta guía vamos a mostrar paso a paso como instalar MongoDB y Robo3T. Ademá
 
 Los pasos para instalar el servidor de MongoDB se describen a continuación:
 1. En primer lugar, vamos a instalar el Servidor MongoBD, para ello debemos descargarlo desde [el Sitio Web, en la Sección Community](https://www.mongodb.com/download-center/community) y descargamos el Server -archivo MSI- (en la Sección Server) para nuestro Sistema Operativo Windows. 
-2. Una vez que descargado el instalador, se instala optando por el tipo de instalación __complete__.
+2. Una vez que descargado el instalador, se instala optando por el tipo de instalación __complete__. Puede destildar la opción de instalar MongoDB Compass para realizar una instalación más liviana.
 3. Ahora, debemos crear una carpeta llamada __data__ en la Unidad __C:__ y dentro de ella una carpeta que denominada __db__. El path completo de estos nuevos directorios quedará de la siguiente manera: __C:\data\db__.
 
 A continuación podemos observar gráficamente estas últimas instrucciones:
@@ -17,7 +17,7 @@ A continuación podemos observar gráficamente estas últimas instrucciones:
 
 __¡Ahora ya tenemos instalado el servidor MongoDB!__
 
-Si al momento de instalarlo, optaron por hacerlo como __Servicio__, vamos a tener corriendo el servicio de forma constante en nuestro Sistema Operativo, bajo el nombre MongoDB (por defecto). 
+Si al momento de instalarlo, optaron por hacerlo tildando la opción __"Install MongoD as a Service"__, vamos a tener corriendo el servicio de forma constante en nuestro Sistema Operativo, bajo el nombre MongoDB (por defecto). 
 
 __Sólo en el caso que hayan destildado esta opción__, cada vez que vayamos a trabajar con el debemos iniciarlo ejecutando el archivo __mongod__ que se encuentra en el directorio de instalación, generalmente en __C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin__. 
 En caso que no sepas como hacerlo, seguí las siguientes instrucciones:
@@ -111,7 +111,14 @@ Para empezar a trabajar, creamos otra Guía de Laboratorio, la número III, que 
 
 ## Backups y Restauración de una base de datos (mongodump, mongorestore y mongoimport)
 
-### Exportar una Base de Datos desde un arhivo gzip
+1. A partir de la versión 4.4 de MongoDB, las utilidades vienen separadas del Servidor y por lo tanto vamos a tener que descargar e instalar el __MongoDB Database Tools__ (cuarto descargable de arriba hacia abajo desde [aquí](https://www.mongodb.com/try/download/database-tools).
+2. Se sugiere descargar el archivo MSI para el Sistema Operativo Windows o el deb para Ubuntu y similares.
+3. Ejecutamos el instalador, que es un instalador típico de Windows (siguiente, siguiente...) y listo.
+4. Tengan en cuenta que estas utilidades, por defecto, se almacenan en una carpeta separada del _Server_, la cual se denomina _Tools_.
+
+Recuerden que si están utilizando el Sistema Operativo Windows, previo a ejecutar los comandos a continuación debemos posicionarnos en el directorio de instalación de las Tools de MongoDB, generalmente en __C:\Program Files\MongoDB\Tools\<VERSION_INSTALADA>\bin__.
+
+### Exportar una Base de Datos desde un archivo gzip
 
 Para exportar una base de datos cuyo nombre es _nombre_base_datos_ podemos utilizar __mongodump__ de la siguiente manera:
 
@@ -122,19 +129,19 @@ mongodump  -h localhost -d nombre_base_datos -o path_backup --gzip
 El último argumento "--gzip" es para que comprima las colecciones en un archivo gzipeado, de lo contrario realiza los backups en archivos json, uno por cada colección.
 
 
-### Restaurar una Base de Datos desde un arhivo gzip
+### Restaurar una Base de Datos desde un archivo gzip
 
 Para restaurar una Base de Datos que fue backupeada o "dumpeada" a partir de un mongodump como el anterior, utilizamos el siguiente comando:
 
 ```bash
 mongorestore -d nombre_nueva_base_datos -o path_donde_esta_backup --gzip
 ```
-### Restaurar una Base de Datos desde un arhivo json
+### Restaurar una Base de Datos desde un archivo json
 
 Para restaurar una Base de Datos a partir de un archivo __json__ podemos utilizar el siguiente comando:
 
 ```bash
-mongoimport --db nombre_nueva_base_datos --collection nombre_coleccion --file path_donde_esta_json --jsonArray --legacy
+mongoimport -h localhost -d nombre_nueva_base_datos -c nombre_coleccion --file=.\path_archivo.json
 ```
 
-Recuerden que si están utilizando el Sistema Operativo Windows, previo a ejecutar estos comandos debemos posicionarnos en el directorio de instalación de MongoDB, generalmente en __C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin__.
+Hasta aquí una guía básica para la instalación y utilización de las Tools de MongoDB para Windows y Linux.
