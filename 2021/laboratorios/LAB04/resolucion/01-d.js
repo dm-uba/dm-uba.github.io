@@ -1,0 +1,1 @@
+db.noticias.deleteOne( {_id: ObjectId("607df83145d397a7b511d957")} )

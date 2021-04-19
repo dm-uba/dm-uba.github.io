@@ -1,0 +1,5 @@
+mongoimport -h localhost -d Spotify_UBA -c artist --file=C:\Users\unlu\Documents\GitHub\dm-uba\2021\laboratorios\LAB04\data\artist.json
+
+mongoimport -h localhost -d Spotify_UBA -c charts --file=C:\Users\unlu\Documents\GitHub\dm-uba\2021\laboratorios\LAB04\data\charts-dm.json
+
+mongoimport -h localhost -d Spotify_UBA -c artist_audio_features --file=C:\Users\unlu\Documents\GitHub\dm-uba\2021\laboratorios\LAB04\data\artist_audio_features-dm.json

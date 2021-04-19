@@ -1,0 +1,1 @@
+db.getCollection('artist').find({Artist: {$regex: "^C.*"} })
