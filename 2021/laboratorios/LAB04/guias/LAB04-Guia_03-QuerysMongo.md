@@ -1,6 +1,6 @@
-# MongoDB: Consultas e Interacción con R para TP Entregable
+# MongoDB: Consultas e Interacción con R
 
-En esta guía, en primera instancia, vamos a explicar como crear subconjuntos de datos a partir de consultas de MongoDB para luego accederlos desde R con la idea de que puedan organizar la información y acceder a la misma de manera eficiente. Luego vamos a dejar algunas consultas complejas a modo de ejemplo para que tomen como referencia.
+En esta guía se explica como crear subconjuntos de datos a partir de consultas de MongoDB para luego accederlos desde R con la idea de que puedan organizar la información y acceder a la misma de manera eficiente.
 
 ## Creación de Subconsultas y acceso desde R
 
@@ -83,98 +83,3 @@ followers_100 = mongo(db = "DMUBA", collection = "mas_100_followers")
 df_sources <- sources$find()
 df_100f = followers_100$find()
 ```
-
-# Algunas consultas mas de ejemplo
-
-__¿Cuál es la proporción de tweets que contienen al menos una marca (RT o fav)?__
-
-Cantidad con al menos una marca:
-```javascript
-db.tweets_mongo_covid19.count({ "$or" : [{"favorite_count" : {"$gt" : 0}}, 
-                                         {"retweet_count" : {"$gt" : 0}}]})
-```
-
-Tweets con al menos una marca:
-```javascript
-db.tweets_mongo_covid19.find({ "$or" : [{"favorite_count" : {"$gt" : 0}}, 
-                                        {"retweet_count" : {"$gt" : 0}}]})
-```
-
-Proporción sobre el Total de Tweets:
-```javascript
-db.tweets_mongo_covid19.count({ "$or" : [{"favorite_count" : {"$gt" : 0}}, 
-                                         {"retweet_count" : {"$gt" : 0}}]
-                              }) /db.tweets_mongo_covid19.count()*100
-```
-Cuantas veces un hashtag fue utilizado por un usuario
-```javascript
-//Cuantas veces un usuario utilizo un hashtag
-db.tweets_mongo_covid19.aggregate(
-  [
-    {$project: {"hashtags": 1, "screen_name": 1, _id: 0}},
-    {$unwind: "$hashtags"},
-    {$match: {"hashtags": {$ne: null}}},
-    {$group: {_id: {"usuarios": "$screen_name", 
-                    "hashtags": "$hashtags"}, 
-                    count: {$sum: 1}}},
-    {$sort: {count: -1}},
-    {$project: {"usuario": "$_id.usuarios","hashtag": "$_id.hashtags", "count": 1, "_id": 0}},
-    {$out: "hashtag_usados_x_usuario"}
-  ]
-)
-```
-
-Agregación de resumen de tweets por usuario. Con cantidad de tweets, fecha del primer y último tweet, cantidad de RT y favs que recibió, cantidad tweets que son RT o citas. Ordena por cantidad de tweets y RT.
-```javascript
-db.tweets_mongo_covid19.aggregate( [
-    {$group: { _id: "$user_id", 
-                screen_name: { $first: "$screen_name" }, 
-                tweets: {$sum: 1},
-                fecha_primero: { $min: "$created_at" }, 
-                fecha_ultimo: { $max: "$created_at" }, 
-                retweet_count: {$sum: "$retweet_count"},
-                favorite_count: {$sum: "$favorite_count"},
-                num_quote: {$sum: { $cond: ["$is_quote", 1, 0]}},
-                num_retweet: {$sum: { $cond: ["$is_retweet", 1, 0]}},
-                }},
-    {$sort:{"tweets": -1, "retweet_count": -1} }
-  ] )
-```
-
-Agregación que combina información de uso de hashtags de un usuario (colección de tweets) y estadísticas del usuario (colección de usuarios).
-
-```javascript
-db.tweets_mongo_covid19.aggregate(
-  [
-    {$project: {"hashtags": 1, "screen_name": 1, _id: 0}},
-    {$unwind: "$hashtags"},
-    {$match: {"hashtags": {$ne: null}}},
-    {$group: {_id: {"usuarios": "$screen_name", 
-                    "hashtags": "$hashtags"}, 
-                    count: {$sum: 1}}},
-    {$sort: {count: -1}},
-    {$project: {"usuario": "$_id.usuarios","hashtag": "$_id.hashtags", "count": 1, "_id": 0}},
-    {$lookup:  {
-       from: "users_mongo_covid19",
-       localField: "usuario",
-       foreignField: "screen_name",
-       as: "join_usuarios"
-     }
-    },
-    {$project: 
-        {
-            "usuario": 1,"hashtag": 1, "count": 1,
-            "followers_count": {"$arrayElemAt": ["$join_usuarios.followers_count", 0]},
-            "friends_count": {"$arrayElemAt": ["$join_usuarios.friends_count", 0]},
-            "favourites_count": {"$arrayElemAt": ["$join_usuarios.favourites_count", 0]},
-            "statuses_count": {"$arrayElemAt": ["$join_usuarios.statuses_count", 0]},
-            "_id": 0}},
-    
-    {$out: "N_hashtag_usados_stats"}
-  ]
-)
-```
-En el pipeline de agregación se incorporan las instrucciones:
-
-- lookup: que permite hacer el join entre la agregación de _tweets_ y la colección de _users_.
-- arrayElemAt: para obtener el primer elemento de un array.

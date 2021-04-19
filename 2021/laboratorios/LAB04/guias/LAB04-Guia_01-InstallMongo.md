@@ -1,6 +1,6 @@
 # Guía de Instalación de MongoDB y Robo 3T
 
-En esta guía vamos a mostrar paso a paso como instalar MongoDB y Robo3T. Además, hacia el final de la guía, vamos a mostrar como restaurar y backupear Base de Datos Mongo a través de los comandos __mongorestore__, __mongodump__ y __mongoimport__.
+En esta guía vamos a mostrar paso a paso como instalar MongoDB y Robo3T. Además, hacia el final de la guía, vamos a mostrar como restaurar y backupear Base de Datos Mongo a través de los comandos __mongorestore__, __mongodump__, __mongoexport__ y __mongoimport__.
 
 ## Sistemas Operativos Windows
 
@@ -109,7 +109,7 @@ A continuación podemos observar gráficamente como conectarnos a MongoDB con Ro
 Para empezar a trabajar, creamos otra Guía de Laboratorio, la número III, que muestra una introducción a como gestionar nuestras bases de datos con estas herramientas. Podemos acceder presionando [aquí](https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo03.md).
 
 
-## Backups y Restauración de una base de datos (mongodump, mongorestore y mongoimport)
+## Backups y Restauración de una base de datos (mongodump, mongorestore, mongoexport y mongoimport)
 
 1. A partir de la versión 4.4 de MongoDB, las utilidades vienen separadas del Servidor y por lo tanto vamos a tener que descargar e instalar el __MongoDB Database Tools__ (cuarto descargable de arriba hacia abajo desde [aquí](https://www.mongodb.com/try/download/database-tools).
 2. Se sugiere descargar el archivo MSI para el Sistema Operativo Windows o el deb para Ubuntu y similares.
@@ -118,7 +118,7 @@ Para empezar a trabajar, creamos otra Guía de Laboratorio, la número III, que 
 
 Recuerden que si están utilizando el Sistema Operativo Windows, previo a ejecutar los comandos a continuación debemos posicionarnos en el directorio de instalación de las Tools de MongoDB, generalmente en __C:\Program Files\MongoDB\Tools\<VERSION_INSTALADA>\bin__.
 
-### Exportar una Base de Datos desde un archivo gzip
+### Exportar una Base de Datos a un archivo gzip
 
 Para exportar una base de datos cuyo nombre es _nombre_base_datos_ podemos utilizar __mongodump__ de la siguiente manera:
 
@@ -136,9 +136,19 @@ Para restaurar una Base de Datos que fue backupeada o "dumpeada" a partir de un 
 ```bash
 mongorestore -d nombre_nueva_base_datos -o path_donde_esta_backup --gzip
 ```
+
+### Exportar una Base de Datos a un archivo json
+
+Para exportar una colección de una base de datos cuyo nombre es _nombre_base_datos_ a un archivo __json__ podemos utilizar __mongodump__ de la siguiente manera:
+
+
+```bash
+mongoexport -h localhost -d nombre_nueva_base_datos -c nombre_coleccion -o path_archivo.json
+```
+
 ### Restaurar una Base de Datos desde un archivo json
 
-Para restaurar una Base de Datos a partir de un archivo __json__ podemos utilizar el siguiente comando:
+Para restaurar una colección de una Base de Datos a partir de un archivo __json__ podemos utilizar el siguiente comando:
 
 ```bash
 mongoimport -h localhost -d nombre_nueva_base_datos -c nombre_coleccion --file=.\path_archivo.json
