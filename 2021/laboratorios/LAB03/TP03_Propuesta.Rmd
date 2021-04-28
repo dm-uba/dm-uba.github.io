@@ -5,6 +5,7 @@ date: "13/04/2021"
 output:
   html_document: default
   pdf_document: default
+
 ---
 
 ## Sobre los datos
@@ -239,7 +240,7 @@ Dada la asimetría de la distribución, luego de eliminar outliers, Somalía es 
 <br />
 <br/>
 
-**2.c) Extienda el análisis a 3 variables y analice si existen valores atípicos utilizando algún método multivariado.**
+**2.d) Extienda el análisis a 3 variables y analice si existen valores atípicos utilizando algún método multivariado.**
 <br />
 
 ```{r , message=FALSE, warning=FALSE}
@@ -259,26 +260,133 @@ print(top_maha$Country)
 
 
 
-<!-- <br/> -->
-<!-- **Bonus track:** ¿Qué países son considerados outliers según LOF? -->
-<!-- <br/> -->
-<!-- ```{r, message=FALSE, warning=FALSE} -->
+<br/>
+**¿Qué países son considerados outliers según LOF? **
+<br/>
+```{r, message=FALSE, warning=FALSE}
 
-<!-- library(Rlof) -->
-<!-- library(scatterplot3d) -->
+library(Rlof)
 
-<!-- data$LOF_score<-lof(data[,c(3:5)], k=5)  -->
-<!-- top_LOF <- head(data[order(data$LOF_score,decreasing = TRUE),],3)  -->
-<!-- print(top_LOF$Country) -->
+data$LOF_score<-lof(data[,c(3:5)], k=5)
+top_LOF <- head(data[order(data$LOF_score,decreasing = TRUE),],3)
+print(top_LOF$Country)
 
-<!-- ``` -->
-<!-- <br/> -->
-<!-- Veamos donde se ubican los puntos -->
-<!-- <br/> -->
-<!-- ```{r} -->
+```
+<br/>
+Veamos donde se ubican los puntos
+<br/>
+```{r}
+library(scatterplot3d)
 
-<!-- scatterplot3d(data[,3], data[,4],data[,5],  -->
-<!-- color=ifelse(data$LOF_score>=min(top_LOF$LOF_score),"red","black"), xlab="z-score MPI Urban",ylab="z-score HC Ratio Urban",zlab="z-score Intensity of Deprivation Urban") -->
+lof_3d <- scatterplot3d(x = data[,3], y = data[,4], z = data[,5],
+color=ifelse(data$LOF_score>=min(top_LOF$LOF_score),"red","black"), xlab="z-score MPI Urban",ylab="z-score HC Ratio Urban",zlab="z-score Intensity of Deprivation Urban" , main="3D Scatterplot LOF Scores")
 
-<!-- ``` -->
+# Uso el método xyz.convert para convertir el objeto a 2 variables
+lof_3d.coords <- lof_3d$xyz.convert(data[,3], data[,4], data[,5]) 
 
+# Asigno como etiquetas los nombres de los países
+text(lof_3d.coords$x, 
+     lof_3d.coords$y,             
+     labels = ifelse(data$LOF_score>=min(top_LOF$LOF_score),data$Country,""),              
+     cex = .5, 
+     pos = 4)  
+
+```
+<br/>
+**Ahora hagamos el análisis utilizando Isolation Forest **
+<br/>
+
+```{r message=FALSE, warning=FALSE}
+library(isotree)
+library(ggplot2)
+
+# Entrenamos el modelo IForest y nos quedamos con el score
+# Utilizamos el conjunto de datos en su totalidad
+
+data$iforest= isolation.forest(data[,c(3:5)], ntrees = 100, ndim=1, random_seed = 13, output_score=TRUE)$score
+
+
+```
+
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
+library(highcharter)
+
+# Set highcharter options
+options(highcharter.theme = hc_theme_smpl(tooltip = list(valueDecimals = 2)))
+
+hchart(data$iforest, name="iForest score", color="green") %>%
+  hc_title(text = "Histograma Scores Isolation Forest")
+
+```
+
+
+
+
+
+```{r}
+top_iforest <- head(data[order(data$iforest,decreasing = TRUE),],3)
+print(top_iforest$Country)
+
+```
+```{r}
+# 
+iforest_3d <- scatterplot3d(x = data[,3], y = data[,4], z = data[,5],
+color=ifelse(data$iforest>=min(top_iforest$iforest),"red","black"), xlab="z-score MPI Urban",ylab="z-score HC Ratio Urban",zlab="z-score Intensity of Deprivation Urban", main="3D Scatterplot Isolation Forest Scores")
+
+# Uso el método xyz.convert para convertir el objeto a 2 variables
+iforest_3d.coords <- iforest_3d$xyz.convert(data[,3], data[,4], data[,5]) 
+
+# Asigno el nombre de país como etiquetas
+text(iforest_3d.coords$x, 
+     iforest_3d.coords$y,             
+     labels = ifelse(data$iforest>=min(top_iforest$iforest),data$Country,""),              
+     cex = .5, 
+     pos = 4) 
+
+```
+
+```{r setup, echo=FALSE}
+library(knitr)
+library(rgl)
+knit_hooks$set(webgl = hook_webgl)
+```
+
+
+```{r, webgl=TRUE, message=FALSE, warning=FALSE}
+
+# Ejemplo de un gráfico 3D interactivo
+# Prueben el código como R Script 
+
+library(rgl)
+
+data$Outlier_iforest = ifelse(data$iforest>=min(top_iforest$iforest),"S","N" )
+
+colors <- c("royalblue1", "red")
+data$color <- colors[ as.numeric( as.factor(data$Outlier_iforest) ) ]
+
+# Para poder interactuar uso plot3d
+plot3d(x=data[,3], y=data[,4],z=data[,5], col = data$color, type = "s", size = 1, xlab="z-score MPI Urban",ylab="z-score HC Ratio Urban",zlab="z-score Intensity of Deprivation Urban" )
+
+# rglwidget()
+
+```
+
+
+Veamos ahora cómo sería la implementación utilizando un muestreo en las iteraciones de los árboles. No podemos utilizar el tamaño de muestra recomendado (256) porque solo contamos con 102 registros en el conjunto de datos:
+
+```{r}
+
+#Ajusto el modelo
+# Agregamos el parámetro sample_size
+
+iforest_sample = isolation.forest(data[,c(3:5)], ntrees = 100, ndim=1, random_seed = 13, sample_size = 50)
+
+# Utilizo el método predict para calcular el score sobre todos los registros
+data$iforest_pred = predict(iforest_sample, data[,c(3:5)])
+
+# Qué países identifico?
+top_iforest_sample <- head(data[order(data$iforest_pred,decreasing = TRUE),],3)
+print(top_iforest_sample$Country)
+
+```
