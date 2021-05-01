@@ -27,7 +27,7 @@ pagina12$update('{"titulo": "Otra noticia"}',
                 multiple = TRUE)
 
 # Consultamos el impacto del update
-pagina12$find(query = '{}', fields = '{}')
+a = pagina12$find(query = '{}', fields = '{}')
 
 # Cuidado, aquí el delete ~= remove
 
@@ -40,3 +40,6 @@ pagina12$remove('{"_id":{"$oid":"607e03ccc2740000b100666b"}}', just_one = TRUE)
 # Verificamos la cantidad de registros luego del borrado
 pagina12$count()
 
+# Consulta con expresiones regulares
+artist = mongo(db = "DMUBA_SPOTIFY", collection = 'artist')
+artist.c = artist$find('{ "Artist" : { "$regex" : "^c.*", "$options" : "i"  } }')

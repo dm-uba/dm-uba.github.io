@@ -1,0 +1,127 @@
+Preprocesamiento
+========================================================
+autosize: true
+width: 1200
+height: 800
+
+<br />
+Tratamiento de datos faltantes (Análisis)
+<br />
+<br />
+<br />
+Juan Manuel Fernandez
+
+
+Contenidos
+========================================================
+
+En este video vamos a trabajar en el análisis de datos faltantes:
+- Definición de valores faltantes en R
+- Identificación de valores faltantes
+- Análisis cuantitativo de faltantes
+- Análisis gráfico de valores faltantes
+
+Preparación de los datos
+========================================================
+<small>
+Vamos a trabajar con un dataset conocido, iris. Vamos a acortar los nombres por comodidad:
+```{r, echo=F}
+data("iris")
+# Se setea una semilla (para que genere siempre los mismos aleatorios)
+set.seed(5)
+```
+```{r}
+names(iris) = c("Sep.L.", "Sep.W.", "Pet.L.", "Pet.W.", "Species")
+```
+</small>
+<small>
+Aplicamos faltantes aleatoriamente en todos los atributos (en cuanto a cantidad e instancias):
+```{r}
+for(i in 1:4) { # Recorremos los atributos numéricos (indices 1-4)
+  n = sample(1:30, 1) # cantidad de faltantes que generamos por atributo
+  inst<-sample(1:nrow(iris), n, replace=F) # indice de instancias NA
+  iris[inst, i]<-NA
+  cat('Se definen ', n, ' NA en ', names(iris[i]),'(filas: ', inst,').\n')
+}
+```
+</small>
+Identificación de valores faltantes
+========================================================
+Con la función is.na() podemos verificar que instancias son faltantes: 
+```{r}
+# Aplicamos a las primeras 10 filas
+is.na(iris[1:10,])
+```
+La función devuelve una máscara con TRUE/FALSE (faltante, no faltante).
+
+Identificación de valores faltantes (++)
+========================================================
+Podemos aplicar is.na() a un atributo específico: 
+<small>
+```{r}
+is.na(iris$Sep.W)
+```
+</small>
+
+Identificación de valores faltantes (+++)
+========================================================
+A su vez, podemos ver, por ejemplo, las instancias que poseen faltantes en una variable: 
+```{r}
+iris[is.na(iris$Sep.W.),]
+```
+
+Identificación de valores faltantes (++++)
+========================================================
+También podríamos verificar las instancias que poseen faltante en algún atributo:
+```{r}
+iris[!complete.cases(iris),]
+```
+
+Análisis cuantitativo de faltantes
+========================================================
+Podríamos contar la cantidad de faltantes para una variable:
+```{r}
+sum(is.na(iris$Pet.L))
+```
+O podríamos verificar la cantidad de instancias que poseen algún faltante:
+```{r}
+sum(!complete.cases(iris))
+```
+También podemos analizar la proporción de faltantes sobre el total de instancias:
+```{r}
+cat('Sep.L.:', mean(is.na(iris$Pet.L))*100, '% NA (faltantes)')
+```
+
+Análisis cuantitativo de faltantes (++)
+========================================================
+La librería VIM (Visualization and Imputation of Missing Values) tiene gran cantidad de recursos para el análisis e imputación de faltantes. A continuación verificamos combinaciones de faltantes por atributo:
+
+```{r}
+library(VIM)
+# Proporción de cada combinación
+faltantes = summary(aggr(iris, sortVar=TRUE, plot=F))
+print(faltantes$combinations)
+
+```
+
+Análisis gráfico de valores faltantes
+========================================================
+A su vez, es posible graficar el análisis de faltantes:
+<center>
+```{r, out.width = '50%'}
+aggr(iris, sortVar=TRUE, oma = c(16, 5, 5, 3), numbers=T)
+```
+</center>
+Podemos verificar la proporción y las combinaciones de valores faltantes por atributo.
+
+Análisis gráfico de valores faltantes (++)
+========================================================
+<small>
+Además, la librería MICE provee un gráfico que detalla la cantidad de atributos con missing por cada atributo:
+<center>
+```{r}
+library(mice) # Cargamos la librería
+md.pattern(iris, rotate.names=FALSE)
+```
+</center>
+</small>
