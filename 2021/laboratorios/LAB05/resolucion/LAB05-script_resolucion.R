@@ -99,13 +99,13 @@ plot(data$imp_media[data$imp_bool==TRUE],
      main = 'Imputaciones realizadas sobre mpg',
      type = "l", 
      col="blue",
-     ylim = c(10, 33),
+     ylim = c(10, 46),
      xlab = 'Observaciones',
      ylab = 'Valores imputados')
 lines(data$imp_regresion[data$imp_bool==TRUE], type = "l", col="green")
 lines(data$imp_hotdeck[data$imp_bool==TRUE], type = "l", col="red")
 lines(data$imp_mice[data$imp_bool==TRUE], type = "l", col="orange")
-legend("topleft", ncol=2, legend=c("Media", "Regresión", "Hot deck", "MICE"), col=c("blue", "green", "red", "orange"), lty=1, cex = 0.70)
+legend("topleft", ncol=4, legend=c("Media", "Regresión", "Hot deck", "MICE"), col=c("blue", "green", "red", "orange"), lty=1, cex = 0.70)
 
 # Gráficos de densidad
 plot(density(data$mpg, na.rm=TRUE), type = "l", col="black", ylab = "Valores", ylim=c(0,0.05))
@@ -122,14 +122,14 @@ plot(data$imp_media, type = "l", col="blue",
 lines(data$imp_regresion, type = "l", col="green")
 lines(data$imp_hotdeck, type = "l", col="red")
 lines(data$imp_mice, type = "l", col="orange")
-lines(data$mpg, na.rm=TRUE, type = "l", col="black")
+lines(data$mpg, type = "l", col="black")
 legend("top", ncol=5, legend=c("Original", 'Regresión', 'Hotdeck', "Media", "MICE"), col=c("black", "green", 'red','blue', 'orange'), lty=1, cex=0.70)
 
 # Gráficos de densidad (para un segmento con faltantes [0:42])
 plot(data$imp_media[0:42], type = "l", col="blue",
-     ylab = "Valores", ylim=c(10,38))
+     ylab = "Valores", ylim=c(10,45))
 lines(data$imp_regresion[0:42], type = "l", col="green")
 lines(data$imp_hotdeck[0:42], type = "l", col="red")
 lines(data$imp_mice[0:42], type = "l", col="orange")
-lines(data$mpg, na.rm=TRUE, type = "l", col="black")
-legend("topleft", ncol=3, legend=c("Original", 'Regresión', 'Hotdeck', "Media", "MICE"), col=c("black", "green", 'red','blue', 'orange'), lty=1, cex=0.65)
+lines(data$mpg, type = "l", col="black")
+legend("top", ncol=5, legend=c("Original", 'Regresión', 'Hotdeck', "Media", "MICE"), col=c("black", "green", 'red','blue', 'orange'), lty=1, cex=0.65)
