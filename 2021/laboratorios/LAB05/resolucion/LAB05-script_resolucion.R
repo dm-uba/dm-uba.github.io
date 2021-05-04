@@ -88,11 +88,14 @@ data$imp_mice <- completeData$mpg
 # Verificación
 sum(is.na(data$imp_mice))
 
+# Reemplazamos todo el dataset por un dataset con los atributos que interesan
+data = data[,-c(2:9)]
+
 # Verificamos el dataset resultante
-View(data[,-c(2:9)])
+View(data)
 
 # Verificamos los valores imputados
-View(data[data$imp_bool,-c(2:9)])
+View(data[data$imp_bool,])
 
 # Analisis grafico de los resultados
 plot(data$imp_media[data$imp_bool==TRUE], 
@@ -108,7 +111,9 @@ lines(data$imp_mice[data$imp_bool==TRUE], type = "l", col="orange")
 legend("topleft", ncol=4, legend=c("Media", "Regresión", "Hot deck", "MICE"), col=c("blue", "green", "red", "orange"), lty=1, cex = 0.70)
 
 # Gráficos de densidad
-plot(density(data$mpg, na.rm=TRUE), type = "l", col="black", ylab = "Valores", ylim=c(0,0.05))
+plot(density(data$mpg, na.rm=TRUE), type = "l", col="black", 
+     ylab = "Valores", ylim=c(0,0.05),
+     main="Gráfico de densidad con las distribuciones")
 lines(density(data$imp_regresion), type = "l", col="green")
 lines(density(data$imp_hotdeck), type = "l", col="red")
 lines(density(data$imp_media), type = "l", col="blue")
