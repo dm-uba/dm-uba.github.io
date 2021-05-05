@@ -81,7 +81,7 @@ sum(is.na(data$imp_hotdeck))
 
 # Imputación por MICE
 library(mice)
-imputed_Data <- mice(data.original, m=5, maxit = 3, method = 'pmm')
+imputed_Data <- mice(data.original, m=5, maxit = 10, method = 'pmm')
 completeData <- complete(imputed_Data)
 data$imp_mice <- completeData$mpg
 
@@ -132,7 +132,8 @@ legend("top", ncol=5, legend=c("Original", 'Regresión', 'Hotdeck', "Media", "MI
 
 # Gráficos de densidad (para un segmento con faltantes [0:42])
 plot(data$imp_media[0:42], type = "l", col="blue",
-     ylab = "Valores", ylim=c(10,45))
+     xlab="Observaciones", ylab = "Valores", ylim=c(10,45),
+     main="Distribuciones de mpg según imputaciones (Instancias [0:42])")
 lines(data$imp_regresion[0:42], type = "l", col="green")
 lines(data$imp_hotdeck[0:42], type = "l", col="red")
 lines(data$imp_mice[0:42], type = "l", col="orange")
