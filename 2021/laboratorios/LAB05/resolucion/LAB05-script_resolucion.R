@@ -1,3 +1,17 @@
+# Chequeo sin debo instalar las librerías que voy a utilizar
+librerias_instaladas<-rownames(installed.packages())
+
+# Pregunto si VIM está instalada y sino la instalo
+if("VIM" %in% librerias_instaladas == FALSE) {
+        install.packages("VIM", dependencies = TRUE)
+}
+
+# Lo pregunto de otra forma
+if (!("mice" %in% librerias_instaladas)) {
+        install.packages("mice", dependencies = TRUE)
+}
+
+# URL del dataset
 wd_doc<-"https://raw.githubusercontent.com/dm-uba/dm-uba.github.io/master/2021/laboratorios/LAB05/data/auto-mpg.data-original.txt"
 
 # Información de atributos: https://archive.ics.uci.edu/ml/datasets/auto+mpg
