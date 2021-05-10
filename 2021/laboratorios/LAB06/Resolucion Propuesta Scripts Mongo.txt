@@ -1,0 +1,97 @@
+/**  -------- Query 1  ----------------     
+Coleccion: artist_audio_features_solo_art
+Filtramos por albulm Single
+Agrupamos por Artist Name y calculamos el promedio de variables continuas
+Guarda el resultado del query en una nueva coleccion llamada: singles_artist_features_avg_lab06
+*/
+  
+db.features_solo.aggregate([
+    {$match: {album_type: "single"}},
+    {$group: {_id: "$artist_name", 
+              f_danceability: {$avg: "$danceability"},
+              f_loudness: {$avg: "$loudness"},
+              f_energy: {$avg: "$energy"},
+              f_speechiness: {$avg: "$speechiness"},
+              f_liveness: {$avg: "$liveness"},
+              f_speechiness: {$avg: "$speechiness"},
+              f_acousticness: {$avg: "$acousticness"},
+              f_instrumentalness: {$avg: "$instrumentalness"},
+              f_liveness: {$avg: "$liveness"},
+              f_valence: {$avg: "$valence"}
+              }},
+    {$project: {
+          _id: 0,
+          artist_name: "$_id",
+          f_danceability: "$f_danceability",
+          f_loudness: "$f_loudness",
+          f_energy: "$f_energy",
+          f_speechiness: "$f_speechiness",
+          f_liveness: "$f_liveness",
+          f_speechiness: "$f_speechiness",
+          f_acousticness: "$f_acousticness",
+          f_instrumentalness: "$f_instrumentalness",
+          f_liveness: "$f_liveness",
+          f_valence: "$f_valence" 
+        }},
+     {$out: "singles_artist_features_avg_lab06"}
+])
+
+
+/**  -------- Query 2  ----------------     
+Coleccion: charts
+Calculamos un group by por Artista y calculamos la media de Position y Streams
+Guarda el resultado del query en una nueva coleccion llamada: charts_avg_by_artist_lab06
+*/
+
+db.charts_tp.aggregate([
+    {$group: {_id: "$Artist", 
+              avg_position: {$avg: "$Position"},
+              avg_streams: {$avg: "$Streams"},
+              }},
+    {$project: {
+          _id: 0,
+          artist_name: "$_id",
+          avg_position: "$avg_position",
+          avg_streams: "$avg_streams"}  
+        },
+    {$out: "charts_avg_by_artist_lab06"}
+])
+
+
+
+/**  -------- Query 3  ----------------     
+Coleccion: singles_artist_features_avg_lab06 unida con charts_avg_by_artist_lab06
+Le agrego a las métricas por artista de la coleccion features_solo de la query 1 los promedios correspondientes de streams y posicion
+*/
+
+db.singles_artist_features_avg_lab06.aggregate([
+     {
+       $lookup:
+         {
+           from: "charts_avg_by_artist_lab06",
+           localField: "artist_name", 
+           foreignField: "artist_name",
+           as: "chr"
+         }
+    },
+    {
+       $project: {
+            artist_name : "$artist_name",
+            f_danceability : "$f_danceability",
+            f_danceability: "$f_danceability",
+            f_loudness: "$f_loudness",
+            f_energy: "$f_energy",
+            f_speechiness: "$f_speechiness",
+            f_liveness: "$f_liveness",
+            f_speechiness: "$f_speechiness",
+            f_acousticness: "$f_acousticness",
+            f_instrumentalness: "$f_instrumentalness",
+            f_liveness: "$f_liveness",
+            f_valence: "$f_valence" ,
+			avg_streams: {"$arrayElemAt": ["$chr.avg_streams", 0]},
+            avg_position: {"$arrayElemAt": ["$chr.avg_position", 0]}
+            }
+        },
+         {$out: "facts_avg_lab06"}
+])
+
