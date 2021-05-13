@@ -46,18 +46,16 @@ categoricas = na.omit(categoricas)
 1.a) Indague sobre la varianza  de cada uno de los atributos que conforman el dataset. ¿Cuáles son los dos atributos que podrían ser eliminados de acuerdo a la técnica de Low Variance Factor? 
 </br>
 ```{r}
-# Copiamos el dataframe para no pisarlo
-lvf = numericas
 
 # Normalizamos los datos (Min-Max) a un rango 0-1
 # Otra alternativa es usar scales::rescale sobre vectores
 
-for(i in 1:ncol(lvf)) {
-  lvf[,i] <- (lvf[,i]-min(lvf[,i]))/(max(lvf[,i])-min(lvf[,i]))
+for(i in 1:ncol(numericas)) {
+  numericas[,i] <- (numericas[,i]-min(numericas[,i]))/(max(numericas[,i])-min(numericas[,i]))
   }
 
 # Calculamos la varianza para cada atributo, redondeamos a 4 decimales, y ordenamos de menor a mayor
-varianzas<-sort(round(apply(lvf, 2, var),4))
+varianzas<-sort(round(apply(numericas, 2, var),4))
 
 print(varianzas)
 
@@ -110,18 +108,23 @@ print(alta.correlacion)
 Trabaje la variable objetivo como tipo factor para generar un modelo de clasificación.
 
 <br/>
+
+
+
+
 ```{r}
 library(randomForest)
 
-numericas$top = as.factor(ifelse(numericas$avg_position<=100,"S","N" ))
+# Genero una variable target según la posicion media en el ranking
+numericas$top = as.factor(ifelse(data$avg_position<=100,"S","N" ))
 
-model_rf<-randomForest( top ~ ., data = na.exclude(numericas[,c(1:9,11)]), importance=TRUE) # excluyo avg_position
+# Ajusto un modelo de clasificación 
+model_rf<-randomForest( top ~ ., data = na.exclude(numericas[,c(1:9,11)]), importance=TRUE) #Excluyo avg_position
 
 importance(model_rf)
 ```
 
+
 ```{r, out.width="50%"}
 varImpPlot(model_rf)
 ```
-
-
