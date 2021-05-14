@@ -1,0 +1,318 @@
+Preprocesamiento
+========================================================
+autosize: true
+width: 1200
+height: 800
+
+Ingeniería de Features
+<br />
+<br />
+<br />
+<br />
+Santiago Banchero
+<br />
+Juan Manuel Fernández
+<br />
+Eloísa Píccoli
+<br />
+<br />
+
+Minería de Datos - UBA
+
+
+Contenidos
+========================================================
+
+- Discretización:
+  + Binning 
+  + Por función matemática 
+- Normalización:
+  + Z-score
+  + Min-Max
+  + Escalado Robustos
+  + Decimal Scaling
+- Variables Dummies
+
+***
+- Transformaciones:
+  + Logaritmo
+
+
+Observamos la distribución de la variable
+========================================================
+ **data** =  **charts_avg_by_artist_lab06**
+</br>
+ **variable** = **avg_streams**
+ </br>
+ 
+```{r echo=FALSE}
+options(scipen = 999)
+library(knitr)
+
+```
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+
+library(mongolite)
+
+conexion_features_labo = mongo(collection = "charts_avg_by_artist_lab06", db = "SPOTIFY_UBA" )
+data = conexion_features_labo$find('{}')
+variable = data$avg_streams
+mediana = median(variable)
+media = mean(variable)
+sd = sd(variable)
+sesgo = (3* (media - mediana)) / sd
+
+```
+```{r}
+
+
+```
+
+
+<center>
+```{r echo=FALSE}
+
+hist(variable, main="Histograma Avg Streams", xlab="Avg Streams por Artista", ylab="Frecuencia", breaks=50)
+abline(v=c(media,mediana), col=c("red","blue"),lty=5)
+legend("topright" , legend=c("Media", "Mediana" ),col=c("red", "blue"), lty=5, cex=0.6)
+
+```
+</center>
+Discretización: Binning
+========================================================
+
+```{r}
+
+library(arules)
+
+breaks = 5
+
+# discretización de igual ancho
+data$disc_variable_interval = arules::discretize(variable, method = "interval", breaks = breaks, labels=c("muy_bajo", "bajo", "medio", "alto", "muy_alto"))
+
+# discretización de igual frecuencia
+data$disc_variable_frequency = arules::discretize(variable, method = "frequency", breaks = breaks, labels=c("muy_bajo", "bajo", "medio", "alto", "muy_alto"))
+
+# discretización por kmeans
+data$disc_variable_cluster = arules::discretize(variable, method = "cluster", breaks = breaks, labels=c("muy_bajo", "bajo", "medio", "alto", "muy_alto"))
+
+```
+
+Mas info ejecutando **?arules::discretize** en la consola
+
+Discretización: Función Matemática
+========================================================
+```{r}
+
+# Discretización por logaritmo
+data$disc_variable_log = floor(log2(variable))
+```
+
+```{r}
+table(data$disc_variable_log)
+```
+
+
+Discretización: Puntos de corte según método
+========================================================
+
+
+```{r warning=FALSE, message=FALSE}
+
+interval_cuts = arules::discretize(variable, method = "interval", breaks = breaks, onlycuts = TRUE)
+
+frequency_cuts = arules::discretize(variable, method = "frequency", breaks = breaks, onlycuts = TRUE)
+
+cluster_cuts = arules::discretize(variable, method = "cluster", breaks = breaks, onlycuts = TRUE)
+
+
+
+```
+
+Discretización: Puntos de corte según método (+)
+========================================================
+
+
+```{r warning=FALSE, message=FALSE}
+
+log_cuts =  unique(data$disc_variable_log)
+log_cuts_variable <-vector()
+
+for(cut in log_cuts){
+ # Identifico el mínimo que toma la variable para cada uno de los grupos
+ log_cuts_variable  <- c(log_cuts_variable , min(data["avg_streams"][data[, "disc_variable_log"] == cut,]))
+}
+
+```
+
+
+
+Discretización: Igual Ancho
+========================================================
+<center>
+```{r include=FALSE}
+dev.off()
+
+```
+
+
+```{r}
+hist(data$avg_streams, main="Histograma Avg Streams", xlab="Avg Streams por Artista", ylab="Frecuencia", breaks=50)
+abline(v=interval_cuts, col="red",lty=5)
+legend("topright" , legend=c("Igual Ancho" ),col=c("red"), lty=5, cex=0.8)
+
+
+```
+</center>
+
+
+Discretización: Igual Frecuencia
+========================================================
+<center>
+```{r include=FALSE}
+dev.off()
+
+```
+
+
+```{r}
+hist(data$avg_streams, main="Histograma Avg Streams", xlab="Avg Streams por Artista", ylab="Frecuencia", breaks=50)
+abline(v=frequency_cuts, col="red",lty=5)
+legend("topright" , legend=c("Igual frecuencia" ),col=c("red"), lty=5, cex=0.8)
+
+
+```
+</center>
+
+
+Discretización: Clusters K-Means
+========================================================
+<center>
+```{r include=FALSE}
+dev.off()
+
+```
+
+
+```{r}
+hist(data$avg_streams, main="Histograma Avg Streams", xlab="Avg Streams por Artista", ylab="Frecuencia", breaks=50)
+abline(v=cluster_cuts, col="red",lty=5)
+legend("topright" , legend=c("Clusters" ),col=c("red"), lty=5, cex=0.8)
+
+
+```
+</center>
+
+Discretización: Logaritmo
+========================================================
+<center>
+```{r include=FALSE}
+dev.off()
+
+```
+
+
+```{r}
+hist(data$avg_streams, main="Histograma Avg Streams", xlab="Avg Streams por Artista", ylab="Frecuencia", breaks=50)
+abline(v=log_cuts_variable, col="red",lty=5)
+legend("topright" , legend=c("Logaritmo" ),col=c("red"), lty=5, cex=0.8)
+```
+</center>
+
+Normalización
+========================================================
+Centrado = Resto algún valor de referencia <br/>
+Escalado = Divido por alguna dispersión
+
+```{r}
+# z-score 
+range(scale(variable, center=TRUE,  scale=TRUE))
+
+# Min-Max
+range(scale(variable, center=min(variable),  scale=max(variable) - min(variable)))
+
+```
+
+Normalización (+)
+========================================================
+
+```{r}
+# Escalado robusto usando la mediana
+range(scale(variable, center=median(variable),  scale=TRUE))
+
+# Escalado robusto usando la mediana y el rango intercuartil
+range(scale(variable, center=median(variable),  scale=IQR(variable)))
+
+# Escalado decimal (-1 y 1)
+d = floor(log10(max(abs(variable)))) + 1
+range(variable / 10**d )
+
+```
+
+
+Variables Dummies
+========================================================
+Este tipo de codificación también se la conoce como "One Hot Encoding" o variables "Flags"
+
+```{r}
+library(fastDummies)
+
+# Utilizo la variable discretizada por igual ancho como ejemplo
+# Una columna siempre es redundante, exluyo la primera
+dic_var_interval_dummies = dummy_cols(data, select_columns=c("disc_variable_interval"), remove_first_dummy=TRUE)
+
+```
+```{r echo=FALSE}
+kable(head(dic_var_interval_dummies[,c(8:11)],5))
+
+```
+
+Transformación Logaritmica
+========================================================
+
+```{r}
+mediana = median(variable)
+media = mean(variable)
+sd = sd(variable)
+sesgo = (3* (media - mediana)) / sd
+
+print(sesgo)
+```
+
+
+```{r}
+# Aplico transformación logaritmica
+data$variable_t = log2(variable)
+```
+***
+
+```{r}
+# Calculo el sesgo de la nueva variable (Transformada)
+mediana_t = median(data$variable_t)
+media_t = mean(data$variable_t)
+sd_t = sd(data$variable_t)
+sesgo_t = (3* (media_t - mediana_t)) / sd_t
+print(sesgo_t)
+
+```
+
+Transformación Logaritmica (+)
+========================================================
+
+<center>
+```{r echo=FALSE, figures-side, fig.show="hold", out.width="50%"}
+hist(data$avg_streams, main="Histograma Avg Streams", xlab="Avg Streams por Artista", ylab="Frecuencia", breaks=50)
+
+
+hist(data$variable_t, main="Histograma Avg Streams Transformado", xlab="Avg Streams Transformado", ylab="Frecuencia", breaks=50)
+
+
+```
+
+
+
+</center>
+
+
+
