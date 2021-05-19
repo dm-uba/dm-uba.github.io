@@ -1,0 +1,103 @@
+---
+title: "LAB07_Propuesta"
+author: "Elo"
+date: "13/5/2021"
+output: html_document
+---
+
+Calcule el sesgo de la variable Casos Totales. Modifique este sesgo utilizando una transformación logarítmica y observe las diferencias analítica y gráficamente.
+
+```{r}
+# Deshabilitar notacion cientifica
+options(scipen=999)
+
+data = read.csv("Covid_Worldmeters_May_3_2021.csv", sep=";")
+variable = data$Total.Cases
+mediana = median(variable)
+media = mean(variable)
+sd = sd(variable)
+sesgo = (3* (media - mediana)) / sd
+
+print(sesgo)
+```
+```{r}
+library(ggplot2)
+qplot(variable, geom="histogram", bins=50, xlab=c("Casos Totales"), ylab="Frecuencia", main="Histograma Cantidad de casos totales")
+```
+
+```{r}
+data$variable_t = log10(variable)
+
+```
+
+```{r}
+
+qplot(data$variable_t, geom="histogram", bins=50, xlab=c("Casos Totales Transformada"), ylab="Frecuencia", main="Histograma Cantidad de casos totales Transformada")
+
+```
+
+```{r}
+
+mediana_t = median(data$variable_t)
+media_t = mean(data$variable_t)
+sd_t = sd(data$variable_t)
+sesgo_t = (3* (media_t - mediana_t)) / sd_t
+
+print(sesgo_t)
+
+```
+Calcule qué porcentaje de la población representan los casos totales de cada país y utilice una discretización de igual frecuencia con de 5 etiquetas.
+
+
+```{r}
+# Calculo el porcentaje de casos sobre la población
+
+data$Porcentaje = round((data$Total.Cases/data$Population) * 100,2)
+
+```
+
+
+```{r}
+
+library(arules)
+
+variable = data$Porcentaje
+
+breaks = 5
+
+# discretización de igual frecuencia
+data$disc_variable_frequency = arules::discretize(variable, method = "frequency", breaks = breaks, labels=c("muy_bajo", "bajo", "medio", "alto", "muy_alto"))
+
+
+```
+
+Visualice qué paises caen en el intervalo de mayor porcentaje de casos. Pertenece Argentina a dicho conjunto?
+
+```{r}
+
+paises = read.csv("CountryCodes.csv", sep=";")
+
+top_paises <- merge(data,paises,by.x="Country.Other",by.y="Country")
+
+top_casos_porc = top_paises[top_paises$disc_variable_frequency == "muy_alto", ]
+
+
+```
+
+```{r}
+library(highcharter)
+
+hcmap(
+     map = "custom/world-highres3", # Plantilla Mapa mundial 
+     data = top_casos_porc, # Dataset
+     value = "Porcentaje", # El valor que quiero dibujar
+     name = "% casos en población", # Nombre de la serie
+     showInLegend = TRUE)   %>%
+    hc_mapNavigation(enabled = TRUE) %>% # Para hacer zoom
+    hc_title(text = "Paises con 'Muy Alta' cantidad de casos") 
+
+
+```
+
+
+
