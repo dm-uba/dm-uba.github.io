@@ -49,8 +49,16 @@ for(i in 1:nrow(df_top_K)){
   # Se hace el llamado a la función que busca la canción
   letra = get_lyric(item$Artist, item$Track_Name)
 
+  # Si falló la llamada se insiste 3 veces
   intentos = 1
   while((is.null(letra) || nrow(letra) == 0) & intentos <= 3){
+    
+    # Se genera una pausa aleatoria para la nueva petición
+    time = sample(1:5, 1)
+    cat('Se esperan',time,'segundos...\n')
+    Sys.sleep(time)
+    
+    # Se vuelve a solicitar el tema
     letra = get_lyric( item$artist_name, item$track_name)
     intentos = intentos + 1
   }
