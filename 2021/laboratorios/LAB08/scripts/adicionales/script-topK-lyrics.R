@@ -13,7 +13,7 @@ df_escuchados <- conx_escuchados$find()[, c(2:5)]
 # Genero una conexión a una nueva colección denominada lyrics (para las letras)
 conx_lyrics = mongo(collection = "lyrics", db = "DMUBA_SPOTIFY")
 
-# Me quedo con la fila de cada canción con más Streams y lo ordeno en forma decreciente
+# Me quedo con la fila de cada canción con más Streams  y lo ordeno en forma decreciente
 df_escuchados = aggregate(Streams ~ ., data=df_escuchados, FUN=max)
 df_escuchados <- df_escuchados[order(df_escuchados$Streams, decreasing = TRUE),]
 
