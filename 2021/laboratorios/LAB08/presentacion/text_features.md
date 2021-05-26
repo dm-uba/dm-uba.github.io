@@ -337,5 +337,18 @@ Ley de Zipf (+++)
 ========================================================
 Podemos verificarlo también con un plot de lineas:
 <center>
-![plot of chunk unnamed-chunk-18](text_features-figure/unnamed-chunk-18-1.png)
+
+```r
+plot(df_freq$frecuencia, type='l', xlab='Cantidad de términos', ylab='Frecuencia observada', main='Frecuencia observada agrupada por términos')
+
+tendencia = smooth.spline(df_freq$frecuencia)
+lines(tendencia, col='red')
+```
+</center>
+
+Ley de Zipf (++++)
+========================================================
+Aquí vemos el gráfico resultante:
+<center>
+![plot of chunk unnamed-chunk-19](text_features-figure/unnamed-chunk-19-1.png)
 </center>

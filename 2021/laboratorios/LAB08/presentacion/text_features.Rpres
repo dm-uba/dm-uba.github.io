@@ -251,8 +251,20 @@ Ley de Zipf (+++)
 ========================================================
 Podemos verificarlo también con un plot de lineas:
 <center>
+```{r, eval=F}
+plot(df_freq$frecuencia, type='l', xlab='Cantidad de términos', ylab='Frecuencia observada', main='Frecuencia observada agrupada por términos')
+
+tendencia = smooth.spline(df_freq$frecuencia)
+lines(tendencia, col='red')
+```
+</center>
+
+Ley de Zipf (++++)
+========================================================
+Aquí vemos el gráfico resultante:
+<center>
 ```{r, echo=F}
-plot(df_freq$frecuencia, type='l', xlab='Cantidad de términos', ylab='Frecuencia observada', main='Histograma de frequencias')
+plot(df_freq$frecuencia, type='l', xlab='Cantidad de términos', ylab='Frecuencia observada', main='Frecuencia observada agrupada por términos')
 
 tendencia = smooth.spline(df_freq$frecuencia)
 lines(tendencia, col='red')
