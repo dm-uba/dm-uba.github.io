@@ -100,7 +100,14 @@ df_freq <- data.frame(termino = names(freq_term), frecuencia=freq_term)
 # Reseteamos el índice (sino era el término "dueño" de la frecuencia)
 row.names(df_freq) <- NULL
 
+# Dataframe con frecuencia de términos
 df_freq
+
+# Gráfico de barras con los N más frecuentes
+N=15
+barplot(df_freq[1:N,]$frecuencia, las = 2, names.arg = df_freq[1:N,]$termino,
+        col ="lightblue", main ="Palabras más frecuentes",
+        ylab = "Frecuencia de palabras", ylim = c(0, max(df_freq$frecuencia)+300))
 
 #######################################################
 ###################### WORDCLOUD ######################
@@ -115,12 +122,19 @@ library("RColorBrewer")
 
 par(bg="grey30") # Fijamos el fondo en color gris
 
-wordcloud(topK$termino, 
-          topK$frecuencia,
-          min.freq=100,
-          col=terrain.colors(length(topK$termino), alpha=0.9),
-          random.order=FALSE, rot.per=0.3)
+set.seed(1234)
+wordcloud(words = topK$termino, freq = topK$frecuencia, min.freq = 1,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(4, "Dark2"))
 
+# Parámetros
+# words : the words to be plotted
+# freq : their frequencies
+# min.freq : words with frequency below min.freq will not be plotted
+# max.words : maximum number of words to be plotted
+# random.order : plot words in random order. If false, they will be plotted in decreasing frequency
+# rot.per : proportion words with 90 degree rotation (vertical text)
+# colors : color words from least to most frequent. Use, for example, colors =“black” for single color.
 
 ######################################################
 #### Ley de Zipf (sobre el corpus sin preprocesar ####
@@ -130,10 +144,10 @@ par(bg="white") # Fijamos el fondo en color gris
 dtm_crudo <- TermDocumentMatrix(corpus, control = list(weighting = "weightTf"))
 matriz_td <- as.matrix(dtm_crudo)
 freq_term <- sort(rowSums(matriz_td),decreasing=TRUE)
-df_freq <- data.frame(termino = names(freq_term), frecuencia=freq_term)
+df_freq_crudo <- data.frame(termino = names(freq_term), frecuencia=freq_term)
 
 # Histograma
-hist(df_freq$frecuencia, xlab='Cantidad de términos', ylab='Frecuencia observada', main='Histograma')
+hist(df_freq_crudo$frecuencia, xlab='Cantidad de términos', ylab='Frecuencia observada', main='Histograma')
 
 # Plot de líneas
-plot(df_freq$frecuencia[1:150], type='l', xlab='Cantidad de términos', ylab='Frecuencia observada', main='Plot con frequencias')
+plot(df_freq_crudo$frecuencia[1:150], type='l', xlab='Cantidad de términos', ylab='Frecuencia observada', main='Plot con frequencias')
