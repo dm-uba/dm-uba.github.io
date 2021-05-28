@@ -55,6 +55,9 @@ inspect(corpus.pro[10])
 corpus.pro <- tm_map(corpus.pro, removeWords, stopwords("spanish"))
 inspect(corpus.pro[10])
 
+# Podemos agregar palabras a las stopwords
+# my_stopwords <- append(stopwords("spanish"), 'palabra')
+
 # Removemos puntuaciones
 corpus.pro <- tm_map(corpus.pro, removePunctuation)
 inspect(corpus.pro[10])
@@ -140,14 +143,21 @@ wordcloud(words = topK$termino, freq = topK$frecuencia, min.freq = 1,
 #### Ley de Zipf (sobre el corpus sin preprocesar ####
 ######################################################
 
-par(bg="white") # Fijamos el fondo en color gris
-dtm_crudo <- TermDocumentMatrix(corpus, control = list(weighting = "weightTf"))
-matriz_td <- as.matrix(dtm_crudo)
-freq_term <- sort(rowSums(matriz_td),decreasing=TRUE)
-df_freq_crudo <- data.frame(termino = names(freq_term), frecuencia=freq_term)
+# Creo una función para no repetir código (podría reemplazar arriba también)
+corpus2freq_term <- function(corpus_terminos) {
+  dtm <- TermDocumentMatrix(corpus_terminos, control = list(weighting = "weightTf"))
+  matriz_td <- as.matrix(dtm)
+  freq_term <- sort(rowSums(matriz_td),decreasing=TRUE)
+  df_frecuencias <- data.frame(termino = names(freq_term), frecuencia=freq_term)
+  return(df_frecuencias)
+}
+
+df_freq_crudo <- corpus2freq_term(corpus)
 
 # Histograma
+par(bg="white") # Fijamos el fondo en color blanco
 hist(df_freq_crudo$frecuencia, xlab='Cantidad de términos', ylab='Frecuencia observada', main='Histograma')
 
 # Plot de líneas
 plot(df_freq_crudo$frecuencia[1:150], type='l', xlab='Cantidad de términos', ylab='Frecuencia observada', main='Plot con frequencias')
+
