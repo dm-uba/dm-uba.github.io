@@ -1,6 +1,6 @@
-# Guía de Laboratorio: Introducción a métricas de calidad para Reglas de asociación
+# Guía de Laboratorio: Métricas de calidad para Reglas de asociación
 
-Vamos a trabajar con R y escribir algunas rutinas para calcular el __soporte__ y la __confianza__ de un conjunto de reglas a partir del dataset [Titanic](http://www.rdatamining.com/data/titanic.raw.rdata?attredirects=0&d=1).
+Vamos a trabajar con R y escribir algunas rutinas para calcular el __soporte__ y la __confianza__ de un conjunto de reglas a partir del dataset [Titanic](http://www.rdatamining.com/data/titanic.raw.rdata).
 
 # Leer el dataset Titanic
 
