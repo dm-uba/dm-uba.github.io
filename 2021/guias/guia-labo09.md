@@ -1,4 +1,4 @@
-# Guía LABORATORIO IX: Generación de recomendaciones a partir de reglas de asociación
+# Guía LABORATORIO: Generación de recomendaciones a partir de reglas de asociación
 
 En esta guía se propone usar reglas de asociación con el algoritmo apriori para generar recomendaciones de películas.
 
