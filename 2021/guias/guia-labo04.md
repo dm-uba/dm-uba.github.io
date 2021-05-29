@@ -1,4 +1,4 @@
-# Guía LABORATORIO IV: Bases de datos textuales
+# Guía de Laboratorio: Bases de datos textuales
 
 Vamos a trabajar con R y los paquetes: 
 
