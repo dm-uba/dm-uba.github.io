@@ -1,0 +1,251 @@
+Reglas de Asociación
+========================================================
+autosize: true
+width: 1200
+height: 800
+
+<br />
+Implementación con arules en R
+<br />
+<br />
+Juan Manuel Fernandez
+
+
+Contenidos
+========================================================
+
+En esta clase vamos a trabajar con reglas de asociación en R:
+- El objeto __transactions__: lectura, casteo y utilización.
+- Generación de reglas de asociación.
+- Inspección y evaluación de reglas.
+- Filtrado de reglas.
+
+Dataset para la demostración
+========================================================
+Para los ejemplos de esta presentación vamos a utilizar el dataset Groceries del paquete arules:
+```{r}
+
+library(arules)
+data(Groceries)
+
+Groceries
+```
+Como vemos, Groceries es de tipo __transactions__. La documentación de la clase está aquí: 
+- https://www.rdocumentation.org/packages/arules/versions/1.6-8/topics/transactions-class
+- https://cran.r-project.org/web/packages/arules/vignettes/arules.pdf
+
+El objeto transactions en R
+========================================================
+
+La clase __transactions__ representa transacciones utilizadas para el minado de itemsets o reglas (según documentación oficial).
+```{r}
+inspect(head(Groceries, 3))
+```
+
+El objeto transactions en R (++)
+========================================================
+Podemos hacer un __summary__ del objeto transactions:
+<small>
+```{r}
+resumen = summary(Groceries)
+
+resumen
+```
+</small>
+
+El objeto transactions en R (+++)
+========================================================
+Podemos acceder a las dimensiones del summary de a una con __@__:
+<small>
+```{r}
+resumen@Dim
+resumen@density
+resumen@itemSummary
+```
+</small>
+
+El objeto transactions en R (+++)
+========================================================
+Podemos acceder a las dimensiones del summary de a una con __@__:
+<small>
+```{r}
+resumen@lengths
+resumen@lengthSummary
+```
+</small>
+
+Transactions: Casteo de tipos
+========================================================
+Podemos generar un objeto transactions a partir de una lista:
+```{r}
+canasta <- list( c("cerveza","pañales","chocolate"),
+                 c("cerveza","pañales"),
+                 c("cerveza","pañales","pan"),
+                 c("cerveza","pañales","pan","leche") )
+
+## Equivalntee a canasta_tr = as(canasta, "transactions")
+canasta_tr <- transactions(canasta)
+canasta_tr
+```
+
+Transactions: Casteo de tipos (++)
+========================================================
+Resultado del casteo a partir de una lista (instrucción `image(canasta_tr)`):
+<small><center>
+```{r, echo=F}
+image(canasta_tr)
+```
+</small></center>
+
+Transactions: Casteo de tipos (+++)
+========================================================
+Podemos generar un objeto transactions a partir de un dataframe:
+```{r, echo=F}
+a_df <- data.frame(
+	age   = as.factor(c(6, 8, NA, 9, 16)), 
+	grade = as.factor(c("A", "C", "F", NA, "C")),
+  pass  = c(TRUE, TRUE, FALSE, TRUE, TRUE))  
+```
+```{r}
+a_df
+
+df_trans <- transactions(a_df)
+```
+
+Transactions: Casteo de tipos (++++)
+========================================================
+Verificamos la transformación:
+```{r}
+inspect(df_trans)
+```
+También es posible generar transacciones a partir de otros tipos de datos, como por ejemplo matrices.
+
+
+Transactions: Lectura de datos como transactions
+========================================================
+La carga y casteo a transacciones para muchos datos puede volverse lento e ineficiente. Es posible cargar directamente transacciones con `read.transactions().`
+Existen dos tipos: basket (cesta) y single (único). 
+
+Para el formato `basket`, cada línea del archivo representa una transacción donde cada item está separado por un caracter especificado en `sep`.
+
+```{r}
+# Guardamos datos para formato basket
+data <- paste(
+          "item1, item2", 
+          "item1", 
+          "item2, item3", 
+          sep="\n")
+write(data, file = "basket.txt")
+```
+
+Transactions: Formato basket
+========================================================
+Cargamos los datos de tipo basket:
+```{r}
+tr <- read.transactions("basket.txt", format = "basket", sep=",")
+inspect(tr)
+itemLabels(tr)
+```
+
+Transactions: Lectura de datos como transactions (single)
+========================================================
+Para el formato `single`, cada línea del archivo corresponde a un item único, el cual contiene el id de la transacción.
+
+```{r}
+# Guardamos datos para formato single
+
+data <- paste(
+  "1;item1",
+  "1;item2",
+  "2;item1",
+  "3;item2",
+  "3;item3",
+  sep ="\n")
+
+write(data, file = "single.txt")
+```
+
+Transactions: Formato single
+========================================================
+Cargamos los datos de tipo single:
+```{r}
+tr <- read.transactions("single.txt", format = "single", sep = ";", cols = c(1,2))
+inspect(tr)
+itemLabels(tr)
+```
+
+Generación de reglas con arules
+========================================================
+Una vez que tenemos el objeto transactions, podemos generar las reglas:
+<small>
+```{r}
+# target vistos en clase: "frequent itemsets", "maximally frequent itemsets", "closed frequent itemsets", "rules"
+
+reglas <- apriori(Groceries, parameter = list(support=0.01, confidence=0.01, target = "rules"))
+```
+</small>
+
+Generación de reglas con arules (++)
+========================================================
+Algunas instrucciones que podemos aplicar sobre reglas:
+```{r}
+resumen = summary(reglas)
+
+resumen@lengths
+
+resumen@length
+```
+
+Generación de reglas con arules (+++)
+========================================================
+```{r}
+resumen@quality
+```
+
+Generación de reglas con arules (++++)
+========================================================
+```{r}
+resumen@info
+```
+
+Inspección de reglas generadas
+========================================================
+Ahora debemos explotar y analizar las reglas:
+```{r}
+inspect(reglas[1:2], )
+```
+<small>
+`lhs`: (left-hand-sides) es la parte izquierda de la regla, o antecedente. <br />
+`rhs`: ( right-hand-sides ) es la parte derecha de la regla, o resultado. <br />
+`Support`: es la frecuencia relativa de una regla sobre el total de transacciones.  <br />
+`Confidence`: Mide cuantas veces sucede el rhs cuando se presenta el lhs, para cada regla. <br />
+`Lift`: es la confianza de la regla sobre el soporte del consecuente de la misma.
+</small>
+
+Filtrado de reglas generadas
+========================================================
+También es posible ejecutar diferentes filtros sobre las reglas, por ejemplo ordenando por lift:
+```{r}
+inspect(head(sort(reglas, by="lift", decreasing = TRUE), 3))
+```
+
+Filtrado de reglas generadas (++)
+========================================================
+Con `subset`, podemos filtrar por cualquiera de los campos que aparecen en las reglas.
+
+Por ejemplo, las que poseen como antecedente -lhs- a la cerveza (bottled beer):
+```{r}
+rules.sub <- subset(reglas, subset = lhs %pin% "bottled beer")
+
+inspect(rules.sub)
+```
+
+Filtrado de reglas generadas (++)
+========================================================
+También podemos filtrar por más de una de las condiciones:
+```{r}
+soda = subset(reglas, subset = rhs %in% "soda" & lift > 1.2)
+
+inspect(head(sort(soda, by="lift", decreasing = TRUE), 3))
+
+```
