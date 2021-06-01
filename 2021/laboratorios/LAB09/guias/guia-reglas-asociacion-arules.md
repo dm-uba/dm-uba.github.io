@@ -1,6 +1,6 @@
 # Guía de Laboratorio: Reglas de asociación con arules
 
-Vamos a trabajar con la librería __arules__ de R, puntualmente con el dataset Groceries, que representa el típico problema de la cesta de compras.
+Vamos a trabajar con la librería __arules__ en R, puntualmente con el dataset Groceries, que representa el típico problema de la cesta de compras.
 
 ## Cargamos/Instalamos la librería arules
 
