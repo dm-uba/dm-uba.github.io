@@ -1,6 +1,6 @@
-# Guía de Laboratorio: Reglas de asociación con arules
+# Guía: Reglas de asociación con arules (R)
 
-Vamos a trabajar con la librería __arules__ en R, puntualmente con el dataset Groceries, que representa el típico problema de la cesta de compras.
+Vamos a trabajar con la librería __arules__ de R, puntualmente con el dataset Groceries, que representa el típico problema de la cesta de compras.
 
 ## Cargamos/Instalamos la librería arules
 
@@ -14,7 +14,7 @@ library(arules)
 ```
 
 ## Carga del dataset
-Cargamos el dataset Groceries con las transacciones de la cesta de compras
+Cargamos el dataset Groceries con las transacciones de la cesta de compras que forma parte de la librería __arules__:
 
 ```r
 data("Groceries")
@@ -107,10 +107,15 @@ Filtramos reglas que contengan **waffles** en el antecedente.
 rules.sub <- subset(reglas, subset = lhs %pin% "waffles")
 ```
 
-# Consignas propuestas:
-1. ¿Cuantas reglas se generan si definimos un support=0.01? ¿y con un support=0.1? Fundamente la respuesta.
-2. Comente cuales son los productos mas comprados por los clientes. ¿Y las asociaciones mas fuertes?
-3. ¿Cuales son las 20 reglas con lift mas alto? ¿Que significa esto?
-4. ¿Cuales son los productos que hacen que los clientes compren "whole milk"?
-5. Cuando un cliente compra "waffles", que otros productos compra con mayor frecuencia?
-6. ¿Cuando es importante una confianza alta? 
+Hasta aquí, una guía introductoria de reglas de asociación utilizando el paquete arules. 
+
+
+## Referencias & Recursos Web
+
+Para obtener más información, te recomendamos los siguientes enlaces:
+- https://www.geeksforgeeks.org/apriori-algorithm-in-r-programming/,
+- https://www.datacamp.com/community/tutorials/market-basket-analysis-r,
+- https://www.cs.upc.edu/~belanche/Docencia/mineria/Practiques/R/arules.pdf,
+- https://cran.r-project.org/web/packages/arules/index.html,
+- https://rpubs.com/Joaquin_AR/397172,
+- http://r-statistics.co/Association-Mining-With-R.html.
