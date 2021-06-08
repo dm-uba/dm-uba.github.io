@@ -8,6 +8,13 @@ getStemLanguages()
 words = c("ganar", "gana", "ganador", "ganadores")
 wordStem(words, language = "spanish")
 
+words2 = c("efectúa", "efectuaba", "efectuada", "efectuadas", "efectuado", "efectúan",
+           "efectuar", "efectuará", "efectuarán", "efectuaría", "efectuaron", "efectuarse",
+           "efectúen", "efectuo", "efectúo", "efectuó")
+
+unique(wordStem(words2, language = "spanish"))
+
+
 library(tm)
 # https://www.rdocumentation.org/packages/tm/versions/0.7-8/topics/stemDocument
 # stemDocument
