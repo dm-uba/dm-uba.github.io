@@ -231,18 +231,36 @@ inspect(head(sort(reglas, by="lift", decreasing = TRUE), 3))
 
 Filtrado de reglas generadas (++)
 ========================================================
-Con `subset`, podemos filtrar por cualquiera de los campos que aparecen en las reglas.
+Con `subset`, podemos filtrar por cualquiera de los campos que aparecen en las reglas. Con `%in%` buscamos un producto en concreto.
 
-Por ejemplo, las que poseen como antecedente -lhs- a la cerveza (bottled beer):
+Por ejemplo, buscamos las que poseen como antecedente -lhs- a la cerveza (bottled beer):
 ```{r}
-rules.sub <- subset(reglas, subset = lhs %pin% "bottled beer")
+rules.sub <- subset(reglas, subset = lhs %in% "bottled beer")
 
 inspect(rules.sub)
 ```
 
-Filtrado de reglas generadas (++)
+Filtrado de reglas generadas (+++)
 ========================================================
-También podemos filtrar por más de una de las condiciones:
+Además, con `%pin%` podemos buscar en el texto un producto que contenga determinado texto (beer):
+```{r}
+rules.sub <- subset(reglas, subset = lhs %pin% "beer")
+
+inspect(rules.sub)
+```
+
+Filtrado de reglas generadas (++++)
+========================================================
+También podríamos filtrar por el tamaño del antecedente::
+```{r}
+rules.sub <- subset(reglas, subset = size(lhs)==1)
+
+inspect(rules.sub)
+```
+
+Filtrado de reglas generadas (+++++)
+========================================================
+A su vez, podemos filtrar por más de una de las condiciones antes vistas:
 ```{r}
 soda = subset(reglas, subset = rhs %in% "soda" & lift > 1.2)
 

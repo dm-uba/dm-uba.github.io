@@ -1252,11 +1252,11 @@ $confidence
 <section data-transition="linear" data-transition-speed="default">
 <h3>Filtrado de reglas generadas (++)</h3>
 <div class="slideContent" >
-<p>Con <code>subset</code>, podemos filtrar por cualquiera de los campos que aparecen en las reglas.</p>
+<p>Con <code>subset</code>, podemos filtrar por cualquiera de los campos que aparecen en las reglas. Con <code>%in%</code> buscamos un producto en concreto.</p>
 
-<p>Por ejemplo, las que poseen como antecedente -lhs- a la cerveza (bottled beer):</p>
+<p>Por ejemplo, buscamos las que poseen como antecedente -lhs- a la cerveza (bottled beer):</p>
 
-<pre><code class="r">rules.sub &lt;- subset(reglas, subset = lhs %pin% &quot;bottled beer&quot;)
+<pre><code class="r">rules.sub &lt;- subset(reglas, subset = lhs %in% &quot;bottled beer&quot;)
 
 inspect(rules.sub)
 </code></pre>
@@ -1279,9 +1279,911 @@ inspect(rules.sub)
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Filtrado de reglas generadas (++)</h3>
+<h3>Filtrado de reglas generadas (+++)</h3>
 <div class="slideContent" >
-<p>También podemos filtrar por más de una de las condiciones:</p>
+<p>Además, con <code>%pin%</code> podemos buscar en el texto un producto que contenga determinado texto (beer):</p>
+
+<pre><code class="r">rules.sub &lt;- subset(reglas, subset = lhs %pin% &quot;beer&quot;)
+
+inspect(rules.sub)
+</code></pre>
+
+<pre><code>    lhs               rhs                support    confidence coverage  
+[1] {canned beer}  =&gt; {shopping bags}    0.01138790 0.1465969  0.07768175
+[2] {canned beer}  =&gt; {soda}             0.01382816 0.1780105  0.07768175
+[3] {canned beer}  =&gt; {rolls/buns}       0.01128622 0.1452880  0.07768175
+[4] {bottled beer} =&gt; {bottled water}    0.01576004 0.1957071  0.08052872
+[5] {bottled beer} =&gt; {soda}             0.01698017 0.2108586  0.08052872
+[6] {bottled beer} =&gt; {rolls/buns}       0.01362481 0.1691919  0.08052872
+[7] {bottled beer} =&gt; {other vegetables} 0.01616675 0.2007576  0.08052872
+[8] {bottled beer} =&gt; {whole milk}       0.02043721 0.2537879  0.08052872
+    lift      count
+[1] 1.4879052 112  
+[2] 1.0208356 136  
+[3] 0.7898878 111  
+[4] 1.7707259 155  
+[5] 1.2092094 167  
+[6] 0.9198466 134  
+[7] 1.0375464 159  
+[8] 0.9932367 201  
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Filtrado de reglas generadas (++++)</h3>
+<div class="slideContent" >
+<p>También podríamos filtrar por el tamaño del antecedente::</p>
+
+<pre><code class="r">rules.sub &lt;- subset(reglas, subset = size(lhs)==1)
+
+inspect(rules.sub)
+</code></pre>
+
+<pre><code>      lhs                           rhs                        support   
+[1]   {hard cheese}              =&gt; {whole milk}               0.01006609
+[2]   {whole milk}               =&gt; {hard cheese}              0.01006609
+[3]   {butter milk}              =&gt; {other vegetables}         0.01037112
+[4]   {other vegetables}         =&gt; {butter milk}              0.01037112
+[5]   {butter milk}              =&gt; {whole milk}               0.01159126
+[6]   {whole milk}               =&gt; {butter milk}              0.01159126
+[7]   {ham}                      =&gt; {whole milk}               0.01148958
+[8]   {whole milk}               =&gt; {ham}                      0.01148958
+[9]   {sliced cheese}            =&gt; {whole milk}               0.01077783
+[10]  {whole milk}               =&gt; {sliced cheese}            0.01077783
+[11]  {oil}                      =&gt; {whole milk}               0.01128622
+[12]  {whole milk}               =&gt; {oil}                      0.01128622
+[13]  {onions}                   =&gt; {other vegetables}         0.01423488
+[14]  {other vegetables}         =&gt; {onions}                   0.01423488
+[15]  {onions}                   =&gt; {whole milk}               0.01209964
+[16]  {whole milk}               =&gt; {onions}                   0.01209964
+[17]  {berries}                  =&gt; {yogurt}                   0.01057448
+[18]  {yogurt}                   =&gt; {berries}                  0.01057448
+[19]  {berries}                  =&gt; {other vegetables}         0.01026945
+[20]  {other vegetables}         =&gt; {berries}                  0.01026945
+[21]  {berries}                  =&gt; {whole milk}               0.01179461
+[22]  {whole milk}               =&gt; {berries}                  0.01179461
+[23]  {hamburger meat}           =&gt; {other vegetables}         0.01382816
+[24]  {other vegetables}         =&gt; {hamburger meat}           0.01382816
+[25]  {hamburger meat}           =&gt; {whole milk}               0.01474326
+[26]  {whole milk}               =&gt; {hamburger meat}           0.01474326
+[27]  {hygiene articles}         =&gt; {whole milk}               0.01281139
+[28]  {whole milk}               =&gt; {hygiene articles}         0.01281139
+[29]  {salty snack}              =&gt; {other vegetables}         0.01077783
+[30]  {other vegetables}         =&gt; {salty snack}              0.01077783
+[31]  {salty snack}              =&gt; {whole milk}               0.01118454
+[32]  {whole milk}               =&gt; {salty snack}              0.01118454
+[33]  {sugar}                    =&gt; {other vegetables}         0.01077783
+[34]  {other vegetables}         =&gt; {sugar}                    0.01077783
+[35]  {sugar}                    =&gt; {whole milk}               0.01504830
+[36]  {whole milk}               =&gt; {sugar}                    0.01504830
+[37]  {waffles}                  =&gt; {other vegetables}         0.01006609
+[38]  {other vegetables}         =&gt; {waffles}                  0.01006609
+[39]  {waffles}                  =&gt; {whole milk}               0.01270971
+[40]  {whole milk}               =&gt; {waffles}                  0.01270971
+[41]  {long life bakery product} =&gt; {other vegetables}         0.01067616
+[42]  {other vegetables}         =&gt; {long life bakery product} 0.01067616
+[43]  {long life bakery product} =&gt; {whole milk}               0.01352313
+[44]  {whole milk}               =&gt; {long life bakery product} 0.01352313
+[45]  {dessert}                  =&gt; {other vegetables}         0.01159126
+[46]  {other vegetables}         =&gt; {dessert}                  0.01159126
+[47]  {dessert}                  =&gt; {whole milk}               0.01372649
+[48]  {whole milk}               =&gt; {dessert}                  0.01372649
+[49]  {canned beer}              =&gt; {shopping bags}            0.01138790
+[50]  {shopping bags}            =&gt; {canned beer}              0.01138790
+[51]  {canned beer}              =&gt; {soda}                     0.01382816
+[52]  {soda}                     =&gt; {canned beer}              0.01382816
+[53]  {canned beer}              =&gt; {rolls/buns}               0.01128622
+[54]  {rolls/buns}               =&gt; {canned beer}              0.01128622
+[55]  {cream cheese }            =&gt; {yogurt}                   0.01240468
+[56]  {yogurt}                   =&gt; {cream cheese }            0.01240468
+[57]  {cream cheese }            =&gt; {other vegetables}         0.01372649
+[58]  {other vegetables}         =&gt; {cream cheese }            0.01372649
+[59]  {cream cheese }            =&gt; {whole milk}               0.01647178
+[60]  {whole milk}               =&gt; {cream cheese }            0.01647178
+[61]  {chicken}                  =&gt; {root vegetables}          0.01087951
+[62]  {root vegetables}          =&gt; {chicken}                  0.01087951
+[63]  {chicken}                  =&gt; {other vegetables}         0.01789527
+[64]  {other vegetables}         =&gt; {chicken}                  0.01789527
+[65]  {chicken}                  =&gt; {whole milk}               0.01759024
+[66]  {whole milk}               =&gt; {chicken}                  0.01759024
+[67]  {white bread}              =&gt; {soda}                     0.01026945
+[68]  {soda}                     =&gt; {white bread}              0.01026945
+[69]  {white bread}              =&gt; {other vegetables}         0.01372649
+[70]  {other vegetables}         =&gt; {white bread}              0.01372649
+[71]  {white bread}              =&gt; {whole milk}               0.01708185
+[72]  {whole milk}               =&gt; {white bread}              0.01708185
+[73]  {chocolate}                =&gt; {soda}                     0.01352313
+[74]  {soda}                     =&gt; {chocolate}                0.01352313
+[75]  {chocolate}                =&gt; {rolls/buns}               0.01179461
+[76]  {rolls/buns}               =&gt; {chocolate}                0.01179461
+[77]  {chocolate}                =&gt; {other vegetables}         0.01270971
+[78]  {other vegetables}         =&gt; {chocolate}                0.01270971
+[79]  {chocolate}                =&gt; {whole milk}               0.01667514
+[80]  {whole milk}               =&gt; {chocolate}                0.01667514
+[81]  {coffee}                   =&gt; {rolls/buns}               0.01098119
+[82]  {rolls/buns}               =&gt; {coffee}                   0.01098119
+[83]  {coffee}                   =&gt; {other vegetables}         0.01342145
+[84]  {other vegetables}         =&gt; {coffee}                   0.01342145
+[85]  {coffee}                   =&gt; {whole milk}               0.01870869
+[86]  {whole milk}               =&gt; {coffee}                   0.01870869
+[87]  {frozen vegetables}        =&gt; {root vegetables}          0.01159126
+[88]  {root vegetables}          =&gt; {frozen vegetables}        0.01159126
+[89]  {frozen vegetables}        =&gt; {yogurt}                   0.01240468
+[90]  {yogurt}                   =&gt; {frozen vegetables}        0.01240468
+[91]  {frozen vegetables}        =&gt; {rolls/buns}               0.01016777
+[92]  {rolls/buns}               =&gt; {frozen vegetables}        0.01016777
+[93]  {frozen vegetables}        =&gt; {other vegetables}         0.01779359
+[94]  {other vegetables}         =&gt; {frozen vegetables}        0.01779359
+[95]  {frozen vegetables}        =&gt; {whole milk}               0.02043721
+[96]  {whole milk}               =&gt; {frozen vegetables}        0.02043721
+[97]  {beef}                     =&gt; {root vegetables}          0.01738688
+[98]  {root vegetables}          =&gt; {beef}                     0.01738688
+[99]  {beef}                     =&gt; {yogurt}                   0.01169293
+[100] {yogurt}                   =&gt; {beef}                     0.01169293
+[101] {beef}                     =&gt; {rolls/buns}               0.01362481
+[102] {rolls/buns}               =&gt; {beef}                     0.01362481
+[103] {beef}                     =&gt; {other vegetables}         0.01972547
+[104] {other vegetables}         =&gt; {beef}                     0.01972547
+[105] {beef}                     =&gt; {whole milk}               0.02125064
+[106] {whole milk}               =&gt; {beef}                     0.02125064
+[107] {curd}                     =&gt; {whipped/sour cream}       0.01047280
+[108] {whipped/sour cream}       =&gt; {curd}                     0.01047280
+[109] {curd}                     =&gt; {tropical fruit}           0.01026945
+[110] {tropical fruit}           =&gt; {curd}                     0.01026945
+[111] {curd}                     =&gt; {root vegetables}          0.01087951
+[112] {root vegetables}          =&gt; {curd}                     0.01087951
+[113] {curd}                     =&gt; {yogurt}                   0.01728521
+[114] {yogurt}                   =&gt; {curd}                     0.01728521
+[115] {curd}                     =&gt; {rolls/buns}               0.01006609
+[116] {rolls/buns}               =&gt; {curd}                     0.01006609
+[117] {curd}                     =&gt; {other vegetables}         0.01718353
+[118] {other vegetables}         =&gt; {curd}                     0.01718353
+[119] {curd}                     =&gt; {whole milk}               0.02613116
+[120] {whole milk}               =&gt; {curd}                     0.02613116
+[121] {napkins}                  =&gt; {tropical fruit}           0.01006609
+[122] {tropical fruit}           =&gt; {napkins}                  0.01006609
+[123] {napkins}                  =&gt; {soda}                     0.01199797
+[124] {soda}                     =&gt; {napkins}                  0.01199797
+[125] {napkins}                  =&gt; {yogurt}                   0.01230300
+[126] {yogurt}                   =&gt; {napkins}                  0.01230300
+[127] {napkins}                  =&gt; {rolls/buns}               0.01169293
+[128] {rolls/buns}               =&gt; {napkins}                  0.01169293
+[129] {napkins}                  =&gt; {other vegetables}         0.01443823
+[130] {other vegetables}         =&gt; {napkins}                  0.01443823
+[131] {napkins}                  =&gt; {whole milk}               0.01972547
+[132] {whole milk}               =&gt; {napkins}                  0.01972547
+[133] {pork}                     =&gt; {root vegetables}          0.01362481
+[134] {root vegetables}          =&gt; {pork}                     0.01362481
+[135] {pork}                     =&gt; {soda}                     0.01189629
+[136] {soda}                     =&gt; {pork}                     0.01189629
+[137] {pork}                     =&gt; {rolls/buns}               0.01128622
+[138] {rolls/buns}               =&gt; {pork}                     0.01128622
+[139] {pork}                     =&gt; {other vegetables}         0.02165735
+[140] {other vegetables}         =&gt; {pork}                     0.02165735
+[141] {pork}                     =&gt; {whole milk}               0.02216573
+[142] {whole milk}               =&gt; {pork}                     0.02216573
+[143] {frankfurter}              =&gt; {sausage}                  0.01006609
+[144] {sausage}                  =&gt; {frankfurter}              0.01006609
+[145] {frankfurter}              =&gt; {root vegetables}          0.01016777
+[146] {root vegetables}          =&gt; {frankfurter}              0.01016777
+[147] {frankfurter}              =&gt; {soda}                     0.01128622
+[148] {soda}                     =&gt; {frankfurter}              0.01128622
+[149] {frankfurter}              =&gt; {yogurt}                   0.01118454
+[150] {yogurt}                   =&gt; {frankfurter}              0.01118454
+[151] {frankfurter}              =&gt; {rolls/buns}               0.01921708
+[152] {rolls/buns}               =&gt; {frankfurter}              0.01921708
+[153] {frankfurter}              =&gt; {other vegetables}         0.01647178
+[154] {other vegetables}         =&gt; {frankfurter}              0.01647178
+[155] {frankfurter}              =&gt; {whole milk}               0.02053889
+[156] {whole milk}               =&gt; {frankfurter}              0.02053889
+[157] {bottled beer}             =&gt; {bottled water}            0.01576004
+[158] {bottled water}            =&gt; {bottled beer}             0.01576004
+[159] {bottled beer}             =&gt; {soda}                     0.01698017
+[160] {soda}                     =&gt; {bottled beer}             0.01698017
+[161] {bottled beer}             =&gt; {rolls/buns}               0.01362481
+[162] {rolls/buns}               =&gt; {bottled beer}             0.01362481
+[163] {bottled beer}             =&gt; {other vegetables}         0.01616675
+[164] {other vegetables}         =&gt; {bottled beer}             0.01616675
+[165] {bottled beer}             =&gt; {whole milk}               0.02043721
+[166] {whole milk}               =&gt; {bottled beer}             0.02043721
+[167] {brown bread}              =&gt; {sausage}                  0.01067616
+[168] {sausage}                  =&gt; {brown bread}              0.01067616
+[169] {brown bread}              =&gt; {tropical fruit}           0.01067616
+[170] {tropical fruit}           =&gt; {brown bread}              0.01067616
+[171] {brown bread}              =&gt; {root vegetables}          0.01016777
+[172] {root vegetables}          =&gt; {brown bread}              0.01016777
+[173] {brown bread}              =&gt; {soda}                     0.01260803
+[174] {soda}                     =&gt; {brown bread}              0.01260803
+[175] {brown bread}              =&gt; {yogurt}                   0.01453991
+[176] {yogurt}                   =&gt; {brown bread}              0.01453991
+[177] {brown bread}              =&gt; {rolls/buns}               0.01260803
+[178] {rolls/buns}               =&gt; {brown bread}              0.01260803
+[179] {brown bread}              =&gt; {other vegetables}         0.01870869
+[180] {other vegetables}         =&gt; {brown bread}              0.01870869
+[181] {brown bread}              =&gt; {whole milk}               0.02521607
+[182] {whole milk}               =&gt; {brown bread}              0.02521607
+[183] {margarine}                =&gt; {bottled water}            0.01026945
+[184] {bottled water}            =&gt; {margarine}                0.01026945
+[185] {margarine}                =&gt; {root vegetables}          0.01108287
+[186] {root vegetables}          =&gt; {margarine}                0.01108287
+[187] {margarine}                =&gt; {soda}                     0.01016777
+[188] {soda}                     =&gt; {margarine}                0.01016777
+[189] {margarine}                =&gt; {yogurt}                   0.01423488
+[190] {yogurt}                   =&gt; {margarine}                0.01423488
+[191] {margarine}                =&gt; {rolls/buns}               0.01474326
+[192] {rolls/buns}               =&gt; {margarine}                0.01474326
+[193] {margarine}                =&gt; {other vegetables}         0.01972547
+[194] {other vegetables}         =&gt; {margarine}                0.01972547
+[195] {margarine}                =&gt; {whole milk}               0.02419929
+[196] {whole milk}               =&gt; {margarine}                0.02419929
+[197] {butter}                   =&gt; {whipped/sour cream}       0.01016777
+[198] {whipped/sour cream}       =&gt; {butter}                   0.01016777
+[199] {butter}                   =&gt; {root vegetables}          0.01291307
+[200] {root vegetables}          =&gt; {butter}                   0.01291307
+[201] {butter}                   =&gt; {yogurt}                   0.01464159
+[202] {yogurt}                   =&gt; {butter}                   0.01464159
+[203] {butter}                   =&gt; {rolls/buns}               0.01342145
+[204] {rolls/buns}               =&gt; {butter}                   0.01342145
+[205] {butter}                   =&gt; {other vegetables}         0.02003050
+[206] {other vegetables}         =&gt; {butter}                   0.02003050
+[207] {butter}                   =&gt; {whole milk}               0.02755465
+[208] {whole milk}               =&gt; {butter}                   0.02755465
+[209] {newspapers}               =&gt; {bottled water}            0.01128622
+[210] {bottled water}            =&gt; {newspapers}               0.01128622
+[211] {newspapers}               =&gt; {tropical fruit}           0.01179461
+[212] {tropical fruit}           =&gt; {newspapers}               0.01179461
+[213] {newspapers}               =&gt; {root vegetables}          0.01148958
+[214] {root vegetables}          =&gt; {newspapers}               0.01148958
+[215] {newspapers}               =&gt; {soda}                     0.01464159
+[216] {soda}                     =&gt; {newspapers}               0.01464159
+[217] {newspapers}               =&gt; {yogurt}                   0.01535333
+[218] {yogurt}                   =&gt; {newspapers}               0.01535333
+[219] {newspapers}               =&gt; {rolls/buns}               0.01972547
+[220] {rolls/buns}               =&gt; {newspapers}               0.01972547
+[221] {newspapers}               =&gt; {other vegetables}         0.01931876
+[222] {other vegetables}         =&gt; {newspapers}               0.01931876
+[223] {newspapers}               =&gt; {whole milk}               0.02735130
+[224] {whole milk}               =&gt; {newspapers}               0.02735130
+[225] {domestic eggs}            =&gt; {citrus fruit}             0.01037112
+[226] {citrus fruit}             =&gt; {domestic eggs}            0.01037112
+[227] {domestic eggs}            =&gt; {tropical fruit}           0.01138790
+[228] {tropical fruit}           =&gt; {domestic eggs}            0.01138790
+[229] {domestic eggs}            =&gt; {root vegetables}          0.01433655
+[230] {root vegetables}          =&gt; {domestic eggs}            0.01433655
+[231] {domestic eggs}            =&gt; {soda}                     0.01240468
+[232] {soda}                     =&gt; {domestic eggs}            0.01240468
+[233] {domestic eggs}            =&gt; {yogurt}                   0.01433655
+[234] {yogurt}                   =&gt; {domestic eggs}            0.01433655
+[235] {domestic eggs}            =&gt; {rolls/buns}               0.01565836
+[236] {rolls/buns}               =&gt; {domestic eggs}            0.01565836
+[237] {domestic eggs}            =&gt; {other vegetables}         0.02226741
+[238] {other vegetables}         =&gt; {domestic eggs}            0.02226741
+[239] {domestic eggs}            =&gt; {whole milk}               0.02999492
+[240] {whole milk}               =&gt; {domestic eggs}            0.02999492
+[241] {fruit/vegetable juice}    =&gt; {citrus fruit}             0.01037112
+[242] {citrus fruit}             =&gt; {fruit/vegetable juice}    0.01037112
+[243] {fruit/vegetable juice}    =&gt; {shopping bags}            0.01067616
+[244] {shopping bags}            =&gt; {fruit/vegetable juice}    0.01067616
+[245] {fruit/vegetable juice}    =&gt; {sausage}                  0.01006609
+[246] {sausage}                  =&gt; {fruit/vegetable juice}    0.01006609
+[247] {fruit/vegetable juice}    =&gt; {bottled water}            0.01423488
+[248] {bottled water}            =&gt; {fruit/vegetable juice}    0.01423488
+[249] {fruit/vegetable juice}    =&gt; {tropical fruit}           0.01372649
+[250] {tropical fruit}           =&gt; {fruit/vegetable juice}    0.01372649
+[251] {fruit/vegetable juice}    =&gt; {root vegetables}          0.01199797
+[252] {root vegetables}          =&gt; {fruit/vegetable juice}    0.01199797
+[253] {fruit/vegetable juice}    =&gt; {soda}                     0.01840366
+[254] {soda}                     =&gt; {fruit/vegetable juice}    0.01840366
+[255] {fruit/vegetable juice}    =&gt; {yogurt}                   0.01870869
+[256] {yogurt}                   =&gt; {fruit/vegetable juice}    0.01870869
+[257] {fruit/vegetable juice}    =&gt; {rolls/buns}               0.01453991
+[258] {rolls/buns}               =&gt; {fruit/vegetable juice}    0.01453991
+[259] {fruit/vegetable juice}    =&gt; {other vegetables}         0.02104728
+[260] {other vegetables}         =&gt; {fruit/vegetable juice}    0.02104728
+[261] {fruit/vegetable juice}    =&gt; {whole milk}               0.02663955
+[262] {whole milk}               =&gt; {fruit/vegetable juice}    0.02663955
+[263] {whipped/sour cream}       =&gt; {citrus fruit}             0.01087951
+[264] {citrus fruit}             =&gt; {whipped/sour cream}       0.01087951
+[265] {whipped/sour cream}       =&gt; {tropical fruit}           0.01382816
+[266] {tropical fruit}           =&gt; {whipped/sour cream}       0.01382816
+[267] {whipped/sour cream}       =&gt; {root vegetables}          0.01708185
+[268] {root vegetables}          =&gt; {whipped/sour cream}       0.01708185
+[269] {whipped/sour cream}       =&gt; {soda}                     0.01159126
+[270] {soda}                     =&gt; {whipped/sour cream}       0.01159126
+[271] {whipped/sour cream}       =&gt; {yogurt}                   0.02074225
+[272] {yogurt}                   =&gt; {whipped/sour cream}       0.02074225
+[273] {whipped/sour cream}       =&gt; {rolls/buns}               0.01464159
+[274] {rolls/buns}               =&gt; {whipped/sour cream}       0.01464159
+[275] {whipped/sour cream}       =&gt; {other vegetables}         0.02887646
+[276] {other vegetables}         =&gt; {whipped/sour cream}       0.02887646
+[277] {whipped/sour cream}       =&gt; {whole milk}               0.03223183
+[278] {whole milk}               =&gt; {whipped/sour cream}       0.03223183
+[279] {pip fruit}                =&gt; {pastry}                   0.01067616
+[280] {pastry}                   =&gt; {pip fruit}                0.01067616
+[281] {pip fruit}                =&gt; {citrus fruit}             0.01382816
+[282] {citrus fruit}             =&gt; {pip fruit}                0.01382816
+[283] {pip fruit}                =&gt; {sausage}                  0.01077783
+[284] {sausage}                  =&gt; {pip fruit}                0.01077783
+[285] {pip fruit}                =&gt; {bottled water}            0.01057448
+[286] {bottled water}            =&gt; {pip fruit}                0.01057448
+[287] {pip fruit}                =&gt; {tropical fruit}           0.02043721
+[288] {tropical fruit}           =&gt; {pip fruit}                0.02043721
+[289] {pip fruit}                =&gt; {root vegetables}          0.01555669
+[290] {root vegetables}          =&gt; {pip fruit}                0.01555669
+[291] {pip fruit}                =&gt; {soda}                     0.01331978
+[292] {soda}                     =&gt; {pip fruit}                0.01331978
+[293] {pip fruit}                =&gt; {yogurt}                   0.01799695
+[294] {yogurt}                   =&gt; {pip fruit}                0.01799695
+[295] {pip fruit}                =&gt; {rolls/buns}               0.01392984
+[296] {rolls/buns}               =&gt; {pip fruit}                0.01392984
+[297] {pip fruit}                =&gt; {other vegetables}         0.02613116
+[298] {other vegetables}         =&gt; {pip fruit}                0.02613116
+[299] {pip fruit}                =&gt; {whole milk}               0.03009659
+[300] {whole milk}               =&gt; {pip fruit}                0.03009659
+[301] {pastry}                   =&gt; {shopping bags}            0.01189629
+[302] {shopping bags}            =&gt; {pastry}                   0.01189629
+[303] {pastry}                   =&gt; {sausage}                  0.01250635
+[304] {sausage}                  =&gt; {pastry}                   0.01250635
+[305] {pastry}                   =&gt; {tropical fruit}           0.01321810
+[306] {tropical fruit}           =&gt; {pastry}                   0.01321810
+[307] {pastry}                   =&gt; {root vegetables}          0.01098119
+[308] {root vegetables}          =&gt; {pastry}                   0.01098119
+[309] {pastry}                   =&gt; {soda}                     0.02104728
+[310] {soda}                     =&gt; {pastry}                   0.02104728
+[311] {pastry}                   =&gt; {yogurt}                   0.01769192
+[312] {yogurt}                   =&gt; {pastry}                   0.01769192
+[313] {pastry}                   =&gt; {rolls/buns}               0.02094560
+[314] {rolls/buns}               =&gt; {pastry}                   0.02094560
+[315] {pastry}                   =&gt; {other vegetables}         0.02257245
+[316] {other vegetables}         =&gt; {pastry}                   0.02257245
+[317] {pastry}                   =&gt; {whole milk}               0.03324860
+[318] {whole milk}               =&gt; {pastry}                   0.03324860
+[319] {citrus fruit}             =&gt; {sausage}                  0.01128622
+[320] {sausage}                  =&gt; {citrus fruit}             0.01128622
+[321] {citrus fruit}             =&gt; {bottled water}            0.01352313
+[322] {bottled water}            =&gt; {citrus fruit}             0.01352313
+[323] {citrus fruit}             =&gt; {tropical fruit}           0.01992883
+[324] {tropical fruit}           =&gt; {citrus fruit}             0.01992883
+[325] {citrus fruit}             =&gt; {root vegetables}          0.01769192
+[326] {root vegetables}          =&gt; {citrus fruit}             0.01769192
+[327] {citrus fruit}             =&gt; {soda}                     0.01281139
+[328] {soda}                     =&gt; {citrus fruit}             0.01281139
+[329] {citrus fruit}             =&gt; {yogurt}                   0.02165735
+[330] {yogurt}                   =&gt; {citrus fruit}             0.02165735
+[331] {citrus fruit}             =&gt; {rolls/buns}               0.01677682
+[332] {rolls/buns}               =&gt; {citrus fruit}             0.01677682
+[333] {citrus fruit}             =&gt; {other vegetables}         0.02887646
+[334] {other vegetables}         =&gt; {citrus fruit}             0.02887646
+[335] {citrus fruit}             =&gt; {whole milk}               0.03050330
+[336] {whole milk}               =&gt; {citrus fruit}             0.03050330
+[337] {shopping bags}            =&gt; {sausage}                  0.01565836
+[338] {sausage}                  =&gt; {shopping bags}            0.01565836
+[339] {shopping bags}            =&gt; {bottled water}            0.01098119
+[340] {bottled water}            =&gt; {shopping bags}            0.01098119
+[341] {shopping bags}            =&gt; {tropical fruit}           0.01352313
+[342] {tropical fruit}           =&gt; {shopping bags}            0.01352313
+[343] {shopping bags}            =&gt; {root vegetables}          0.01281139
+[344] {root vegetables}          =&gt; {shopping bags}            0.01281139
+[345] {shopping bags}            =&gt; {soda}                     0.02460600
+[346] {soda}                     =&gt; {shopping bags}            0.02460600
+[347] {shopping bags}            =&gt; {yogurt}                   0.01525165
+[348] {yogurt}                   =&gt; {shopping bags}            0.01525165
+[349] {shopping bags}            =&gt; {rolls/buns}               0.01952211
+[350] {rolls/buns}               =&gt; {shopping bags}            0.01952211
+[351] {shopping bags}            =&gt; {other vegetables}         0.02318251
+[352] {other vegetables}         =&gt; {shopping bags}            0.02318251
+[353] {shopping bags}            =&gt; {whole milk}               0.02450432
+[354] {whole milk}               =&gt; {shopping bags}            0.02450432
+[355] {sausage}                  =&gt; {bottled water}            0.01199797
+[356] {bottled water}            =&gt; {sausage}                  0.01199797
+[357] {sausage}                  =&gt; {tropical fruit}           0.01392984
+[358] {tropical fruit}           =&gt; {sausage}                  0.01392984
+[359] {sausage}                  =&gt; {root vegetables}          0.01494662
+[360] {root vegetables}          =&gt; {sausage}                  0.01494662
+[361] {sausage}                  =&gt; {soda}                     0.02430097
+[362] {soda}                     =&gt; {sausage}                  0.02430097
+[363] {sausage}                  =&gt; {yogurt}                   0.01962379
+[364] {yogurt}                   =&gt; {sausage}                  0.01962379
+[365] {sausage}                  =&gt; {rolls/buns}               0.03060498
+[366] {rolls/buns}               =&gt; {sausage}                  0.03060498
+[367] {sausage}                  =&gt; {other vegetables}         0.02694459
+[368] {other vegetables}         =&gt; {sausage}                  0.02694459
+[369] {sausage}                  =&gt; {whole milk}               0.02989324
+[370] {whole milk}               =&gt; {sausage}                  0.02989324
+[371] {bottled water}            =&gt; {tropical fruit}           0.01850534
+[372] {tropical fruit}           =&gt; {bottled water}            0.01850534
+[373] {bottled water}            =&gt; {root vegetables}          0.01565836
+[374] {root vegetables}          =&gt; {bottled water}            0.01565836
+[375] {bottled water}            =&gt; {soda}                     0.02897814
+[376] {soda}                     =&gt; {bottled water}            0.02897814
+[377] {bottled water}            =&gt; {yogurt}                   0.02297916
+[378] {yogurt}                   =&gt; {bottled water}            0.02297916
+[379] {bottled water}            =&gt; {rolls/buns}               0.02419929
+[380] {rolls/buns}               =&gt; {bottled water}            0.02419929
+[381] {bottled water}            =&gt; {other vegetables}         0.02480935
+[382] {other vegetables}         =&gt; {bottled water}            0.02480935
+[383] {bottled water}            =&gt; {whole milk}               0.03436706
+[384] {whole milk}               =&gt; {bottled water}            0.03436706
+[385] {tropical fruit}           =&gt; {root vegetables}          0.02104728
+[386] {root vegetables}          =&gt; {tropical fruit}           0.02104728
+[387] {tropical fruit}           =&gt; {soda}                     0.02084392
+[388] {soda}                     =&gt; {tropical fruit}           0.02084392
+[389] {tropical fruit}           =&gt; {yogurt}                   0.02928317
+[390] {yogurt}                   =&gt; {tropical fruit}           0.02928317
+[391] {tropical fruit}           =&gt; {rolls/buns}               0.02460600
+[392] {rolls/buns}               =&gt; {tropical fruit}           0.02460600
+[393] {tropical fruit}           =&gt; {other vegetables}         0.03589222
+[394] {other vegetables}         =&gt; {tropical fruit}           0.03589222
+[395] {tropical fruit}           =&gt; {whole milk}               0.04229792
+[396] {whole milk}               =&gt; {tropical fruit}           0.04229792
+[397] {root vegetables}          =&gt; {soda}                     0.01860702
+[398] {soda}                     =&gt; {root vegetables}          0.01860702
+[399] {root vegetables}          =&gt; {yogurt}                   0.02582613
+[400] {yogurt}                   =&gt; {root vegetables}          0.02582613
+[401] {root vegetables}          =&gt; {rolls/buns}               0.02430097
+[402] {rolls/buns}               =&gt; {root vegetables}          0.02430097
+[403] {root vegetables}          =&gt; {other vegetables}         0.04738180
+[404] {other vegetables}         =&gt; {root vegetables}          0.04738180
+[405] {root vegetables}          =&gt; {whole milk}               0.04890696
+[406] {whole milk}               =&gt; {root vegetables}          0.04890696
+[407] {soda}                     =&gt; {yogurt}                   0.02735130
+[408] {yogurt}                   =&gt; {soda}                     0.02735130
+[409] {soda}                     =&gt; {rolls/buns}               0.03833249
+[410] {rolls/buns}               =&gt; {soda}                     0.03833249
+[411] {soda}                     =&gt; {other vegetables}         0.03274021
+[412] {other vegetables}         =&gt; {soda}                     0.03274021
+[413] {soda}                     =&gt; {whole milk}               0.04006101
+[414] {whole milk}               =&gt; {soda}                     0.04006101
+[415] {yogurt}                   =&gt; {rolls/buns}               0.03436706
+[416] {rolls/buns}               =&gt; {yogurt}                   0.03436706
+[417] {yogurt}                   =&gt; {other vegetables}         0.04341637
+[418] {other vegetables}         =&gt; {yogurt}                   0.04341637
+[419] {yogurt}                   =&gt; {whole milk}               0.05602440
+[420] {whole milk}               =&gt; {yogurt}                   0.05602440
+[421] {rolls/buns}               =&gt; {other vegetables}         0.04260295
+[422] {other vegetables}         =&gt; {rolls/buns}               0.04260295
+[423] {rolls/buns}               =&gt; {whole milk}               0.05663447
+[424] {whole milk}               =&gt; {rolls/buns}               0.05663447
+[425] {other vegetables}         =&gt; {whole milk}               0.07483477
+[426] {whole milk}               =&gt; {other vegetables}         0.07483477
+      confidence coverage   lift      count
+[1]   0.41078838 0.02450432 1.6076815  99  
+[2]   0.03939515 0.25551601 1.6076815  99  
+[3]   0.37090909 0.02796136 1.9169159 102  
+[4]   0.05359958 0.19349263 1.9169159 102  
+[5]   0.41454545 0.02796136 1.6223854 114  
+[6]   0.04536411 0.25551601 1.6223854 114  
+[7]   0.44140625 0.02602949 1.7275091 113  
+[8]   0.04496618 0.25551601 1.7275091 113  
+[9]   0.43983402 0.02450432 1.7213560 106  
+[10]  0.04218066 0.25551601 1.7213560 106  
+[11]  0.40217391 0.02806304 1.5739675 111  
+[12]  0.04417031 0.25551601 1.5739675 111  
+[13]  0.45901639 0.03101169 2.3722681 140  
+[14]  0.07356805 0.19349263 2.3722681 140  
+[15]  0.39016393 0.03101169 1.5269647 119  
+[16]  0.04735376 0.25551601 1.5269647 119  
+[17]  0.31804281 0.03324860 2.2798477 104  
+[18]  0.07580175 0.13950178 2.2798477 104  
+[19]  0.30886850 0.03324860 1.5962805 101  
+[20]  0.05307409 0.19349263 1.5962805 101  
+[21]  0.35474006 0.03324860 1.3883281 116  
+[22]  0.04615997 0.25551601 1.3883281 116  
+[23]  0.41590214 0.03324860 2.1494470 136  
+[24]  0.07146611 0.19349263 2.1494470 136  
+[25]  0.44342508 0.03324860 1.7354101 145  
+[26]  0.05769996 0.25551601 1.7354101 145  
+[27]  0.38888889 0.03294357 1.5219746 126  
+[28]  0.05013928 0.25551601 1.5219746 126  
+[29]  0.28494624 0.03782410 1.4726465 106  
+[30]  0.05570152 0.19349263 1.4726465 106  
+[31]  0.29569892 0.03782410 1.1572618 110  
+[32]  0.04377238 0.25551601 1.1572618 110  
+[33]  0.31831832 0.03385867 1.6451186 106  
+[34]  0.05570152 0.19349263 1.6451186 106  
+[35]  0.44444444 0.03385867 1.7393996 148  
+[36]  0.05889375 0.25551601 1.7393996 148  
+[37]  0.26190476 0.03843416 1.3535645  99  
+[38]  0.05202312 0.19349263 1.3535645  99  
+[39]  0.33068783 0.03843416 1.2941961 125  
+[40]  0.04974135 0.25551601 1.2941961 125  
+[41]  0.28532609 0.03741739 1.4746096 105  
+[42]  0.05517604 0.19349263 1.4746096 105  
+[43]  0.36141304 0.03741739 1.4144438 133  
+[44]  0.05292479 0.25551601 1.4144438 133  
+[45]  0.31232877 0.03711235 1.6141636 114  
+[46]  0.05990541 0.19349263 1.6141636 114  
+[47]  0.36986301 0.03711235 1.4475140 135  
+[48]  0.05372065 0.25551601 1.4475140 135  
+[49]  0.14659686 0.07768175 1.4879052 112  
+[50]  0.11558308 0.09852567 1.4879052 112  
+[51]  0.17801047 0.07768175 1.0208356 136  
+[52]  0.07930029 0.17437722 1.0208356 136  
+[53]  0.14528796 0.07768175 0.7898878 111  
+[54]  0.06135987 0.18393493 0.7898878 111  
+[55]  0.31282051 0.03965430 2.2424123 122  
+[56]  0.08892128 0.13950178 2.2424123 122  
+[57]  0.34615385 0.03965430 1.7889769 135  
+[58]  0.07094062 0.19349263 1.7889769 135  
+[59]  0.41538462 0.03965430 1.6256696 162  
+[60]  0.06446478 0.25551601 1.6256696 162  
+[61]  0.25355450 0.04290798 2.3262206 107  
+[62]  0.09981343 0.10899847 2.3262206 107  
+[63]  0.41706161 0.04290798 2.1554393 176  
+[64]  0.09248555 0.19349263 2.1554393 176  
+[65]  0.40995261 0.04290798 1.6044106 173  
+[66]  0.06884202 0.25551601 1.6044106 173  
+[67]  0.24396135 0.04209456 1.3990437 101  
+[68]  0.05889213 0.17437722 1.3990437 101  
+[69]  0.32608696 0.04209456 1.6852681 135  
+[70]  0.07094062 0.19349263 1.6852681 135  
+[71]  0.40579710 0.04209456 1.5881474 168  
+[72]  0.06685237 0.25551601 1.5881474 168  
+[73]  0.27254098 0.04961871 1.5629391 133  
+[74]  0.07755102 0.17437722 1.5629391 133  
+[75]  0.23770492 0.04961871 1.2923316 116  
+[76]  0.06412383 0.18393493 1.2923316 116  
+[77]  0.25614754 0.04961871 1.3238103 125  
+[78]  0.06568576 0.19349263 1.3238103 125  
+[79]  0.33606557 0.04961871 1.3152427 164  
+[80]  0.06526064 0.25551601 1.3152427 164  
+[81]  0.18914186 0.05805796 1.0283085 108  
+[82]  0.05970149 0.18393493 1.0283085 108  
+[83]  0.23117338 0.05805796 1.1947400 132  
+[84]  0.06936416 0.19349263 1.1947400 132  
+[85]  0.32224168 0.05805796 1.2611408 184  
+[86]  0.07321926 0.25551601 1.2611408 184  
+[87]  0.24101480 0.04809354 2.2111759 114  
+[88]  0.10634328 0.10899847 2.2111759 114  
+[89]  0.25792812 0.04809354 1.8489235 122  
+[90]  0.08892128 0.13950178 1.8489235 122  
+[91]  0.21141649 0.04809354 1.1494092 100  
+[92]  0.05527916 0.18393493 1.1494092 100  
+[93]  0.36997886 0.04809354 1.9121083 175  
+[94]  0.09196006 0.19349263 1.9121083 175  
+[95]  0.42494715 0.04809354 1.6630940 201  
+[96]  0.07998408 0.25551601 1.6630940 201  
+[97]  0.33139535 0.05246568 3.0403668 171  
+[98]  0.15951493 0.10899847 3.0403668 171  
+[99]  0.22286822 0.05246568 1.5976012 115  
+[100] 0.08381924 0.13950178 1.5976012 115  
+[101] 0.25968992 0.05246568 1.4118576 134  
+[102] 0.07407407 0.18393493 1.4118576 134  
+[103] 0.37596899 0.05246568 1.9430662 194  
+[104] 0.10194430 0.19349263 1.9430662 194  
+[105] 0.40503876 0.05246568 1.5851795 209  
+[106] 0.08316753 0.25551601 1.5851795 209  
+[107] 0.19656489 0.05327911 2.7421499 103  
+[108] 0.14609929 0.07168277 2.7421499 103  
+[109] 0.19274809 0.05327911 1.8368968 101  
+[110] 0.09786822 0.10493137 1.8368968 101  
+[111] 0.20419847 0.05327911 1.8734067 107  
+[112] 0.09981343 0.10899847 1.8734067 107  
+[113] 0.32442748 0.05327911 2.3256154 170  
+[114] 0.12390671 0.13950178 2.3256154 170  
+[115] 0.18893130 0.05327911 1.0271638  99  
+[116] 0.05472637 0.18393493 1.0271638  99  
+[117] 0.32251908 0.05327911 1.6668288 169  
+[118] 0.08880715 0.19349263 1.6668288 169  
+[119] 0.49045802 0.05327911 1.9194805 257  
+[120] 0.10226821 0.25551601 1.9194805 257  
+[121] 0.19223301 0.05236401 1.8319880  99  
+[122] 0.09593023 0.10493137 1.8319880  99  
+[123] 0.22912621 0.05236401 1.3139687 118  
+[124] 0.06880466 0.17437722 1.3139687 118  
+[125] 0.23495146 0.05236401 1.6842183 121  
+[126] 0.08819242 0.13950178 1.6842183 121  
+[127] 0.22330097 0.05236401 1.2140216 115  
+[128] 0.06357103 0.18393493 1.2140216 115  
+[129] 0.27572816 0.05236401 1.4250060 142  
+[130] 0.07461902 0.19349263 1.4250060 142  
+[131] 0.37669903 0.05236401 1.4742678 194  
+[132] 0.07719857 0.25551601 1.4742678 194  
+[133] 0.23633157 0.05765125 2.1682099 134  
+[134] 0.12500000 0.10899847 2.1682099 134  
+[135] 0.20634921 0.05765125 1.1833495 117  
+[136] 0.06822157 0.17437722 1.1833495 117  
+[137] 0.19576720 0.05765125 1.0643286 111  
+[138] 0.06135987 0.18393493 1.0643286 111  
+[139] 0.37566138 0.05765125 1.9414764 213  
+[140] 0.11192853 0.19349263 1.9414764 213  
+[141] 0.38447972 0.05765125 1.5047187 218  
+[142] 0.08674891 0.25551601 1.5047187 218  
+[143] 0.17068966 0.05897306 1.8168103  99  
+[144] 0.10714286 0.09395018 1.8168103  99  
+[145] 0.17241379 0.05897306 1.5818001 100  
+[146] 0.09328358 0.10899847 1.5818001 100  
+[147] 0.19137931 0.05897306 1.0975018 111  
+[148] 0.06472303 0.17437722 1.0975018 111  
+[149] 0.18965517 0.05897306 1.3595179 110  
+[150] 0.08017493 0.13950178 1.3595179 110  
+[151] 0.32586207 0.05897306 1.7716161 189  
+[152] 0.10447761 0.18393493 1.7716161 189  
+[153] 0.27931034 0.05897306 1.4435193 162  
+[154] 0.08512874 0.19349263 1.4435193 162  
+[155] 0.34827586 0.05897306 1.3630295 202  
+[156] 0.08038201 0.25551601 1.3630295 202  
+[157] 0.19570707 0.08052872 1.7707259 155  
+[158] 0.14259430 0.11052364 1.7707259 155  
+[159] 0.21085859 0.08052872 1.2092094 167  
+[160] 0.09737609 0.17437722 1.2092094 167  
+[161] 0.16919192 0.08052872 0.9198466 134  
+[162] 0.07407407 0.18393493 0.9198466 134  
+[163] 0.20075758 0.08052872 1.0375464 159  
+[164] 0.08355229 0.19349263 1.0375464 159  
+[165] 0.25378788 0.08052872 0.9932367 201  
+[166] 0.07998408 0.25551601 0.9932367 201  
+[167] 0.16457680 0.06487036 1.7517455 105  
+[168] 0.11363636 0.09395018 1.7517455 105  
+[169] 0.16457680 0.06487036 1.5684233 105  
+[170] 0.10174419 0.10493137 1.5684233 105  
+[171] 0.15673981 0.06487036 1.4380000 100  
+[172] 0.09328358 0.10899847 1.4380000 100  
+[173] 0.19435737 0.06487036 1.1145800 124  
+[174] 0.07230321 0.17437722 1.1145800 124  
+[175] 0.22413793 0.06487036 1.6067030 143  
+[176] 0.10422741 0.13950178 1.6067030 143  
+[177] 0.19435737 0.06487036 1.0566637 124  
+[178] 0.06854616 0.18393493 1.0566637 124  
+[179] 0.28840125 0.06487036 1.4905025 184  
+[180] 0.09668944 0.19349263 1.4905025 184  
+[181] 0.38871473 0.06487036 1.5212930 248  
+[182] 0.09868683 0.25551601 1.5212930 248  
+[183] 0.17534722 0.05856634 1.5865133 101  
+[184] 0.09291628 0.11052364 1.5865133 101  
+[185] 0.18923611 0.05856634 1.7361354 109  
+[186] 0.10167910 0.10899847 1.7361354 109  
+[187] 0.17361111 0.05856634 0.9956066 100  
+[188] 0.05830904 0.17437722 0.9956066 100  
+[189] 0.24305556 0.05856634 1.7423115 140  
+[190] 0.10204082 0.13950178 1.7423115 140  
+[191] 0.25173611 0.05856634 1.3686151 145  
+[192] 0.08015478 0.18393493 1.3686151 145  
+[193] 0.33680556 0.05856634 1.7406635 194  
+[194] 0.10194430 0.19349263 1.7406635 194  
+[195] 0.41319444 0.05856634 1.6170980 238  
+[196] 0.09470752 0.25551601 1.6170980 238  
+[197] 0.18348624 0.05541434 2.5596981 100  
+[198] 0.14184397 0.07168277 2.5596981 100  
+[199] 0.23302752 0.05541434 2.1378971 127  
+[200] 0.11847015 0.10899847 2.1378971 127  
+[201] 0.26422018 0.05541434 1.8940273 144  
+[202] 0.10495627 0.13950178 1.8940273 144  
+[203] 0.24220183 0.05541434 1.3167800 132  
+[204] 0.07296849 0.18393493 1.3167800 132  
+[205] 0.36146789 0.05541434 1.8681223 197  
+[206] 0.10352076 0.19349263 1.8681223 197  
+[207] 0.49724771 0.05541434 1.9460530 271  
+[208] 0.10783924 0.25551601 1.9460530 271  
+[209] 0.14140127 0.07981698 1.2793758 111  
+[210] 0.10211592 0.11052364 1.2793758 111  
+[211] 0.14777070 0.07981698 1.4082605 116  
+[212] 0.11240310 0.10493137 1.4082605 116  
+[213] 0.14394904 0.07981698 1.3206519 113  
+[214] 0.10541045 0.10899847 1.3206519 113  
+[215] 0.18343949 0.07981698 1.0519693 144  
+[216] 0.08396501 0.17437722 1.0519693 144  
+[217] 0.19235669 0.07981698 1.3788834 151  
+[218] 0.11005831 0.13950178 1.3788834 151  
+[219] 0.24713376 0.07981698 1.3435934 194  
+[220] 0.10724157 0.18393493 1.3435934 194  
+[221] 0.24203822 0.07981698 1.2508912 190  
+[222] 0.09984235 0.19349263 1.2508912 190  
+[223] 0.34267516 0.07981698 1.3411103 269  
+[224] 0.10704337 0.25551601 1.3411103 269  
+[225] 0.16346154 0.06344687 1.9749929 102  
+[226] 0.12530713 0.08276563 1.9749929 102  
+[227] 0.17948718 0.06344687 1.7105198 112  
+[228] 0.10852713 0.10493137 1.7105198 112  
+[229] 0.22596154 0.06344687 2.0730706 141  
+[230] 0.13152985 0.10899847 2.0730706 141  
+[231] 0.19551282 0.06344687 1.1212062 122  
+[232] 0.07113703 0.17437722 1.1212062 122  
+[233] 0.22596154 0.06344687 1.6197753 141  
+[234] 0.10276968 0.13950178 1.6197753 141  
+[235] 0.24679487 0.06344687 1.3417510 154  
+[236] 0.08512991 0.18393493 1.3417510 154  
+[237] 0.35096154 0.06344687 1.8138238 219  
+[238] 0.11508145 0.19349263 1.8138238 219  
+[239] 0.47275641 0.06344687 1.8502027 295  
+[240] 0.11738957 0.25551601 1.8502027 295  
+[241] 0.14345992 0.07229283 1.7333271 102  
+[242] 0.12530713 0.08276563 1.7333271 102  
+[243] 0.14767932 0.07229283 1.4988918 105  
+[244] 0.10835913 0.09852567 1.4988918 105  
+[245] 0.13924051 0.07229283 1.4820675  99  
+[246] 0.10714286 0.09395018 1.4820675  99  
+[247] 0.19690577 0.07229283 1.7815715 140  
+[248] 0.12879485 0.11052364 1.7815715 140  
+[249] 0.18987342 0.07229283 1.8095010 135  
+[250] 0.13081395 0.10493137 1.8095010 135  
+[251] 0.16596343 0.07229283 1.5226216 118  
+[252] 0.11007463 0.10899847 1.5226216 118  
+[253] 0.25457103 0.07229283 1.4598869 181  
+[254] 0.10553936 0.17437722 1.4598869 181  
+[255] 0.25879044 0.07229283 1.8551049 184  
+[256] 0.13411079 0.13950178 1.8551049 184  
+[257] 0.20112518 0.07229283 1.0934583 143  
+[258] 0.07904920 0.18393493 1.0934583 143  
+[259] 0.29113924 0.07229283 1.5046529 207  
+[260] 0.10877562 0.19349263 1.5046529 207  
+[261] 0.36849508 0.07229283 1.4421604 262  
+[262] 0.10425786 0.25551601 1.4421604 262  
+[263] 0.15177305 0.07168277 1.8337690 107  
+[264] 0.13144963 0.08276563 1.8337690 107  
+[265] 0.19290780 0.07168277 1.8384188 136  
+[266] 0.13178295 0.10493137 1.8384188 136  
+[267] 0.23829787 0.07168277 2.1862496 168  
+[268] 0.15671642 0.10899847 2.1862496 168  
+[269] 0.16170213 0.07168277 0.9273122 114  
+[270] 0.06647230 0.17437722 0.9273122 114  
+[271] 0.28936170 0.07168277 2.0742510 204  
+[272] 0.14868805 0.13950178 2.0742510 204  
+[273] 0.20425532 0.07168277 1.1104760 144  
+[274] 0.07960199 0.18393493 1.1104760 144  
+[275] 0.40283688 0.07168277 2.0819237 284  
+[276] 0.14923805 0.19349263 2.0819237 284  
+[277] 0.44964539 0.07168277 1.7597542 317  
+[278] 0.12614405 0.25551601 1.7597542 317  
+[279] 0.14112903 0.07564820 1.5862903 105  
+[280] 0.12000000 0.08896797 1.5862903 105  
+[281] 0.18279570 0.07564820 2.2085942 136  
+[282] 0.16707617 0.08276563 2.2085942 136  
+[283] 0.14247312 0.07564820 1.5164752 106  
+[284] 0.11471861 0.09395018 1.5164752 106  
+[285] 0.13978495 0.07564820 1.2647516 104  
+[286] 0.09567617 0.11052364 1.2647516 104  
+[287] 0.27016129 0.07564820 2.5746476 201  
+[288] 0.19476744 0.10493137 2.5746476 201  
+[289] 0.20564516 0.07564820 1.8866793 153  
+[290] 0.14272388 0.10899847 1.8866793 153  
+[291] 0.17607527 0.07564820 1.0097378 131  
+[292] 0.07638484 0.17437722 1.0097378 131  
+[293] 0.23790323 0.07564820 1.7053777 177  
+[294] 0.12900875 0.13950178 1.7053777 177  
+[295] 0.18413978 0.07564820 1.0011138 137  
+[296] 0.07573245 0.18393493 1.0011138 137  
+[297] 0.34543011 0.07564820 1.7852365 257  
+[298] 0.13504992 0.19349263 1.7852365 257  
+[299] 0.39784946 0.07564820 1.5570432 296  
+[300] 0.11778750 0.25551601 1.5570432 296  
+[301] 0.13371429 0.08896797 1.3571517 117  
+[302] 0.12074303 0.09852567 1.3571517 117  
+[303] 0.14057143 0.08896797 1.4962338 123  
+[304] 0.13311688 0.09395018 1.4962338 123  
+[305] 0.14857143 0.08896797 1.4158915 130  
+[306] 0.12596899 0.10493137 1.4158915 130  
+[307] 0.12342857 0.08896797 1.1323881 108  
+[308] 0.10074627 0.10899847 1.1323881 108  
+[309] 0.23657143 0.08896797 1.3566647 207  
+[310] 0.12069971 0.17437722 1.3566647 207  
+[311] 0.19885714 0.08896797 1.4254810 174  
+[312] 0.12682216 0.13950178 1.4254810 174  
+[313] 0.23542857 0.08896797 1.2799558 206  
+[314] 0.11387507 0.18393493 1.2799558 206  
+[315] 0.25371429 0.08896797 1.3112349 222  
+[316] 0.11665791 0.19349263 1.3112349 222  
+[317] 0.37371429 0.08896797 1.4625865 327  
+[318] 0.13012336 0.25551601 1.4625865 327  
+[319] 0.13636364 0.08276563 1.4514463 111  
+[320] 0.12012987 0.09395018 1.4514463 111  
+[321] 0.16339066 0.08276563 1.4783323 133  
+[322] 0.12235511 0.11052364 1.4783323 133  
+[323] 0.24078624 0.08276563 2.2947022 196  
+[324] 0.18992248 0.10493137 2.2947022 196  
+[325] 0.21375921 0.08276563 1.9611211 174  
+[326] 0.16231343 0.10899847 1.9611211 174  
+[327] 0.15479115 0.08276563 0.8876799 126  
+[328] 0.07346939 0.17437722 0.8876799 126  
+[329] 0.26167076 0.08276563 1.8757521 213  
+[330] 0.15524781 0.13950178 1.8757521 213  
+[331] 0.20270270 0.08276563 1.1020349 165  
+[332] 0.09121061 0.18393493 1.1020349 165  
+[333] 0.34889435 0.08276563 1.8031403 284  
+[334] 0.14923805 0.19349263 1.8031403 284  
+[335] 0.36855037 0.08276563 1.4423768 300  
+[336] 0.11937923 0.25551601 1.4423768 300  
+[337] 0.15892673 0.09852567 1.6916065 154  
+[338] 0.16666667 0.09395018 1.6916065 154  
+[339] 0.11145511 0.09852567 1.0084278 108  
+[340] 0.09935603 0.11052364 1.0084278 108  
+[341] 0.13725490 0.09852567 1.3080445 133  
+[342] 0.12887597 0.10493137 1.3080445 133  
+[343] 0.13003096 0.09852567 1.1929613 126  
+[344] 0.11753731 0.10899847 1.1929613 126  
+[345] 0.24974200 0.09852567 1.4321939 242  
+[346] 0.14110787 0.17437722 1.4321939 242  
+[347] 0.15479876 0.09852567 1.1096544 150  
+[348] 0.10932945 0.13950178 1.1096544 150  
+[349] 0.19814241 0.09852567 1.0772419 192  
+[350] 0.10613599 0.18393493 1.0772419 192  
+[351] 0.23529412 0.09852567 1.2160366 228  
+[352] 0.11981083 0.19349263 1.2160366 228  
+[353] 0.24871001 0.09852567 0.9733637 241  
+[354] 0.09590131 0.25551601 0.9733637 241  
+[355] 0.12770563 0.09395018 1.1554598 118  
+[356] 0.10855566 0.11052364 1.1554598 118  
+[357] 0.14826840 0.09395018 1.4130036 137  
+[358] 0.13275194 0.10493137 1.4130036 137  
+[359] 0.15909091 0.09395018 1.4595700 147  
+[360] 0.13712687 0.10899847 1.4595700 147  
+[361] 0.25865801 0.09395018 1.4833245 239  
+[362] 0.13935860 0.17437722 1.4833245 239  
+[363] 0.20887446 0.09395018 1.4972889 193  
+[364] 0.14067055 0.13950178 1.4972889 193  
+[365] 0.32575758 0.09395018 1.7710480 301  
+[366] 0.16639027 0.18393493 1.7710480 301  
+[367] 0.28679654 0.09395018 1.4822091 265  
+[368] 0.13925381 0.19349263 1.4822091 265  
+[369] 0.31818182 0.09395018 1.2452520 294  
+[370] 0.11699164 0.25551601 1.2452520 294  
+[371] 0.16743330 0.11052364 1.5956459 182  
+[372] 0.17635659 0.10493137 1.5956459 182  
+[373] 0.14167433 0.11052364 1.2997827 154  
+[374] 0.14365672 0.10899847 1.2997827 154  
+[375] 0.26218951 0.11052364 1.5035766 285  
+[376] 0.16618076 0.17437722 1.5035766 285  
+[377] 0.20791168 0.11052364 1.4903873 226  
+[378] 0.16472303 0.13950178 1.4903873 226  
+[379] 0.21895124 0.11052364 1.1903734 238  
+[380] 0.13156440 0.18393493 1.1903734 238  
+[381] 0.22447102 0.11052364 1.1601012 244  
+[382] 0.12821860 0.19349263 1.1601012 244  
+[383] 0.31094756 0.11052364 1.2169396 338  
+[384] 0.13450060 0.25551601 1.2169396 338  
+[385] 0.20058140 0.10493137 1.8402220 207  
+[386] 0.19309701 0.10899847 1.8402220 207  
+[387] 0.19864341 0.10493137 1.1391592 205  
+[388] 0.11953353 0.17437722 1.1391592 205  
+[389] 0.27906977 0.10493137 2.0004746 288  
+[390] 0.20991254 0.13950178 2.0004746 288  
+[391] 0.23449612 0.10493137 1.2748863 242  
+[392] 0.13377557 0.18393493 1.2748863 242  
+[393] 0.34205426 0.10493137 1.7677896 353  
+[394] 0.18549658 0.19349263 1.7677896 353  
+[395] 0.40310078 0.10493137 1.5775950 416  
+[396] 0.16553920 0.25551601 1.5775950 416  
+[397] 0.17070896 0.10899847 0.9789636 183  
+[398] 0.10670554 0.17437722 0.9789636 183  
+[399] 0.23694030 0.10899847 1.6984751 254  
+[400] 0.18513120 0.13950178 1.6984751 254  
+[401] 0.22294776 0.10899847 1.2121013 239  
+[402] 0.13211719 0.18393493 1.2121013 239  
+[403] 0.43470149 0.10899847 2.2466049 466  
+[404] 0.24487651 0.19349263 2.2466049 466  
+[405] 0.44869403 0.10899847 1.7560310 481  
+[406] 0.19140470 0.25551601 1.7560310 481  
+[407] 0.15685131 0.17437722 1.1243678 269  
+[408] 0.19606414 0.13950178 1.1243678 269  
+[409] 0.21982507 0.17437722 1.1951242 377  
+[410] 0.20840243 0.18393493 1.1951242 377  
+[411] 0.18775510 0.17437722 0.9703476 322  
+[412] 0.16920652 0.19349263 0.9703476 322  
+[413] 0.22973761 0.17437722 0.8991124 394  
+[414] 0.15678472 0.25551601 0.8991124 394  
+[415] 0.24635569 0.13950178 1.3393633 338  
+[416] 0.18684356 0.18393493 1.3393633 338  
+[417] 0.31122449 0.13950178 1.6084566 427  
+[418] 0.22438255 0.19349263 1.6084566 427  
+[419] 0.40160350 0.13950178 1.5717351 551  
+[420] 0.21925985 0.25551601 1.5717351 551  
+[421] 0.23161968 0.18393493 1.1970465 419  
+[422] 0.22017867 0.19349263 1.1970465 419  
+[423] 0.30790492 0.18393493 1.2050318 557  
+[424] 0.22164743 0.25551601 1.2050318 557  
+[425] 0.38675775 0.19349263 1.5136341 736  
+[426] 0.29287704 0.25551601 1.5136341 736  
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Filtrado de reglas generadas (+++++)</h3>
+<div class="slideContent" >
+<p>A su vez, podemos filtrar por más de una de las condiciones antes vistas:</p>
 
 <pre><code class="r">soda = subset(reglas, subset = rhs %in% &quot;soda&quot; &amp; lift &gt; 1.2)
 
