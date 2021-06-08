@@ -12,6 +12,8 @@ words2 = c("efectúa", "efectuaba", "efectuada", "efectuadas", "efectuado", "efe
            "efectuar", "efectuará", "efectuarán", "efectuaría", "efectuaron", "efectuarse",
            "efectúen", "efectuo", "efectúo", "efectuó")
 
+length(unique(words2))
+
 unique(wordStem(words2, language = "spanish"))
 
 
