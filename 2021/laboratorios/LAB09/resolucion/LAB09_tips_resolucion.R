@@ -132,5 +132,5 @@ reglas
 
 arules::inspect(head(sort(reglas, by="lift", decreasing = TRUE), 30))
 
-rules.sub <- subset(reglas, subset = lhs %in% "muerte")
+rules.sub <- subset(reglas, subset = rhs %in% "amor")
 arules::inspect(head(sort(rules.sub, by="lift", decreasing = TRUE), 30))

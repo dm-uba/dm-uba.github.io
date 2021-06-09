@@ -18,7 +18,7 @@ plot(rules, method = "two-key plot")
 sel <- plot(rules, measure = c("support", "lift"), shading = "confidence", interactive = TRUE)
 
 # Muestra las reglas de forma matricial y por índice de los items
-plot(rules, method = "matrix", measure = "lift")
+plot(rules, method = "matrix", shading = "support")
 
 # Me quedo con un subconjunto de las reglas
 subrules2 <- head(rules, n = 10, by = "lift")
