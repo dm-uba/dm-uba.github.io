@@ -113,7 +113,7 @@ corpus.pro2tdm <- function(corpus, ponderacion, n_terms) {
   matriz_mf = t(matriz_td[sort(names(terminos_frecuentes)),])
 
   # Paso a binaria la matriz (está o no está el término)
-  matriz_mf[matriz_mf > 1] <- 1
+  matriz_mf[matriz_mf > 0] <- 1
   
   return(matriz_mf)
 }
