@@ -118,7 +118,7 @@ corpus.pro2tdm <- function(corpus, ponderacion, n_terms) {
   return(matriz_mf)
 }
 
-matriz <- corpus.pro2tdm(corpus.pro, "weightTfIdf", 150)
+matriz <- corpus.pro2tdm(corpus.pro, "weightTfIdf", 150000)
 View(matriz)
 
 lyrics_transactions <- transactions(matriz)
