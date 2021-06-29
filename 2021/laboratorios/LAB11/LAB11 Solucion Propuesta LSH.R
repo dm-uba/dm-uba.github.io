@@ -14,23 +14,27 @@ library(tidyverse)
 library(textcat)
 
 # ----------------------------------------------------------------
-#   Cargamos los datos desde el JSON (letras canciones)
+#   Creacion del archivo random_lyrics_lsh.csv
+#   No hace falta ejecutar la siguiente sección (comentada)
 # ----------------------------------------------------------------
 
+# Las letras se descargan a MongoDB ejecutando el siguiente script
+# download_lyrics_random.R
+# https://github.com/dm-uba/dm-uba.github.io/blob/master/2021/laboratorios/LAB11/download-lyrics-random.R
 
 # Recuperamos la colección desde mongodb
-conx_lyrics_random = mongo(collection = "lyrics_lsh", db = "SPOTIFY_UBA")
-df_text = conx_lyrics_random$find('{}')
+#conx_lyrics_random = mongo(collection = "lyrics_lsh", db = "SPOTIFY_UBA")
+#df_text = conx_lyrics_random$find('{}')
 
 
 # Vamos a usar la librería textcat para quedarnos con las letras en inglés
-textcat("This is a sentence.")
+#textcat("This is a sentence.")
 
 # Filtramos las que el idioma es inglés
-df_text = df_text[textcat(df_text$lyrics)=="english",]
+#df_text = df_text[textcat(df_text$lyrics)=="english",]
 
 # eliminamos las conexión dado que no la vamos a usar
-rm(conx_lyrics_random)
+#rm(conx_lyrics_random)
 
 
 # ----------------------------------------------------------------
@@ -38,24 +42,24 @@ rm(conx_lyrics_random)
 # ----------------------------------------------------------------
 
 # Elimino todo lo que aparece antes del primer [] por formato en GENIUS site
-df_text$lyrics <- sub('^.+?\\[.*?\\]',"", df_text$lyrics)
+#df_text$lyrics <- sub('^.+?\\[.*?\\]',"", df_text$lyrics)
 
 # Elimino las aclaraciones en las canciones, por ejemplo:
 # [Verso 1: Luis Fonsi & Daddy Yankee]
-df_text$lyrics <- gsub('\\[.*?\\]', '', df_text$lyrics)
+#df_text$lyrics <- gsub('\\[.*?\\]', '', df_text$lyrics)
 
 # Elimino todo lo que aparece luego de 'More on Genius'
-df_text$lyrics <- gsub("More on Genius.*","", df_text$lyrics)
+#df_text$lyrics <- gsub("More on Genius.*","", df_text$lyrics)
 
 
 # Se quitan caracteres no alfanuméricos
-df_text$lyrics <- gsub("[^[:alnum:][:blank:]?&/\\-]", "", df_text$lyrics)
+#df_text$lyrics <- gsub("[^[:alnum:][:blank:]?&/\\-]", "", df_text$lyrics)
 
 # Se quitan acentos
 #df_text$lyrics = stri_trans_general(df_text$lyrics, "Latin-ASCII")
 
 # Se pasa a minusculas
-df_text$lyrics = tolower(df_text$lyrics)
+#df_text$lyrics = tolower(df_text$lyrics)
 
 # Se quita puntuacion
 #df_text$lyrics = removePunctuation(df_text$lyrics)
@@ -64,23 +68,23 @@ df_text$lyrics = tolower(df_text$lyrics)
 #df_text$lyrics = removeNumbers(df_text$lyrics)
 
 # se quitan espacios extras
-df_text$lyrics =  stripWhitespace(df_text$lyrics)
+#df_text$lyrics =  stripWhitespace(df_text$lyrics)
 
 # se quitan espacios al principio y final de la cadena
-df_text$lyrics = str_trim(df_text$lyrics)
-df_text$lyrics <- gsub("https[a-z0-9]+", "", df_text$lyrics)
+#df_text$lyrics = str_trim(df_text$lyrics)
+#df_text$lyrics <- gsub("https[a-z0-9]+", "", df_text$lyrics)
 
 # Se eliminan duplicados en base al mismo nombre
-df_text = df_text[!duplicated(df_text[c(2)]),]
+#df_text = df_text[!duplicated(df_text[c(2)]),]
 
 # Se eliminan registros que no tienen lyrics
-df_text = df_text[!(is.na(df_text$lyrics) | df_text$lyrics==""), ]
+#df_text = df_text[!(is.na(df_text$lyrics) | df_text$lyrics==""), ]
 
-### este dataframe se exporto bajo el nombre de random_lyrics_lsh.csv
+########## df_text se exporta como random_lyrics_lsh.csv  #################
 
-# ---------------------- LABORATORIO
+# ---------------------- LABORATORIO -------------------------- #
 
-#file = "C:/Users/macro/Documents/DM/Local Sensitive Hashing/random_lyrics_lsh.csv"
+#file = "RUTA AL ARCHIVO"
 #df_text <- read.csv(file)
 
 # a) Hay duplicados en base al track_name?
